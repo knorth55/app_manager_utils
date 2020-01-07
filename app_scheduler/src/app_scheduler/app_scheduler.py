@@ -8,8 +8,8 @@ import schedule
 
 class AppScheduler(object):
 
-    def __init__(self, app_service_name, yaml_path, duration=1):
-        self.app_service_name = app_service_name
+    def __init__(self, robot_name, yaml_path, duration=1):
+        self.robot_name = robot_name
         self.yaml_path = yaml_path
         self.timer = rospy.Timer(rospy.Duration(duration), self._timer_cb)
         self._load_yaml()
@@ -25,11 +25,11 @@ class AppScheduler(object):
 
     def _register_app(self, app):
         job = self._create_job(app['app_name'])  # NOQA
-        eval('schedule.{}.run(job)'.format(app['app_schedule']))
+        eval('schedule.{}.do(job)'.format(app['app_schedule']))
 
     def _create_job(self, app_name):
-        job_str = 'rosservice call {0} {1}'.format(
-            self.app_service_name,
+        job_str = 'rosservice call /{0}/start_app {1}'.format(
+            self.robot_name,
             '"name: \'{}\'"'.format(app_name))
 
         def job():
