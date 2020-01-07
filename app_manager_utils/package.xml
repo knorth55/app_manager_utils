@@ -8,6 +8,7 @@
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>app_scheduler</build_depend>
 
   <export>
     <metapackage />
