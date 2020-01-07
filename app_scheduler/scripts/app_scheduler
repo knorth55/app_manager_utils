@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import rospy
+
+from app_scheduler import AppScheduler
+
+
+if __name__ == '__main__':
+    rospy.init_node('app_scheduler')
+    app_service_name = rospy.get_param('~app_service_name')
+    yaml_path = rospy.get_param('~yaml_path')
+    scheduler = AppScheduler(app_service_name, yaml_path)
+    rospy.spin()
