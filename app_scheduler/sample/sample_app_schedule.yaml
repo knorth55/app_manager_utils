@@ -1,0 +1,8 @@
+- app_name: app_scheduler/sample0
+  app_schedule: every(1).minute
+- app_name: app_scheduler/sample1
+  app_schedule: every(10).seconds
+- app_name: app_scheduler/sample2
+  app_schedule: every(1).hour
+- app_name: app_scheduler/sample3
+  app_schedule: every().day.at("10:00:00")

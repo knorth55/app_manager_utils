@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find app_manager)/launch/app_manager.launch">
+    <arg name="use_applist" value="false"/>
+  </include>
+</launch>
