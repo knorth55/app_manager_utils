@@ -2,4 +2,9 @@
   <include file="$(find app_manager)/launch/app_manager.launch">
     <arg name="use_applist" value="false"/>
   </include>
+  <node name="app_scheduler" pkg="app_scheduler" type="app_scheduler">
+    <rosparam subst_value="true">
+      yaml_path: $(find app_scheduler)/sample/sample_app_schedule.yaml
+    </rosparam>
+  </node>
 </launch>
