@@ -1,11 +1,11 @@
 - name: sample0
   app_name: app_scheduler/sample0
   app_schedule:
-    start: every(1).minute
+    start: every(2).minutes
 - name: sample1
   app_name: app_scheduler/sample1
   app_schedule:
-    start: every(30).seconds
+    start: every(60).seconds
 - name: sample2
   app_name: app_scheduler/sample2
   app_schedule:
