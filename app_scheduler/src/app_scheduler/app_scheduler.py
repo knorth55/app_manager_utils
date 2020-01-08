@@ -37,7 +37,7 @@ class AppScheduler(object):
     def _register_apps(self):
         for app in self.apps:
             rospy.loginfo(
-                'register app schedule: {0} {1}'.format(
+                'register app schedule: name:{0}, app_name:{1}'.format(
                     app['name'], app['app_name']))
             self._register_app(app)
 
