@@ -9,5 +9,6 @@ if __name__ == '__main__':
     rospy.init_node('app_scheduler')
     robot_name = rospy.get_param('/robot/name', 'robot')
     yaml_path = rospy.get_param('~yaml_path')
-    scheduler = AppScheduler(robot_name, yaml_path)
+    duration = rospy.get_param('~duration', 60)
+    scheduler = AppScheduler(robot_name, yaml_path, duration)
     rospy.spin()

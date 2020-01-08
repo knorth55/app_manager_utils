@@ -12,7 +12,7 @@ from app_manager.srv import StopApp
 
 class AppScheduler(object):
 
-    def __init__(self, robot_name, yaml_path, duration=1):
+    def __init__(self, robot_name, yaml_path, duration):
         self.robot_name = robot_name
         self.yaml_path = yaml_path
         self.running_app_names = []
