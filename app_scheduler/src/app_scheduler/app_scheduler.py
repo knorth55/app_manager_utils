@@ -37,7 +37,7 @@ class AppScheduler(object):
     def _register_apps(self):
         for app in self.apps:
             rospy.loginfo(
-                'register app schedule: name:{0}, app_name:{1}'.format(
+                'register app schedule => name: {0}, app_name: {1}'.format(
                     app['name'], app['app_name']))
             self._register_app(app)
 
@@ -84,12 +84,12 @@ class AppScheduler(object):
         schedule.run_pending()
 
     def _sub_cb(self, msg):
-        # INFO
         if msg.type == AppStatus.INFO:
+            # INFO
             rospy.loginfo('app_scheduler: {}'.format(msg.status))
-        # WARN
         elif msg.type == AppStatus.WARN:
+            # WARN
             rospy.logwarn('app_scheduler: {}'.format(msg.status))
-        # ERROR
         else:
+            # ERROR
             rospy.logerr('app_scheduler: {}'.format(msg.status))
