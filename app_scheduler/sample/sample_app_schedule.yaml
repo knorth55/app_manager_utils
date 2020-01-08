@@ -1,7 +1,7 @@
 - name: sample0
   app_name: app_scheduler/sample0
   app_schedule:
-    start: every(2).minutes
+    start: every(2).minutes.at(":00")
 - name: sample1
   app_name: app_scheduler/sample1
   app_schedule:
@@ -9,7 +9,7 @@
 - name: sample2
   app_name: app_scheduler/sample2
   app_schedule:
-    start: every(1).hour
+    start: every(1).hour.at(":00")
 - name: sample3
   app_name: app_scheduler/sample3
   app_schedule:
