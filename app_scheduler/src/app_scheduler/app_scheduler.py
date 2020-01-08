@@ -12,7 +12,7 @@ from app_manager.srv import StopApp
 
 class AppScheduler(object):
 
-    def __init__(self, robot_name, yaml_path, duration):
+    def __init__(self, robot_name, yaml_path, duration, update_duration):
         self.robot_name = robot_name
         self.yaml_path = yaml_path
         self.running_app_names = []
@@ -23,7 +23,9 @@ class AppScheduler(object):
             '/{}/start_app'.format(self.robot_name), StartApp)
         self.stop_app = rospy.ServiceProxy(
             '/{}/stop_app'.format(self.robot_name), StopApp)
-        self.timer = rospy.Timer(rospy.Duration(duration), self._timer_cb)
+        self.job_timer = rospy.Timer(rospy.Duration(duration), self._timer_cb)
+        self.update_timer = rospy.Timer(
+            rospy.Duration(update_duration), self._update_timer_cb)
         self.sub = rospy.Subscriber(
             '/{}/application/app_status'.format(self.robot_name),
             AppStatus, self._sub_cb)
@@ -79,9 +81,11 @@ class AppScheduler(object):
                 self.running_jobs[name]['running'] = False
 
     def _timer_cb(self, event):
+        schedule.run_pending()
+
+    def _update_timer_cb(self, event):
         self._update_running_app_names()
         self._update_running_jobs()
-        schedule.run_pending()
 
     def _sub_cb(self, msg):
         if msg.type == AppStatus.INFO:

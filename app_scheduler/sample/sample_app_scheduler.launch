@@ -4,7 +4,8 @@
   </include>
   <node name="app_scheduler" pkg="app_scheduler" type="app_scheduler" output="screen">
     <rosparam subst_value="true">
-      duration: 60
+      duration: 1
+      update_duration: 60
       yaml_path: $(find app_scheduler)/sample/sample_app_schedule.yaml
     </rosparam>
   </node>
