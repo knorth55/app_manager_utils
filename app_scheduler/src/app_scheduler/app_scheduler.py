@@ -12,6 +12,9 @@ class AppScheduler(object):
         self.robot_name = robot_name
         self.yaml_path = yaml_path
         self.timer = rospy.Timer(rospy.Duration(duration), self._timer_cb)
+        self.sub = rospy.Subscriber(
+            '/{}/application/app_status'.format(self.robot_name),
+            AppStatus, self._sub_cb)
         self._load_yaml()
         self._register_apps()
 
@@ -38,3 +41,14 @@ class AppScheduler(object):
 
     def _timer_cb(self, event):
         schedule.run_pending()
+
+    def _sub_cb(self, msg):
+        # INFO
+        if msg.type == AppStatus.INFO:
+            rospy.loginfo('app_scheduler: {}'.format(msg.status))
+        # WARN
+        elif msg.type == AppStatus.WARN:
+            rospy.logwarn('app_scheduler: {}'.format(msg.status))
+        # ERROR
+        else:
+            rospy.logerr('app_scheduler: {}'.format(msg.status))
