@@ -7,6 +7,6 @@ catkin_python_setup()
 
 catkin_package() 
 
-install(DIRECTORY apps sample scripts
+install(DIRECTORY apps launch sample scripts
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS)
