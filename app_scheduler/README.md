@@ -16,7 +16,7 @@ You can set schedule with `schedule` python package syntax.
 - name: sample0
   app_name: app_scheduler/sample0
   app_schedule:
-    start: every(2).minutes
+    start: every(2).minutes.at(":00")
 - name: sample1
   app_name: app_scheduler/sample1
   app_schedule:
@@ -24,10 +24,10 @@ You can set schedule with `schedule` python package syntax.
 - name: sample2
   app_name: app_scheduler/sample2
   app_schedule:
-    start: every(1).hour
+    start: every(1).hour.at(":00")
 - name: sample3
   app_name: app_scheduler/sample3
   app_schedule:
-    start: every().day.at("10:00:00")
-    stop: every().day.at("10:00:03")
+    start: every(1).day.at("10:00:00")
+    stop: every(1).day.at("10:00:03")
 ```
