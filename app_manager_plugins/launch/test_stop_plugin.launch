@@ -1,0 +1,3 @@
+<launch>
+  <node name="before_dummy_relay" pkg="topic_tools" type="relay" args="/topic0 /topic1" />
+</launch>
