@@ -7,5 +7,5 @@ class TestStartPlugin(object):
         rospy.loginfo('Testing start plugin: {}'.format(app.display_name))
 
     @classmethod
-    def app_manager_stop_plugin(cls, app):
+    def app_manager_stop_plugin(cls, app, exit_code):
         pass

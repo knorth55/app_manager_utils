@@ -7,5 +7,8 @@ class TestStopPlugin(object):
         pass
 
     @classmethod
-    def app_manager_stop_plugin(cls, app):
-        rospy.loginfo('Testing stop plugin: {}'.format(app.display_name))
+    def app_manager_stop_plugin(cls, app, exit_code):
+        if exit_code == 0:
+            rospy.loginfo('Succeeded to do task: {}'.format(app.display_name))
+        else:
+            rospy.logerr('Failed to do task: {}'.format(app.display_name))
