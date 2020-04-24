@@ -1,0 +1,3 @@
+<launch>
+  <node name="test_app_node" pkg="test_app_manager" type="test_app.py" required="true" />
+</launch>
