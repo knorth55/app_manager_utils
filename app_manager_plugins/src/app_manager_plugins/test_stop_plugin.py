@@ -1,10 +1,11 @@
 import rospy
 
+from app_manager_plugins import AppManagerPlugin
 
-class TestStopPlugin(object):
-    @classmethod
-    def app_manager_start_plugin(cls, app):
-        pass
+
+class TestStopPlugin(AppManagerPlugin):
+    def __init__(self):
+        super(TestStopPlugin, self).__init__()
 
     @classmethod
     def app_manager_stop_plugin(cls, app, exit_code):
