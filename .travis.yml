@@ -8,7 +8,7 @@ cache:
 sudo: required
 services:
   - docker
-dist: trusty
+dist: trusty 
 notifications:
   email:
     on_success: always
@@ -24,7 +24,9 @@ env:
     - USE_DOCKER=true
   matrix:
     - ROS_DISTRO=kinetic USE_DEB=true
+    - ROS_DISTRO=kinetic USE_DEB=false
     - ROS_DISTRO=melodic USE_DEB=true
+    - ROS_DISTRO=melodic USE_DEB=false
 script: source .travis/travis.sh
 branches:
   only:

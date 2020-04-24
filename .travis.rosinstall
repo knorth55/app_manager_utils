@@ -1,0 +1,4 @@
+- git:
+    local-name: knorth55/app_manager
+    uri: https://github.com/knorth55/app_manager.git
+    version: add-app-manager-plugin
