@@ -1,6 +1,19 @@
 # app_manager_utils
 [![](https://travis-ci.com/knorth55/app_manager_utils.svg?branch=master)](https://travis-ci.com/github/knorth55/app_manager_utils)
 
+## Build 
+
+```
+mkdir ~/catkin_ws/src -p
+cd ~/catkin_ws/src
+wstool init
+wstool merge  https://raw.githubusercontent.com/knorth55/app_manager_utils/master/fc.rosinstall
+wstool up
+rosdep install --ignore-src --from-path . -y -r
+cd ~/catkin_ws
+catkin build
+```
+
 ## app_scheduler
 
 Scheduler for `app_manager`
