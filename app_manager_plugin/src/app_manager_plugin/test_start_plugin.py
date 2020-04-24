@@ -1,6 +1,6 @@
 import rospy
 
-from app_manager_plugins import AppManagerPlugin
+from app_manager_plugin import AppManagerPlugin
 
 
 class TestStartPlugin(AppManagerPlugin):

@@ -1,3 +1,0 @@
-apps:
-  - app: app_manager_plugins/test_app
-    display: Test app

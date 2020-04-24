@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(app_manager_plugins)
+project(app_manager_plugin)
 
 find_package(catkin REQUIRED)
 

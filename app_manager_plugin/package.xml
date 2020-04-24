@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="3">
-  <name>app_manager_plugins</name>
+  <name>app_manager_plugin</name>
   <version>0.0.0</version>
-  <description>The app_manager_plugins package</description>
+  <description>The app_manager_plugin package</description>
 
   <maintainer email="shingogo.5511@gmail.com">Shingo Kitagawa</maintainer>
   <author email="shingogo.5511@gmail.com">Shingo Kitagawa</author>
@@ -14,7 +14,6 @@
   <exec_depend>app_manager</exec_depend>
 
   <export>
-    <app_manager app_dir="${prefix}/apps"/>
-    <app_manager plugin="${prefix}/app_manager_plugins.yaml" />
+    <app_manager plugin="${prefix}/app_manager_plugin.yaml" />
   </export>
 </package>

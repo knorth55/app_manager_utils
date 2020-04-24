@@ -1,3 +1,0 @@
-<launch>
-  <node name="test_app_node" pkg="app_manager_plugins" type="test_app.py" required="true" />
-</launch>
