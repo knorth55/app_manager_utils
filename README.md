@@ -29,6 +29,6 @@ Plugin for app_manager
 app_manager_plugin depends on [knorth55/app_manager@add-app-manager-plugin](https://github.com/knorth55/app_manager/tree/add-app-manager-plugin)  branch.
 
 
-## test_app_manger
+## test_app_manager
 
 Simple test package for app_manager
