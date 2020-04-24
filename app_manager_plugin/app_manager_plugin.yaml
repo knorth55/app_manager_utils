@@ -1,4 +1,4 @@
-- launch: app_manager_plugins/test_start_plugin.launch
-  module: app_manager_plugins.test_start_plugin.TestStartPlugin
-- launch: app_manager_plugins/test_stop_plugin.launch
-  module: app_manager_plugins.test_stop_plugin.TestStopPlugin
+- launch: app_manager_plugin/test_start_plugin.launch
+  module: app_manager_plugin.test_start_plugin.TestStartPlugin
+- launch: app_manager_plugin/test_stop_plugin.launch
+  module: app_manager_plugin.test_stop_plugin.TestStopPlugin
