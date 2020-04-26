@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-
+import sys
 import time
 
 import rospy
@@ -11,7 +11,7 @@ def main():
     rospy.loginfo('test_app started.')
     time.sleep(10)
     rospy.loginfo('test_app stopped.')
-    rospy.signal_shutdown(0)
+    sys.exit(0)
 
 
 if __name__ == '__main__':
