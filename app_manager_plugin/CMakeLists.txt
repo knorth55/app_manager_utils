@@ -9,7 +9,7 @@ catkin_package()
 
 include_directories()
 
-install(DIRECTORY apps launch
+install(DIRECTORY apps
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
   USE_SOURCE_PERMISSIONS
 )
