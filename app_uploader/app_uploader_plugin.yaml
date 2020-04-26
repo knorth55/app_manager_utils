@@ -1,0 +1,2 @@
+- launch: None
+  module: app_uploader.gdrive_uploder_plugin.GdriveUploderPlugin

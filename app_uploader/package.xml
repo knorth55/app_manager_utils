@@ -13,7 +13,9 @@
   <buildtool_depend condition="$ROS_PYTHON_VERSION == 3">python3-setuptools</buildtool_depend>
   <exec_depend>app_manager</exec_depend>
   <exec_depend>app_manager_plugin</exec_depend>
+  <exec_depend>gdrive_ros</exec_depend>
 
   <export>
+    <app_manager plugin="${prefix}/app_uploader_plugin.yaml" />
   </export>
 </package>
