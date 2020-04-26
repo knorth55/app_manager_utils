@@ -3,9 +3,9 @@ class AppManagerPlugin(object):
         pass
 
     @classmethod
-    def app_manager_start_plugin(cls, app):
+    def app_manager_start_plugin(cls, app, ctx):
         pass
 
     @classmethod
-    def app_manager_stop_plugin(cls, app, exit_code):
+    def app_manager_stop_plugin(cls, app, ctx):
         pass

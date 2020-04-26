@@ -8,5 +8,5 @@ class TestStartPlugin(AppManagerPlugin):
         super(TestStartPlugin, self).__init__()
 
     @classmethod
-    def app_manager_start_plugin(cls, app):
+    def app_manager_start_plugin(cls, app, ctx):
         rospy.loginfo('Testing start plugin: {}'.format(app.display_name))
