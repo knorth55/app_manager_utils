@@ -13,3 +13,4 @@ class TestStopPlugin(AppManagerPlugin):
             rospy.loginfo('Succeeded to do task: {}'.format(app.display_name))
         else:
             rospy.logerr('Failed to do task: {}'.format(app.display_name))
+        return ctx

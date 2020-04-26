@@ -10,3 +10,4 @@ class TestStartPlugin(AppManagerPlugin):
     @classmethod
     def app_manager_start_plugin(cls, app, ctx):
         rospy.loginfo('Testing start plugin: {}'.format(app.display_name))
+        return ctx

@@ -4,8 +4,8 @@ class AppManagerPlugin(object):
 
     @classmethod
     def app_manager_start_plugin(cls, app, ctx):
-        pass
+        return ctx
 
     @classmethod
     def app_manager_stop_plugin(cls, app, ctx):
-        pass
+        return ctx
