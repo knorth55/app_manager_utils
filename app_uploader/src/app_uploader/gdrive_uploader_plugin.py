@@ -23,6 +23,16 @@ class GdriveUploaderPlugin(AppManagerPlugin):
             MultipleUpload
         )
         res = gdrive_upload(req)
-        ctx['upload_successes'] += res.successes
-        ctx['upload_file_urls'] += res.file_urls
+        if all(res.successes):
+            rospy.loginfo('Upload succeeded.')
+        else:
+            rospy.logerr('Upload failed')
+        if 'upload_successes' in ctx:
+            ctx['upload_successes'] += res.successes
+        else:
+            ctx['upload_successes'] = res.successes
+        if 'upload_file_urls' in ctx:
+            ctx['upload_file_urls'] += res.file_urls
+        else:
+            ctx['upload_file_urls'] = res.file_urls
         return ctx
