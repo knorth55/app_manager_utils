@@ -1,2 +1,3 @@
-- launch: None
-  module: app_uploader.gdrive_uploder_plugin.GdriveUploderPlugin
+- name: app_uploader/gdrive_uploader_plugin
+  launch: null
+  module: app_uploader.gdrive_uploader_plugin.GdriveUploaderPlugin

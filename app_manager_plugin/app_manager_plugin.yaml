@@ -1,4 +1,6 @@
-- launch: null
+- name: app_manager_plugin/test_start_plugin
+  launch: null
   module: app_manager_plugin.test_start_plugin.TestStartPlugin
-- launch: null
+- name: app_manager_plugin/test_stop_plugin
+  launch: null
   module: app_manager_plugin.test_stop_plugin.TestStopPlugin

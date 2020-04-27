@@ -1,4 +1,6 @@
-- launch: app_recorder/video_recorder.launch
+- name: app_recorder/video_recorder
+  launch: app_recorder/video_recorder.launch
   module: app_recorder.video_recorder_plugin.VideoRecorderPlugin
-- launch: app_recorder/rosbag_recorder.launch
+- name: app_recorder/rosbag_recorder
+  launch: app_recorder/rosbag_recorder.launch
   module: app_recorder.rosbag_recorder_plugin.RosbagRecorderPlugin
