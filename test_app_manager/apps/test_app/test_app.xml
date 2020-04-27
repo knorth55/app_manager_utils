@@ -1,4 +1,4 @@
 <launch>
-  <!-- <include filename="$(find pr2_gazebo)/launch/pr2_empty_world.launch" /> -->
+  <include file="$(find pr2_gazebo)/launch/pr2_empty_world.launch" />
   <node name="test_app_node" pkg="test_app_manager" type="test_app.py" required="true" />
 </launch>
