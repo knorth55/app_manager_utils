@@ -1,0 +1,11 @@
+<launch>
+  <!-- start: arguments -->
+  <arg name="rosbag_path" />
+  <arg name="rosbag_title" />
+  <arg name="rosbag_topic_names" />
+  <!-- end: arguments -->
+
+  <node name="$(anon rosbag_recorder)" pkg="rosbag" type="record"
+        args="-q -O $(arg rosbag_path)/$(arg rosbag_title)
+              $(arg rosbag_topic_names)" />
+</launch>

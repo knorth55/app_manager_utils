@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>app_manager_plugin</name>
+  <name>app_recorder</name>
   <version>0.0.0</version>
-  <description>The app_manager_plugin package</description>
-
+  <description>The app_recorder package</description>
   <maintainer email="shingogo.5511@gmail.com">Shingo Kitagawa</maintainer>
   <author email="shingogo.5511@gmail.com">Shingo Kitagawa</author>
   <license>BSD</license>
@@ -11,8 +10,9 @@
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>python-setuptools</buildtool_depend>
   <exec_depend>app_manager</exec_depend>
+  <exec_depend>app_manager_plugin</exec_depend>
 
   <export>
-    <app_manager plugin="${prefix}/app_manager_plugin.yaml" />
+    <app_manager plugin="${prefix}/app_recorder_plugin.yaml" />
   </export>
 </package>

@@ -1,0 +1,18 @@
+<launch>
+  <!-- start: arguments -->
+  <arg name="video_path" />
+  <arg name="video_title" />
+  <arg name="video_topic_name" />
+  <arg name="video_fps" />
+  <!-- end: arguments -->
+
+  <node name="$(anon video_recorder)" pkg="image_view" type="video_recorder">
+    <remap from="image" to="$(arg video_topic_name)" />
+    <rosparam subst_value="true">
+      filename: $(arg video_path)/$(arg video_title)
+      codec: XVID
+      stamped_filename: false
+      fps: $(arg video_fps)
+    </rosparam>
+  </node>
+</launch>
