@@ -16,7 +16,7 @@ Notifier plugin for `app_manager`
 
 ### Sample plugin description
 
-```
+```yaml
 plugins:
   - name: mail_notifier_plugin
     type: app_notifier/mail_notifier_plugin

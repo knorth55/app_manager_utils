@@ -28,7 +28,7 @@ Plugin base script for `app_manager`
 
 ### Sample plugin description
 
-```
+```yaml
 display: Test app
 platform: all
 launch: test_app_manager/test_app.xml

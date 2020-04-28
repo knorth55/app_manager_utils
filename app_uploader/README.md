@@ -20,7 +20,7 @@ This plugin depends on [gdrive_ros](https://github.com/jsk-ros-pkg/jsk_3rdparty/
 
 ### Sample plugin description
 
-```
+```yaml
 plugins:
   - name: gdrive_uploader_plugin
     type: app_uploader/gdrive_uploader_plugin

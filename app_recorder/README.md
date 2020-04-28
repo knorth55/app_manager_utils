@@ -17,7 +17,7 @@ Recorder plugin for `app_manager`
 
 ### Sample plugin description
 
-```
+```yaml
 plugins:
   - name: video_recorder_plugin
     type: app_recorder/video_recorder_plugin
@@ -42,7 +42,7 @@ plugins:
 
 ### Sample plugin description
 
-```
+```yaml
 plugins:
   - name: rosbag_recorder_plugin
     type: app_recorder/rosbag_recorder_plugin
