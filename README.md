@@ -24,9 +24,7 @@ For detailed information, please read [app_scheduler](app_scheduler/README.md).
 
 Plugin base script for `app_manager`
 
-**Caution**
-
-`app_manager_plugin` depends on [knorth55/app_manager@add-app-manager-plugin](https://github.com/knorth55/app_manager/tree/add-app-manager-plugin)  branch.
+**Caution**: `app_manager_plugin` depends on [knorth55/app_manager@add-app-manager-plugin](https://github.com/knorth55/app_manager/tree/add-app-manager-plugin)  branch.
 
 ### Sample plugin description
 
@@ -78,9 +76,7 @@ Recorder plugin for `app_manager`
 
 For detailed information, please read [app_recorder](app_recorder/README.md).
 
-**Caution**
-
-`app_recorder` depends on [knorth55/app_manager@add-app-manager-plugin](https://github.com/knorth55/app_manager/tree/add-app-manager-plugin)  branch.
+**Caution**: `app_recorder` depends on [knorth55/app_manager@add-app-manager-plugin](https://github.com/knorth55/app_manager/tree/add-app-manager-plugin)  branch.
 
 ## app_uploader
 
@@ -88,9 +84,7 @@ Uploader plugin for `app_manager`
 
 For detailed information, please read [app_uploader](app_uploader/README.md).
 
-**Caution**
-
-`app_uploader` depends on [knorth55/app_manager@add-app-manager-plugin](https://github.com/knorth55/app_manager/tree/add-app-manager-plugin)  branch.
+**Caution**: `app_uploader` depends on [knorth55/app_manager@add-app-manager-plugin](https://github.com/knorth55/app_manager/tree/add-app-manager-plugin)  branch.
 
 ## app_notifier
 
@@ -98,9 +92,7 @@ Notifier plugin for `app_manager`
 
 For detailed information, please read [app_notifier](app_notifier/README.md).
 
-**Caution**
-
-`app_notifier` depends on [knorth55/app_manager@add-app-manager-plugin](https://github.com/knorth55/app_manager/tree/add-app-manager-plugin)  branch.
+**Caution**: `app_notifier` depends on [knorth55/app_manager@add-app-manager-plugin](https://github.com/knorth55/app_manager/tree/add-app-manager-plugin)  branch.
 
 ## test_app_manager
 
