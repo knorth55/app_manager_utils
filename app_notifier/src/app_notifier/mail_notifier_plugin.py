@@ -20,10 +20,10 @@ class MailNotifierPlugin(AppManagerPlugin):
         else:
             mail_content += "I failed to do {}.\\n".format(app.display_name)
         if 'upload_successes' in ctx:
-            if any(ctx['upload_successes']):
-                mail_content += "I failed to upload data.\\n"
-            else:
+            if all(ctx['upload_successes']):
                 mail_content += "I succeeded to upload data.\\n"
+            else:
+                mail_content += "I failed to upload data.\\n"
             mail_content += "\\n"
             for success, file_url in zip(
                     ctx['upload_successes'], ctx['upload_file_urls']):
