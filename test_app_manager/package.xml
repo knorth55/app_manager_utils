@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<package format="3">
+<package format="2">
   <name>test_app_manager</name>
   <version>0.0.0</version>
   <description>The test_app_manager package</description>
