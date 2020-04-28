@@ -1,0 +1,3 @@
+- name: app_notifier/mail_notifier_plugin
+  launch: null
+  module: app_notifier.mail_notifier_plugin.MailNotifierPlugin
