@@ -29,7 +29,7 @@ plugins:
       upload_file_titles:
         - test.avi
         - test.bag
-      upload_parents_path: logs/20200428_app_manager_utils_test
+      upload_parents_path: logs
       upload_server_name: /gdrive_server
   - name: mail_notifier_plugin
     type: app_notifier/mail_notifier_plugin
