@@ -11,15 +11,15 @@ class GdriveUploaderPlugin(AppManagerPlugin):
         super(GdriveUploaderPlugin, self).__init__()
 
     @classmethod
-    def app_manager_stop_plugin(cls, app, ctx):
+    def app_manager_stop_plugin(cls, app, ctx, plugin_args):
         req = MultipleUploadRequest()
-        req.file_paths = ctx['upload_file_paths']
-        req.file_titles = ctx['upload_file_titles']
-        req.parents_path = ctx['upload_parents_path']
+        req.file_paths = plugin_args['upload_file_paths']
+        req.file_titles = plugin_args['upload_file_titles']
+        req.parents_path = plugin_args['upload_parents_path']
         req.use_timestamp_folder = True
         req.use_timestamp_file_title = True
         gdrive_upload = rospy.ServiceProxy(
-            ctx['upload_server_name'] + '/upload_multi',
+            plugin_args['upload_server_name'] + '/upload_multi',
             MultipleUpload
         )
         res = gdrive_upload(req)
