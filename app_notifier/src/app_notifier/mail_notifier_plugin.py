@@ -14,10 +14,21 @@ class MailNotifierPlugin(AppManagerPlugin):
         mail_title = plugin_args['mail_title']
         sender_address = plugin_args['sender_address']
         receiver_address = plugin_args['receiver_address']
+        mail_content = "Hi, \\n"
         if ctx['exit_code'] == 0:
-            mail_content = "I succeeded to do {}.".format(app.display_name)
+            mail_content += "I succeeded to do {}.\\n".format(app.display_name)
         else:
-            mail_content = "I failed to do {}".format(app.display_name)
+            mail_content += "I failed to do {}.\\n".format(app.display_name)
+        if 'upload_successes' in ctx:
+            if any(ctx['upload_successes']):
+                mail_content += "I failed to upload data.\\n"
+            else:
+                mail_content += "I succeeded to upload data.\\n"
+            mail_content += "\\n"
+            for success, file_url in zip(
+                    ctx['upload_successes'], ctx['upload_file_urls']):
+                if success:
+                    mail_content += "URL: {}\\n".format(file_url)
         cmd = "LC_CTYPE=en_US.UTF-8 /bin/echo -e \"{}\"".format(mail_content)
         cmd += " | /usr/bin/mail -s \"{}\" -r {} {}".format(
             mail_title, sender_address, receiver_address)
