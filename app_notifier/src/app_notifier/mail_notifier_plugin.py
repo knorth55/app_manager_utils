@@ -11,9 +11,9 @@ class MailNotifierPlugin(AppManagerPlugin):
 
     @classmethod
     def app_manager_stop_plugin(cls, app, ctx, plugin_args):
-        mail_title = plugin_args['mail_notifier_title']
-        sender_address = plugin_args['mail_notifier_sender_address']
-        receiver_address = plugin_args['mail_notifier_receiver_address']
+        mail_title = plugin_args['mail_title']
+        sender_address = plugin_args['sender_address']
+        receiver_address = plugin_args['receiver_address']
         if ctx['exit_code'] == 0:
             mail_content = "I succeeded to do {}.".format(app.display_name)
         else:
