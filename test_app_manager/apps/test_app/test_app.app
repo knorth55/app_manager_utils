@@ -19,7 +19,9 @@ plugins:
     launch_args:
       rosbag_path: /tmp
       rosbag_title: test.bag
-      rosbag_topic_names: /tf /joint_states
+      rosbag_topic_names:
+        - /tf
+        - /joint_states
   - name: gdrive_uploader_plugin
     type: app_uploader/gdrive_uploader_plugin
     plugin_args:
