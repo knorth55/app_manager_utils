@@ -6,7 +6,7 @@ from sound_play.msg import SoundRequestGoal
 from app_manager_plugin import AppManagerPlugin
 
 
-def _speak(cls, client, speech_text, lang=None):
+def _speak(client, speech_text, lang=None):
     client.wait_for_server(timeout=rospy.Duration(1.0))
     sound_goal = SoundRequestGoal()
     sound_goal.sound_request.sound = -3
