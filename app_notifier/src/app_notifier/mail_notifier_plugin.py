@@ -1,3 +1,4 @@
+import datetime
 import subprocess
 
 import rospy
@@ -14,6 +15,10 @@ class MailNotifierPlugin(AppManagerPlugin):
         mail_title = plugin_args['mail_title']
         sender_address = plugin_args['sender_address']
         receiver_address = plugin_args['receiver_address']
+        use_timestamp_title = plugin_args['use_timestamp_title']
+        if use_timestamp_title:
+            timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(datetime.datetime.now())
+            mail_title += ': {}'.format(timestamp)
         mail_content = "Hi, \\n"
         if ctx['exit_code'] == 0:
             mail_content += "I succeeded to do {}.\\n".format(app.display_name)
@@ -33,6 +38,8 @@ class MailNotifierPlugin(AppManagerPlugin):
         cmd += " | /usr/bin/mail -s \"{}\" -r {} {}".format(
             mail_title, sender_address, receiver_address)
         exit_code = subprocess.call(cmd, shell=True)
+        rospy.loginfo('Title: {}'.format(mail_title))
+        rospy.loginfo(mail_content)
         if exit_code > 0:
             rospy.logerr(
                 'Failed to send e-mail:  {} -> {}'.format(
