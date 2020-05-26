@@ -39,7 +39,6 @@ class MailNotifierPlugin(AppManagerPlugin):
             mail_title, sender_address, receiver_address)
         exit_code = subprocess.call(cmd, shell=True)
         rospy.loginfo('Title: {}'.format(mail_title))
-        rospy.loginfo(mail_content)
         if exit_code > 0:
             rospy.logerr(
                 'Failed to send e-mail:  {} -> {}'.format(
