@@ -39,3 +39,16 @@ plugins:
       mail_title: Test app
       sender_address: hoge
       receiver_address: hoge
+plugin_order:
+  start_plugin_order:
+    - test_start_plugin
+    - test_stop_plugin
+    - rosbag_recorder_plugin
+    - gdrive_uploader_plugin
+    - mail_notifier_plugin
+  stop_plugin_order:
+    - test_start_plugin
+    - test_stop_plugin
+    - rosbag_recorder_plugin
+    - gdrive_uploader_plugin
+    - mail_notifier_plugin
