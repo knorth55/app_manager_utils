@@ -3,7 +3,7 @@ import subprocess
 
 import rospy
 
-from app_manager_plugin import AppManagerPlugin
+from app_manager import AppManagerPlugin
 
 
 class MailNotifierPlugin(AppManagerPlugin):
@@ -17,7 +17,8 @@ class MailNotifierPlugin(AppManagerPlugin):
         receiver_address = plugin_args['receiver_address']
         use_timestamp_title = plugin_args['use_timestamp_title']
         if use_timestamp_title:
-            timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(datetime.datetime.now())
+            timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(
+                datetime.datetime.now())
             mail_title += ': {}'.format(timestamp)
         mail_content = "Hi, \\n"
         if ctx['exit_code'] == 0:

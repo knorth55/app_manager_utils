@@ -4,9 +4,9 @@ launch: test_app_manager/test_app.xml
 interface: test_app_manager/test_app.interface
 plugins:
   - name: test_start_plugin
-    type: app_manager_plugin/test_start_plugin
+    type: test_app_manager/test_start_plugin
   - name: test_stop_plugin
-    type: app_manager_plugin/test_stop_plugin
+    type: test_app_manager/test_stop_plugin
   - name: video_recorder_plugin
     type: app_recorder/video_recorder_plugin
     launch_args:
@@ -22,33 +22,14 @@ plugins:
       rosbag_topic_names:
         - /tf
         - /joint_states
-  - name: gdrive_uploader_plugin
-    type: app_uploader/gdrive_uploader_plugin
-    plugin_args:
-      upload_file_paths:
-        - /tmp/test.avi
-        - /tmp/test.bag
-      upload_file_titles:
-        - test.avi
-        - test.bag
-      upload_parents_path: logs
-      upload_server_name: /gdrive_server
-  - name: mail_notifier_plugin
-    type: app_notifier/mail_notifier_plugin
-    plugin_args:
-      mail_title: Test app
-      sender_address: hoge
-      receiver_address: hoge
 plugin_order:
   start_plugin_order:
     - test_start_plugin
     - test_stop_plugin
+    - video_recorder_plugin
     - rosbag_recorder_plugin
-    - gdrive_uploader_plugin
-    - mail_notifier_plugin
   stop_plugin_order:
     - test_start_plugin
     - test_stop_plugin
+    - video_recorder_plugin
     - rosbag_recorder_plugin
-    - gdrive_uploader_plugin
-    - mail_notifier_plugin

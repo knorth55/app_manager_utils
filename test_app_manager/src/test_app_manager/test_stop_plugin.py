@@ -1,6 +1,6 @@
 import rospy
 
-from app_manager_plugin import AppManagerPlugin
+from app_manager import AppManagerPlugin
 
 
 class TestStopPlugin(AppManagerPlugin):

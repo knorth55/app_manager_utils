@@ -10,7 +10,6 @@
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>python-setuptools</buildtool_depend>
   <exec_depend>app_manager</exec_depend>
-  <exec_depend>app_manager_plugin</exec_depend>
 
   <export>
     <app_manager plugin="${prefix}/app_recorder_plugin.yaml" />

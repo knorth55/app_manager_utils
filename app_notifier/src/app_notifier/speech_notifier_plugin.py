@@ -3,7 +3,7 @@ import rospy
 from sound_play.msg import SoundRequestAction
 from sound_play.msg import SoundRequestGoal
 
-from app_manager_plugin import AppManagerPlugin
+from app_manager import AppManagerPlugin
 
 
 def _speak(client, speech_text, lang=None):

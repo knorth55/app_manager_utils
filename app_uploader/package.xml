@@ -10,7 +10,6 @@
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>python-setuptools</buildtool_depend>
   <exec_depend>app_manager</exec_depend>
-  <exec_depend>app_manager_plugin</exec_depend>
   <exec_depend>gdrive_ros</exec_depend>
 
   <export>
