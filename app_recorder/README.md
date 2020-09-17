@@ -28,7 +28,33 @@ plugins:
       video_fps: 20
 ```
 
-## `app_recorder/rosbag_recorder_plugin`: Rosbag recorder plugin 
+## `app_recorder/audio_recorder_plugin`: Audio recorder plugin
+
+### `plugin_args`: Plugin arguments
+
+`None`
+
+### `launch_args`: Plugin launch arguments
+
+- `audio_path`: audio file directory path
+- `audio_title`: audio file name
+- `audio_topic_name`: image topic name for audio
+- `audio_format`: audio format
+
+### Sample plugin description
+
+```yaml
+plugins:
+  - name: audio_recorder_plugin
+    type: app_recorder/audio_recorder_plugin
+    launch_args:
+      audio_path: /tmp
+      audio_title: test.mp3
+      audio_topic_name: /audio
+      audio_format: mp3
+```
+
+## `app_recorder/rosbag_recorder_plugin`: Rosbag recorder plugin
 
 ### `plugin_args`: Plugin arguments
 
