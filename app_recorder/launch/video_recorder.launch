@@ -4,15 +4,16 @@
   <arg name="video_title" />
   <arg name="video_topic_name" />
   <arg name="video_fps" />
+  <arg name="video_codec" default="XVID" />
   <!-- end: arguments -->
 
   <node name="$(anon video_recorder)" pkg="image_view" type="video_recorder">
     <remap from="image" to="$(arg video_topic_name)" />
     <rosparam subst_value="true">
       filename: $(arg video_path)/$(arg video_title)
-      codec: XVID
       stamped_filename: false
       fps: $(arg video_fps)
+      codec: $(arg video_codec)
     </rosparam>
   </node>
 </launch>
