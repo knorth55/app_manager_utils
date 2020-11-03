@@ -7,6 +7,11 @@ plugins:
     type: test_app_manager/test_start_plugin
   - name: test_stop_plugin
     type: test_app_manager/test_stop_plugin
+  - name: result_recorder_plugin
+    type: app_recorder/result_recorder_plugin
+    plugin_args:
+      result_path: /tmp
+      retult_title: result.yaml
   - name: video_recorder_plugin
     type: app_recorder/video_recorder_plugin
     launch_args:
@@ -26,10 +31,12 @@ plugin_order:
   start_plugin_order:
     - test_start_plugin
     - test_stop_plugin
+    - result_recorder_plugin
     - video_recorder_plugin
     - rosbag_recorder_plugin
   stop_plugin_order:
     - test_start_plugin
     - test_stop_plugin
+    - result_recorder_plugin
     - video_recorder_plugin
     - rosbag_recorder_plugin

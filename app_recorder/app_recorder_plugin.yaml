@@ -7,3 +7,6 @@
 - name: app_recorder/rosbag_recorder_plugin
   launch: app_recorder/rosbag_recorder.launch
   module: null
+- name: app_recorder/result_recorder_plugin
+  launch: null
+  module: app_recorder.result_recorder_plugin.ResultRecorderPlugin
