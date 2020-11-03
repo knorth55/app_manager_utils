@@ -13,6 +13,7 @@ class ResultRecorderPlugin(AppManagerPlugin):
     def app_manager_stop_plugin(cls, app, ctx, plugin_args):
         result = {
             'exit_code': ctx['exit_code'],
+            'stopped': ctx['stopped'],
         }
         result_path = '/tmp'
         if 'result_path' in plugin_args:
