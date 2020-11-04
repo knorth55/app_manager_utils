@@ -1,5 +1,5 @@
 # app_manager_utils
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knorth55/app_manager_utils/CI)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knorth55/app_manager_utils/CI)](https://github.com/knorth55/app_manager_utils/actions)
 
 ## Build 
 
