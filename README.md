@@ -1,5 +1,5 @@
 # app_manager_utils
-[![](https://travis-ci.com/knorth55/app_manager_utils.svg?branch=master)](https://travis-ci.com/github/knorth55/app_manager_utils)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knorth55/app_manager_utils/CI)
 
 ## Build 
 
