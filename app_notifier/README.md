@@ -7,7 +7,7 @@ Notifier plugin for `app_manager`
 ### `plugin_args`: Plugin arguments
 
 - `mail_title`: mail title
-- `sender_address`: mail sender address 
+- `sender_address`: mail sender address
 - `receiver_address`: mail receiver address
 
 ### `launch_args`: Plugin launch arguments
@@ -44,6 +44,6 @@ plugins:
   - name: speech_notifier_plugin
     type: app_notifier/speech_notifier_plugin
     plugin_args:
-      client_name: /sound_play_jp 
+      client_name: /sound_play_jp
       lang: jp
 ```
