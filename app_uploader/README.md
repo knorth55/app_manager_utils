@@ -17,7 +17,6 @@ This plugin depends on [gdrive_ros](https://github.com/jsk-ros-pkg/jsk_3rdparty/
 
 `None`
 
-
 ### Sample plugin description
 
 ```yaml
