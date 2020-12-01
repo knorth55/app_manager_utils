@@ -1,23 +1,9 @@
 import actionlib
-import rospy
-from sound_play.msg import SoundRequestAction
-from sound_play.msg import SoundRequestGoal
-
 from app_manager import AppManagerPlugin
 
+from app_notifier.util import speak
 
-def _speak(client, speech_text, lang=None):
-    client.wait_for_server(timeout=rospy.Duration(1.0))
-    sound_goal = SoundRequestGoal()
-    sound_goal.sound_request.sound = -3
-    sound_goal.sound_request.command = 1
-    sound_goal.sound_request.volume = 1.0
-    if lang is not None:
-        sound_goal.sound_request.arg2 = lang
-    sound_goal.sound_request.arg = speech_text
-    client.send_goal(sound_goal)
-    client.wait_for_result()
-    return client.get_result()
+from sound_play.msg import SoundRequestAction
 
 
 class SpeechNotifierPlugin(AppManagerPlugin):
@@ -33,7 +19,7 @@ class SpeechNotifierPlugin(AppManagerPlugin):
             lang = plugin_args['lang']
         client = actionlib.SimpleActionClient(client_name, SoundRequestAction)
         speech_text = "I'm starting {} app.".format(app.display_name)
-        _speak(client, speech_text, lang=lang)
+        speak(client, speech_text, lang=lang)
         return ctx
 
     @classmethod
@@ -52,5 +38,5 @@ class SpeechNotifierPlugin(AppManagerPlugin):
                 speech_text += " I succeeded to upload data."
             else:
                 speech_text += " I failed to upload data."
-        _speak(client, speech_text, lang=lang)
+        speak(client, speech_text, lang=lang)
         return ctx
