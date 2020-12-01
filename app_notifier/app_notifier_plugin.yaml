@@ -4,3 +4,6 @@
 - name: app_notifier/speech_notifier_plugin
   launch: null
   module: app_notifier.speech_notifier_plugin.SpeechNotifierPlugin
+- name: app_notifier/user_speech_notifier_plugin
+  launch: null
+  module: app_notifier.user_speech_notifier_plugin.UserSpeechNotifierPlugin
