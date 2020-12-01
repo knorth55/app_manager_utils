@@ -13,7 +13,7 @@
   <exec_depend>app_manager</exec_depend>
 
   <export>
-    <app_manager app_dir="${prefix}/apps"/>
+    <!-- <app_manager app_dir="${prefix}/apps"/> -->
     <app_manager plugin="${prefix}/test_app_manager_plugin.yaml" />
   </export>
 </package>
