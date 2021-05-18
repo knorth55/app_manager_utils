@@ -4,6 +4,8 @@ Notifier plugin for `app_manager`
 
 ## `app_notifier/mail_notifier_plugin`: Mail notifier plugin
 
+This plugin notifies app results by sending an e-mail.
+
 ### `plugin_args`: Plugin arguments
 
 - `mail_title`: mail title
@@ -28,6 +30,8 @@ plugins:
 
 ## `app_notifier/speech_notifier_plugin`: Speech notifier plugin
 
+This plugin notifies app results by speaking.
+
 ### `plugin_args`: Plugin arguments
 
 - `client_name`: client name for `sound_play`
@@ -49,6 +53,8 @@ plugins:
 ```
 
 ## `app_notifier/tweet_notifier_plugin`: Tweet notifier plugin
+
+This plugin notifies app results by tweeting.
 
 ### `plugin_args`: Plugin arguments
 
@@ -73,6 +79,8 @@ plugins:
 ```
 
 ## `app_notifier/user_speech_notifier_plugin`: User speech notifier plugin
+
+This plugin notifies which user is running the app by speaking.
 
 ### `plugin_args`: Plugin arguments
 
