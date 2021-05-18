@@ -9,7 +9,10 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <buildtool_depend>python-setuptools</buildtool_depend>
+  <exec_depend>actionlib</exec_depend>
   <exec_depend>app_manager</exec_depend>
+  <exec_depend>rostwitter</exec_depend>
+  <exec_depend>sound_play</exec_depend>
 
   <export>
     <app_manager plugin="${prefix}/app_notifier_plugin.yaml" />
