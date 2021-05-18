@@ -151,5 +151,3 @@ plugins:
       result_path: /tmp
       result_title: test.yaml
 ```
-
-
