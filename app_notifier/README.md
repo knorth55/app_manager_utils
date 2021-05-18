@@ -71,3 +71,27 @@ plugins:
       image: true
       image_topic_name: /head_camera/rgb/image_rect_color
 ```
+
+## `app_notifier/user_speech_notifier_plugin`: User speech notifier plugin
+
+### `plugin_args`: Plugin arguments
+
+- `client_name`: client name for `sound_play`
+- `lang` `(default: None)`: language, if `None`, a robot speaks English.
+- `warning` `(default: False)`: whether warn unknown user or not.
+
+### `launch_args`: Plugin launch arguments
+
+`None`
+
+### Sample plugin description
+
+```yaml
+plugins:
+  - name: user_speech_notifier_plugin
+    type: app_notifier/user_speech_notifier_plugin
+    plugin_args:
+      client_name: /sound_play_jp
+      lang: jp
+      warning: true
+```
