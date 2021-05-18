@@ -47,3 +47,27 @@ plugins:
       client_name: /sound_play_jp
       lang: jp
 ```
+
+## `app_notifier/tweet_notifier_plugin`: Tweet notifier plugin
+
+### `plugin_args`: Plugin arguments
+
+- `client_name`: client name for `sound_play`
+- `image` `(default: False)`: whether tweet with image or not.
+- `image_topic_name` `(default: None)`: tweet image topic. this argument is used only when `image` is `true`.
+
+### `launch_args`: Plugin launch arguments
+
+`None`
+
+### Sample plugin description
+
+```yaml
+plugins:
+  - name: tweet_notifier_plugin
+    type: app_notifier/tweet_notifier_plugin
+    plugin_args:
+      client_name: /tweet_image_server/tweet
+      image: true
+      image_topic_name: /head_camera/rgb/image_rect_color
+```
