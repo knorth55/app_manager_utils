@@ -25,6 +25,7 @@ def tweet(client, tweet_text, image=False, image_topic_name=None):
     tweet_goal.image = image
     if image and image_topic_name:
         tweet_goal.image_topic_name = image_topic_name
+    tweet_goal.speak = False
     tweet_goal.warning = False
     tweet_goal.warning_time = 0
     client.send_goal(tweet_goal)
