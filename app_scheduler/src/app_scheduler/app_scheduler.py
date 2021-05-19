@@ -71,7 +71,7 @@ class AppScheduler(object):
 
     def _update_running_app_names(self):
         try:
-            msg = rospy.wait_for_service(
+            msg = rospy.wait_for_message(
                 self.app_list_topic_name, AppList, timeout=1)
         except Exception as e:
             rospy.logwarn(
