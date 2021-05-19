@@ -4,8 +4,8 @@ import rospy
 
 import schedule
 
+from app_manager.msg import AppList
 from app_manager.msg import AppStatus
-from app_manager.srv import ListApps
 from app_manager.srv import StartApp
 from app_manager.srv import StopApp
 
@@ -17,8 +17,7 @@ class AppScheduler(object):
         self.yaml_path = yaml_path
         self.running_app_names = []
         self.running_jobs = {}
-        self.list_apps = rospy.ServiceProxy(
-            '/{}/list_apps'.format(self.robot_name), ListApps)
+        self.app_list_topic_name = '/{}/app_list'.format(self.robot_name)
         self.start_app = rospy.ServiceProxy(
             '/{}/start_app'.format(self.robot_name), StartApp)
         self.stop_app = rospy.ServiceProxy(
@@ -71,8 +70,15 @@ class AppScheduler(object):
         return stop_job
 
     def _update_running_app_names(self):
-        list_apps_res = self.list_apps()
-        self.running_app_names = [x.name for x in list_apps_res.running_apps]
+        try:
+            msg = rospy.wait_for_service(
+                self.app_list_topic_name, AppList, timeout=1)
+        except Exception as e:
+            rospy.logwarn(
+                'Failed to subscribe {}: {}'.format(
+                    self.app_list_topic_name, e))
+            return
+        self.running_app_names = [x.name for x in msg.running_apps]
 
     def _update_running_jobs(self):
         for name, job_data in self.running_jobs.items():
