@@ -2,7 +2,7 @@
   <arg name="yaml_path" />
 
   <arg name="duration" default="1"/>
-  <arg name="update_duration" default="60" />
+  <arg name="update_duration" default="10" />
 
   <node name="app_scheduler" pkg="app_scheduler" type="app_scheduler" output="screen">
     <rosparam subst_value="true">
