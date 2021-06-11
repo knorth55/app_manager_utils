@@ -20,13 +20,14 @@ class MailNotifierPlugin(AppManagerPlugin):
             timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(
                 datetime.datetime.now())
             mail_title += ': {}'.format(timestamp)
+        display_name = app.display_name
         mail_content = "Hi, \\n"
         if ctx['exit_code'] == 0:
-            mail_content += "I succeeded in doing {}.\\n".format(app.display_name)
+            mail_content += "I succeeded in doing {}.\\n".format(display_name)
         elif ctx['stopped']:
-            mail_content += "I stopped doing {}.\\n".format(app.display_name)
+            mail_content += "I stopped doing {}.\\n".format(display_name)
         else:
-            mail_content += "I failed to do {}.\\n".format(app.display_name)
+            mail_content += "I failed to do {}.\\n".format(display_name)
         if 'upload_successes' in ctx:
             if all(ctx['upload_successes']):
                 mail_content += "I succeeded to upload data.\\n"
