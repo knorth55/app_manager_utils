@@ -52,7 +52,7 @@ class TweetNotifierPlugin(AppManagerPlugin):
             image_topic_name = plugin_args['image_topic_name']
         client = actionlib.SimpleActionClient(client_name, TweetAction)
         if ctx['exit_code'] == 0:
-            tweet_text = "I succeeded to do {} app.".format(app.display_name)
+            tweet_text = "I succeeded in do {} app.".format(app.display_name)
         elif ctx['stopped']:
             tweet_text = "I stopped doing {} app.".format(app.display_name)
         else:
