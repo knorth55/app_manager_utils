@@ -23,6 +23,8 @@ class MailNotifierPlugin(AppManagerPlugin):
         mail_content = "Hi, \\n"
         if ctx['exit_code'] == 0:
             mail_content += "I succeeded to do {}.\\n".format(app.display_name)
+        elif ctx['stopped']:
+            mail_content += "I stopped doing {}.\\n".format(app.display_name)
         else:
             mail_content += "I failed to do {}.\\n".format(app.display_name)
         if 'upload_successes' in ctx:

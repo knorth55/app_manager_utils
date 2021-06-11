@@ -53,6 +53,8 @@ class TweetNotifierPlugin(AppManagerPlugin):
         client = actionlib.SimpleActionClient(client_name, TweetAction)
         if ctx['exit_code'] == 0:
             tweet_text = "I succeeded to do {} app.".format(app.display_name)
+        elif ctx['stopped']:
+            tweet_text = "I stopped doing {} app.".format(app.display_name)
         else:
             tweet_text = "I failed to do {} app.".format(app.display_name)
         if 'upload_successes' in ctx:
