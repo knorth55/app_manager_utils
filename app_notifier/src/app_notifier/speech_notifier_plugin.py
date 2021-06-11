@@ -17,8 +17,10 @@ class SpeechNotifierPlugin(AppManagerPlugin):
         lang = None
         if 'lang' in plugin_args:
             lang = plugin_args['lang']
+
+        display_name = app.display_name
         client = actionlib.SimpleActionClient(client_name, SoundRequestAction)
-        speech_text = "I'm starting {} app.".format(app.display_name)
+        speech_text = "I'm starting {} app.".format(display_name)
         speak(client, speech_text, lang=lang)
         return ctx
 
@@ -28,13 +30,15 @@ class SpeechNotifierPlugin(AppManagerPlugin):
         lang = None
         if 'lang' in plugin_args:
             lang = plugin_args['lang']
+
+        display_name = app.display_name
         client = actionlib.SimpleActionClient(client_name, SoundRequestAction)
         if ctx['exit_code'] == 0:
-            speech_text = "I succeeded in do {} app.".format(app.display_name)
+            speech_text = "I succeeded in doing {} app.".format(display_name)
         elif ctx['stopped']:
-            speech_text = "I stopped doing {} app.".format(app.display_name)
+            speech_text = "I stopped doing {} app.".format(display_name)
         else:
-            speech_text = "I failed to do {} app.".format(app.display_name)
+            speech_text = "I failed to do {} app.".format(display_name)
         if 'upload_successes' in ctx:
             if all(ctx['upload_successes']):
                 speech_text += " I succeeded to upload data."

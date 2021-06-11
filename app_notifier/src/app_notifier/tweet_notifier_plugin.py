@@ -25,14 +25,14 @@ class TweetNotifierPlugin(AppManagerPlugin):
             warning = plugin_args['warning']
         else:
             warning = False
+
+        display_name = app.display_name
         username = rospy.get_param('/app_manager/running_user_name', None)
         tweet_text = None
         if username:
-            tweet_text = "{} is starting {} app".format(
-                username, app.display_name)
+            tweet_text = "{} is starting {} app".format(username, display_name)
         elif warning:
-            tweet_text = "Unknown user is starting {} app".format(
-                app.display_name)
+            tweet_text = "Unknown user is starting {} app".format(display_name)
 
         if tweet_text is not None:
             client = actionlib.SimpleActionClient(
@@ -50,13 +50,15 @@ class TweetNotifierPlugin(AppManagerPlugin):
             image = plugin_args['image']
         if image and 'image_topic_name':
             image_topic_name = plugin_args['image_topic_name']
+
+        display_name = app.display_name
         client = actionlib.SimpleActionClient(client_name, TweetAction)
         if ctx['exit_code'] == 0:
-            tweet_text = "I succeeded in do {} app.".format(app.display_name)
+            tweet_text = "I succeeded in doing {} app.".format(display_name)
         elif ctx['stopped']:
-            tweet_text = "I stopped doing {} app.".format(app.display_name)
+            tweet_text = "I stopped doing {} app.".format(display_name)
         else:
-            tweet_text = "I failed to do {} app.".format(app.display_name)
+            tweet_text = "I failed to do {} app.".format(display_name)
         if 'upload_successes' in ctx:
             if all(ctx['upload_successes']):
                 tweet_text += " I succeeded to upload data."

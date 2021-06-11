@@ -20,6 +20,7 @@ class MailNotifierPlugin(AppManagerPlugin):
             timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(
                 datetime.datetime.now())
             mail_title += ': {}'.format(timestamp)
+
         display_name = app.display_name
         mail_content = "Hi, \\n"
         if ctx['exit_code'] == 0:
@@ -38,6 +39,7 @@ class MailNotifierPlugin(AppManagerPlugin):
                     ctx['upload_successes'], ctx['upload_file_urls']):
                 if success:
                     mail_content += "URL: {}\\n".format(file_url)
+
         cmd = "LC_CTYPE=en_US.UTF-8 /bin/echo -e \"{}\"".format(mail_content)
         cmd += " | /usr/bin/mail -s \"{}\" -r {} {}".format(
             mail_title, sender_address, receiver_address)
