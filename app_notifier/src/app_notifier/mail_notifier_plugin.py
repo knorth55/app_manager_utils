@@ -23,7 +23,7 @@ class MailNotifierPlugin(AppManagerPlugin):
 
         display_name = app.display_name
         mail_content = "Hi, \\n"
-        if ctx['exit_code'] == 0:
+        if ctx['exit_code'] == 0 and not ctx['stopped']:
             mail_content += "I succeeded in doing {}.\\n".format(display_name)
         elif ctx['stopped']:
             mail_content += "I stopped doing {}.\\n".format(display_name)

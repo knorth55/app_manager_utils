@@ -33,7 +33,7 @@ class SpeechNotifierPlugin(AppManagerPlugin):
 
         display_name = app.display_name
         client = actionlib.SimpleActionClient(client_name, SoundRequestAction)
-        if ctx['exit_code'] == 0:
+        if ctx['exit_code'] == 0 and not ctx['stopped']:
             speech_text = "I succeeded in doing {} app.".format(display_name)
         elif ctx['stopped']:
             speech_text = "I stopped doing {} app.".format(display_name)
