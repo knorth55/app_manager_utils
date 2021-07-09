@@ -16,6 +16,10 @@ This plugin notifies app results by sending an e-mail.
 
 `None`
 
+### Settings for sending from gmail address
+
+Please see this [link](https://kifarunix.com/configure-postfix-to-use-gmail-smtp-on-ubuntu-18-04/) to configure properly.
+
 ### Sample plugin description
 
 ```yaml
