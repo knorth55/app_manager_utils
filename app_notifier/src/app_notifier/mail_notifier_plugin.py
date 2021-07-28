@@ -49,6 +49,7 @@ class MailNotifierPlugin(AppManagerPlugin):
             rospy.logerr(
                 'Failed to send e-mail:  {} -> {}'.format(
                     sender_address, receiver_address))
+            rospy.logerr("You may need to do '$ sudo apt install mailutils'")
         else:
             rospy.loginfo(
                 'Succeeded to send e-mail: {} -> {}'.format(
