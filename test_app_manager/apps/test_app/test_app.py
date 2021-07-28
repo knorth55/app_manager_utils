@@ -13,7 +13,7 @@ def main():
     rospy.loginfo('test_app started.')
     rospy.loginfo('param1: {}'.format(param1))
     rospy.loginfo('param2: {}'.format(param2))
-    time.sleep(10)
+    time.sleep(30)
     rospy.loginfo('test_app stopped.')
     sys.exit(0)
 

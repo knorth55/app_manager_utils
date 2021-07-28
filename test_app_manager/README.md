@@ -33,4 +33,4 @@ In the app, the following plugins are executed according to `test_app.app`.
 - video\_recorder\_plugin
 - rosbag\_recorder\_plugin
 
-By default, the app will automatically close in 10 seconds.
+By default, the app will automatically close in 30 seconds.
