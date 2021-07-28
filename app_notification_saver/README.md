@@ -22,6 +22,28 @@ You can also clear app notification.
 rosservice call /app_notification_saver/clear_app_notification "{}"
 ```
 
+The sample output of the json file is like below:
+```
+{
+    "object recognition": [
+        {
+            "date": "2021-07-28T19:17:59",
+            "message": "Dish is found"
+        },
+        {
+            "date": "2021-07-28T19:18:09",
+            "message": "Cup is found"
+        }
+    ],
+    "navigation failure": [
+        {
+            "date": "2021-07-28T19:18:29",
+            "message": "Stucked in front of the chair"
+        }
+    ]
+}
+```
+
 ## Parameters
 - `~json_path` (`String`, default: `/tmp/app_notification.json`)
 
