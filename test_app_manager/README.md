@@ -4,7 +4,7 @@ Simple test package for `app_manager`
 
 ## Setup workspace
 
-See https://github.com/knorth55/app_manager_utils#build
+See [app_manager_utils/README.md](https://github.com/knorth55/app_manager_utils#build)
 
 ## Launch app_manager
 
@@ -27,10 +27,10 @@ rosservice call /robot/stop_app "name: 'test_app_manager/test_app'"
 
 In the app, the following plugins are executed according to `test_app.app`.
 
-  - test\_start\_plugin
-  - test\_stop\_plugin
-  - result\_recorder\_plugin
-  - video\_recorder\_plugin
-  - rosbag\_recorder\_plugin
+- test\_start\_plugin
+- test\_stop\_plugin
+- result\_recorder\_plugin
+- video\_recorder\_plugin
+- rosbag\_recorder\_plugin
 
 By default, the app will automatically close in 10 seconds.
