@@ -1,4 +1,6 @@
 import datetime
+import json
+import os
 import subprocess
 
 import rospy
@@ -39,6 +41,19 @@ class MailNotifierPlugin(AppManagerPlugin):
                     ctx['upload_successes'], ctx['upload_file_urls']):
                 if success:
                     mail_content += "URL: {}\\n".format(file_url)
+
+        mail_content += "\\n"
+        json_path = rospy.get_param('/app_notification_saver/json_path',
+                                    '/tmp/app_notification.json')
+        if os.path.exists(json_path):
+            with open(json_path, 'r') as j:
+                notification = json.load(j)
+                for n_type in notification.keys():
+                    mail_content += "Following {} is reported.\\n".format(
+                        n_type)
+                    for events in notification[n_type]:
+                        mail_content += " - {} {}\\n".format(
+                            events['date'], events['message'])
 
         cmd = "LC_CTYPE=en_US.UTF-8 /bin/echo -e \"{}\"".format(mail_content)
         cmd += " | /usr/bin/mail -s \"{}\" -r {} {}".format(
