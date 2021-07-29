@@ -1,7 +1,7 @@
 import datetime
 import json
-import rospy
 import os
+import rospy
 
 
 class AppNotificationSaver(object):

@@ -1,7 +1,7 @@
 import os
 import rospy
 
-from app_notification_saver.app_notification_saver import AppNotificationSaver
+from app_notification_saver import AppNotificationSaver
 
 from app_notification_saver.srv import SaveAppNotification
 from app_notification_saver.srv import SaveAppNotificationResponse
