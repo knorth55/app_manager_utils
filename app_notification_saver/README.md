@@ -34,7 +34,7 @@ rosservice call /service_notification_saver/clear_app_notification "{}"
 
 The sample output of the json file is like below:
 
-```
+```json
 {
     "object recognition": [
         {
