@@ -1,0 +1,7 @@
+<launch>
+  <!-- start: arguments -->
+  <!-- end: arguments -->
+
+  <node name="service_notification_saver" pkg="app_notification_saver"
+        type="service_notification_saver_node.py" />
+</launch>

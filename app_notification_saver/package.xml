@@ -18,4 +18,7 @@
   <exec_depend>message_runtime</exec_depend>
   <exec_depend>rospy</exec_depend>
 
+  <export>
+    <app_manager plugin="${prefix}/app_notification_saver_plugin.yaml" />
+  </export>
 </package>
