@@ -1,0 +1,10 @@
+<launch>
+  <!-- start: arguments -->
+  <arg name="smach_status_topic" default="/server_name/smach/container_status" />
+  <!-- end: arguments -->
+
+  <node name="smach_notification_saver" pkg="app_notification_saver"
+        type="smach_notification_saver_node.py" >
+    <remap from="~smach/container_status" to="$(arg smach_status_topic)" />
+  </node>
+</launch>
