@@ -2,7 +2,7 @@
 
 Save notification to json file to pass it to `app_notifier`.
 
-## ServiceNotificationsaver
+## ServiceNotificationSaver
 
 Save notification via service call.
 
@@ -13,7 +13,7 @@ roscore
 rosrun app_notification_saver service_notification_saver.py
 ```
 
-## Save app notification
+### Save app notification
 
 You can save app notification with service call.
 
