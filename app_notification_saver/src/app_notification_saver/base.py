@@ -9,14 +9,15 @@ class AppNotificationSaver(object):
         self.json_path = rospy.get_param(
             '~json_path', '/tmp/app_notification.json')
 
-    def save_app_notification(self, stamp, title, message):
+    def save_app_notification(self, title, stamp, location, message):
         """
         Save app notification to json file.
 
         Args:
-            stamp (float): UNIX time of notification
-            title (str)  : Notification title (e.g. object detection, navigation faliure ...) # NOQA
-            message (str): Notification message
+            title (str)   : Notification title (e.g. object detection, navigation faliure ...) # NOQA
+            stamp (float) : UNIX time when the event occurred
+            location (str): The location where the event occurred
+            message (str) : Notification message
 
         Returns:
             Result of whether the json was saved. (bool)
@@ -30,6 +31,7 @@ class AppNotificationSaver(object):
         # Append notification
         stamp = datetime.datetime.fromtimestamp(stamp)
         new_notification = {'date': stamp.isoformat(),
+                            'location': location,
                             'message': message}
         if title in notification:
             notification[title].append(new_notification)

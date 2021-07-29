@@ -22,7 +22,7 @@ class ServiceNotificationSaver(AppNotificationSaver):
 
     def save_service_notification_cb(self, req):
         self.save_app_notification(
-            float(req.stamp.secs), req.title, req.message)
+            req.title, float(req.stamp.secs), req.location, req.message)
         return SaveAppNotificationResponse(True)
 
     def clear_app_notification_cb(self, req):
