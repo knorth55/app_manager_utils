@@ -1,5 +1,5 @@
 time stamp
-string type # Notification type (e.g. object detection, navigation faliure ...)
+string title # Notification title (e.g. object detection, navigation faliure ...)
 string message # Notification message
 ---
 bool result # Result of whether the json was saved
