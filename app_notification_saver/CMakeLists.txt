@@ -10,6 +10,8 @@ add_service_files(
   FILES SaveAppNotification.srv
 )
 
+catkin_python_setup()
+
 generate_messages()
 
 catkin_package(

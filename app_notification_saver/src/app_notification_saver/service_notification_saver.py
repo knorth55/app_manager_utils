@@ -1,11 +1,12 @@
-#!/usr/bin/env python
-
 import os
 import rospy
 
-from app_notification_saver.srv import SaveAppNotification, SaveAppNotificationResponse # NOQA
-from base import AppNotificationSaver
-from std_srvs.srv import Empty, EmptyResponse
+from app_notification_saver.app_notification_saver import AppNotificationSaver
+
+from app_notification_saver.srv import SaveAppNotification
+from app_notification_saver.srv import SaveAppNotificationResponse
+from std_srvs.srv import Empty
+from std_srvs.srv import EmptyResponse
 
 
 class ServiceNotificationSaver(AppNotificationSaver):
@@ -30,9 +31,3 @@ class ServiceNotificationSaver(AppNotificationSaver):
             os.remove(self.json_path)
             rospy.loginfo('Remove file {}'.format(self.json_path))
         return EmptyResponse()
-
-
-if __name__ == '__main__':
-    rospy.init_node('service_notification_saver')
-    ServiceNotificationSaver()
-    rospy.spin()
