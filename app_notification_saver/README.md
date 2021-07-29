@@ -9,8 +9,7 @@ Save notification via service call.
 ### Launch service_notification_saver node
 
 ```bash
-roscore
-rosrun app_notification_saver service_notification_saver.py
+roslaunch app_notification_saver service_notification_saver.launch
 ```
 
 ### Save app notification
