@@ -2,8 +2,7 @@
 
 import rospy
 
-from app_notification_saver.service_notification_saver \
-    import ServiceNotificationSaver
+from app_notification_saver import ServiceNotificationSaver
 
 
 if __name__ == '__main__':
