@@ -62,3 +62,30 @@ The sample output of the json file is like below:
 - `~json_path` (`String`, default: `/tmp/app_notification.json`)
 
   Path to json file which contains app notification
+
+## SmachNotificationSaver
+
+Save notification of smach state.
+
+### Launch smach_notification_saver node
+
+```bash
+# Launch only smach_notification_saver node
+roslaunch app_notification_saver smach_notification_saver.launch
+
+# Sample
+# Launch smach_notification_saver node and rosbag
+roslaunch app_notification_saver smach_notification_saver.launch use_rosbag:=true --screen
+```
+
+### Subscribe topics
+
+- `~smach/container_status` (`smach_msgs/SmachContainerStatus`, default: `/server_name/smach/container_status`)
+
+  Smach status topic
+
+### Parameters
+
+- `~json_path` (`String`, default: `/tmp/app_notification.json`)
+
+  Path to json file which contains app notification
