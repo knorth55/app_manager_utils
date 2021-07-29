@@ -2,27 +2,37 @@
 
 Save notification to json file to pass it to `app_notifier`.
 
-## Launch app_notification_saver node
+## ServiceNotificationsaver
+
+Save notification via service call.
+
+### Launch service_notification_saver node
+
 ```bash
-rosrun app_notification_saver app_notification_saver_node.py
+roscore
+rosrun app_notification_saver service_notification_saver.py
 ```
 
 ## Save app notification
+
 You can save app notification with service call.
+
 ```bash
-rosservice call /app_notification_saver/save_app_notification "stamp:
+rosservice call /service_notification_saver/save_app_notification "stamp:
   secs: 1627467479
   nsecs: 13279914
-type: 'object detection'
+title: 'object detection'
 message: 'Dish is found'"
 ```
 
 You can also clear app notification.
+
 ```bash
-rosservice call /app_notification_saver/clear_app_notification "{}"
+rosservice call /service_notification_saver/clear_app_notification "{}"
 ```
 
 The sample output of the json file is like below:
+
 ```
 {
     "object recognition": [
@@ -44,7 +54,8 @@ The sample output of the json file is like below:
 }
 ```
 
-## Parameters
+### Parameters
+
 - `~json_path` (`String`, default: `/tmp/app_notification.json`)
 
   Path to json file which contains app notification
