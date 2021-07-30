@@ -53,7 +53,7 @@ class SpeechNotifierPlugin(AppManagerPlugin):
         if 'object recognition' in notification:
             for event in notification['object recognition']:
                 time = event['date'].split('T')[1]
-                speech_text += "At {}, {} in {}.".format(
+                speech_text += " At {}, {} in {}.".format(
                     time, event['message'], event['location'])
 
         speak(client, speech_text, lang=lang)

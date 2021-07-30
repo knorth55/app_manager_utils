@@ -73,7 +73,7 @@ class TweetNotifierPlugin(AppManagerPlugin):
         if 'object recognition' in notification:
             for event in notification['object recognition']:
                 time = event['date'].split('T')[1]
-                tweet_text += "At {}, {} in {}.".format(
+                tweet_text += " At {}, {} in {}.".format(
                     time, event['message'], event['location'])
 
         tweet(
