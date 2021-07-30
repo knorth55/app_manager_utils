@@ -39,6 +39,12 @@ Notifier plugin for `app_manager`
 
 For detailed information, please read [app_notifier](app_notifier/README.md).
 
+## app_notification_saver
+
+Notification saver plugin for `app_manager`
+
+For detailed information, please read [app_notification_saver](app_notification_saver/README.md).
+
 ## test_app_manager
 
 Simple test package for `app_manager`
