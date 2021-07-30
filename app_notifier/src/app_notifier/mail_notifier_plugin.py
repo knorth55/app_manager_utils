@@ -43,8 +43,8 @@ class MailNotifierPlugin(AppManagerPlugin):
                     mail_content += "URL: {}\\n".format(file_url)
 
         mail_content += "\\n"
-        json_path = rospy.get_param('/app_notification_saver/json_path',
-                                    '/tmp/app_notification.json')
+        json_path = rospy.get_param(
+            '/app_notification_saver/json_path', '/tmp/app_notification.json')
         if os.path.exists(json_path):
             with open(json_path, 'r') as j:
                 notification = json.load(j)
