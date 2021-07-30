@@ -1,11 +1,12 @@
 import datetime
-import json
-import os
 import subprocess
 
 import rospy
 
 from app_manager import AppManagerPlugin
+
+from app_notifier.util import get_notification_json_paths
+from app_notifier.util import load_notification_jsons
 
 
 class MailNotifierPlugin(AppManagerPlugin):
@@ -41,27 +42,20 @@ class MailNotifierPlugin(AppManagerPlugin):
                     ctx['upload_successes'], ctx['upload_file_urls']):
                 if success:
                     mail_content += "URL: {}\\n".format(file_url)
-
         mail_content += "\\n"
-        json_path = rospy.get_param(
-            '/app_notification_saver/json_path', '/tmp/app_notification.json')
-        if os.path.exists(json_path):
-            with open(json_path, 'r') as j:
-                notification = json.load(j)
-                for n_type in notification.keys():
-                    mail_content += "Following {} is reported.\\n".format(
-                        n_type)
-                    for events in notification[n_type]:
-                        if events['location'] == "":
-                            mail_content += " - At {}, {}\\n".format(
-                                events['date'],
-                                events['message'])
-                        else:
-                            mail_content += " - In {} at {}, {}\\n".format(
-                                events['location'],
-                                events['date'],
-                                events['message'])
-                    mail_content += "\\n"
+
+        json_paths = get_notification_json_paths()
+        notification = load_notification_jsons(json_paths)
+        for n_type in notification.keys():
+            mail_content += "Following {} is reported.\\n".format(n_type)
+            for event in notification[n_type]:
+                if event['location'] == "":
+                    mail_content += " - At {}, {}.\\n".format(
+                        event['date'], event['message'])
+                else:
+                    mail_content += " - At {}, {} in {}.\\n".format(
+                        event['date'], event['message'], event['location'])
+            mail_content += "\\n"
 
         cmd = "LC_CTYPE=en_US.UTF-8 /bin/echo -e \"{}\"".format(mail_content)
         cmd += " | /usr/bin/mail -s \"{}\" -r {} {}".format(
