@@ -1,3 +1,5 @@
+import json
+import os
 import rospy
 
 from rostwitter.msg import TweetGoal
@@ -31,3 +33,37 @@ def tweet(client, tweet_text, image=False, image_topic_name=None):
     client.send_goal(tweet_goal)
     client.wait_for_result()
     return client.get_result()
+
+
+def get_notification_json_paths():
+    notification_json_path = rospy.get_param(
+        '/service_notification_saver/json_path', None)
+    smach_json_path = rospy.get_param(
+        '/smach_notification_saver/json_path', None)
+    if notification_json_path and smach_json_path:
+        if notification_json_path == smach_json_path:
+            json_paths = [notification_json_path]
+        else:
+            json_paths = [notification_json_path, smach_json_path]
+    elif notification_json_path:
+        json_paths = [notification_json_path]
+    elif smach_json_path:
+        json_paths = [smach_json_path]
+    else:
+        json_paths = ['/tmp/app_notification.json']
+    return json_paths
+
+
+def load_jsons(json_paths):
+    notification = {}
+    for json_path in json_paths:
+        if not os.path.exists(json_path):
+            continue
+        with open(json_path, 'r') as f:
+            n_data = json.load(f)
+        for n_type in n_data.keys():
+            if n_type in notification:
+                notification[n_type].append(n_data[n_type])
+            else:
+                notification[n_type] = n_data[n_type]
+    return notification
