@@ -77,6 +77,6 @@ class TweetNotifierPlugin(AppManagerPlugin):
                     time, event['message'], event['location'])
 
         tweet(
-            client, tweet_text, image=image,
+            client, tweet_text[:280], image=image,
             image_topic_name=image_topic_name)
         return ctx
