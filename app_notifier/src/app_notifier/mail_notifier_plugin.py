@@ -52,10 +52,16 @@ class MailNotifierPlugin(AppManagerPlugin):
                     mail_content += "Following {} is reported.\\n".format(
                         n_type)
                     for events in notification[n_type]:
-                        mail_content += " - In {} at {}, {}\\n".format(
-                            events['location'],
-                            events['date'],
-                            events['message'])
+                        if events['location'] == "":
+                            mail_content += " - At {}, {}\\n".format(
+                                events['date'],
+                                events['message'])
+                        else:
+                            mail_content += " - In {} at {}, {}\\n".format(
+                                events['location'],
+                                events['date'],
+                                events['message'])
+                    mail_content += "\\n"
 
         cmd = "LC_CTYPE=en_US.UTF-8 /bin/echo -e \"{}\"".format(mail_content)
         cmd += " | /usr/bin/mail -s \"{}\" -r {} {}".format(

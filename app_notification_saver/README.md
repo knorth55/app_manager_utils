@@ -9,8 +9,7 @@ Save notification via service call.
 ### Launch service_notification_saver node
 
 ```bash
-roscore
-rosrun app_notification_saver service_notification_saver.py
+roslaunch app_notification_saver service_notification_saver.launch
 ```
 
 ### Save app notification
@@ -57,6 +56,33 @@ The sample output of the json file is like below:
     ]
 }
 ```
+
+### Parameters
+
+- `~json_path` (`String`, default: `/tmp/app_notification.json`)
+
+  Path to json file which contains app notification
+
+## SmachNotificationSaver
+
+Save notification of smach state.
+
+### Launch smach_notification_saver node
+
+```bash
+# Launch only smach_notification_saver node
+roslaunch app_notification_saver smach_notification_saver.launch
+
+# Sample
+# Launch smach_notification_saver node and rosbag
+roslaunch app_notification_saver sample_smach_notification_saver.launch --screen
+```
+
+### Subscribe topics
+
+- `~smach/container_status` (`smach_msgs/SmachContainerStatus`, default: `/server_name/smach/container_status`)
+
+  Smach status topic
 
 ### Parameters
 
