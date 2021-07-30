@@ -54,7 +54,7 @@ def get_notification_json_paths():
     return json_paths
 
 
-def load_jsons(json_paths):
+def load_notification_jsons(json_paths):
     notification = {}
     for json_path in json_paths:
         if not os.path.exists(json_path):
