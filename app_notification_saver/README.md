@@ -1,20 +1,22 @@
 # app_notification_saver
 
-Plugins to save notification to json file and pass it to `app_notifier`
+Plugins and nodes to save notification to json file and pass it to `app_notifier`
 
-## `app_notification_saver/service_notification_saver`: General notification saver plugin
+## `app_manager` plugins
+
+### `app_notification_saver/service_notification_saver`: General notification saver plugin
 
 This plugin saves notification via service call.
 
-### `plugin_args`: Plugin arguments
+#### `plugin_args`: Plugin arguments
 
 `None`
 
-### `launch_args`: Plugin launch arguments
+#### `launch_args`: Plugin launch arguments
 
 - `json_path` : JSON path
 
-### Sample plugin description
+#### Sample plugin description
 
 ```yaml
 plugins:
@@ -24,20 +26,20 @@ plugins:
       json_path: /tmp/app_notification.json
 ```
 
-## `app_notification_saver/smach_notification_saver`: SMACH notification saver plugin
+### `app_notification_saver/smach_notification_saver`: SMACH notification saver plugin
 
 This plugin saves notification via service call.
 
-### `plugin_args`: Plugin arguments
+#### `plugin_args`: Plugin arguments
 
 `None`
 
-### `launch_args`: Plugin launch arguments
+#### `launch_args`: Plugin launch arguments
 
 - `json_path` : JSON path
 - `smach_status_topic`: SMACH status topic name
 
-### Sample plugin description
+#### Sample plugin description
 
 ```yaml
 plugins:
@@ -48,11 +50,13 @@ plugins:
       smach_status_topic: /server_name/smach/container_status
 ```
 
-## `service_notification_saver_node.py`: Node for general notification saver
+## Nodes
+
+### `service_notification_saver_node.py`: Node for general notification saver
 
 Save notification node via service call.
 
-### Services
+#### Services
 
 - `~save_app_notification` (`app_notification_saver/SaveAppNotification`)
 
@@ -62,21 +66,21 @@ Save notification node via service call.
 
   Service to clear app notification in JSON.
 
-### Parameters
+#### Parameters
 
 - `~json_path` (`String`, default: `/tmp/app_notification.json`)
 
   Path to json file which contains app notification
 
-### Sample
+#### Sample
 
-#### Launch service_notification_saver node
+##### Launch service_notification_saver node
 
 ```bash
 roslaunch app_notification_saver service_notification_saver.launch
 ```
 
-#### Save app notification
+##### Save app notification
 
 You can save app notification with service call.
 
@@ -121,25 +125,25 @@ The sample output of the json file is like below:
 }
 ```
 
-## `smach_notification_saver_node.py`: Node for SMACH notification saver
+### `smach_notification_saver_node.py`: Node for SMACH notification saver
 
 Save notification of smach state.
 
-### Subscribe topics
+#### Subscribe topics
 
 - `~smach/container_status` (`smach_msgs/SmachContainerStatus`, default: `/server_name/smach/container_status`)
 
   Smach status topic
 
-### Parameters
+#### Parameters
 
 - `~json_path` (`String`, default: `/tmp/app_notification.json`)
 
   Path to json file which contains app notification
 
-### Sample
+#### Sample
 
-#### Launch smach_notification_saver node
+##### Launch smach_notification_saver node
 
 ```bash
 # Launch only smach_notification_saver node
