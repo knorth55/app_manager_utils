@@ -75,7 +75,7 @@ roslaunch app_notification_saver smach_notification_saver.launch
 
 # Sample
 # Launch smach_notification_saver node and rosbag
-roslaunch app_notification_saver smach_notification_saver.launch use_rosbag:=true --screen
+roslaunch app_notification_saver sample_smach_notification_saver.launch --screen
 ```
 
 ### Subscribe topics
