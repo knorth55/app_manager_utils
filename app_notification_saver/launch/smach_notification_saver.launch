@@ -1,12 +1,7 @@
 <launch>
   <!-- start: arguments -->
-  <arg name="use_rosbag" default="false" />
   <arg name="smach_status_topic" default="/server_name/smach/container_status" />
   <!-- end: arguments -->
-
-  <node if="$(arg use_rosbag)" name="rosbag_play" pkg="rosbag" type="play"
-        args="$(find app_notification_saver)/data/smach.bag --clock"
-        output="screen" required="true" />
 
   <node name="smach_notification_saver" pkg="app_notification_saver"
         type="smach_notification_saver_node.py" >
