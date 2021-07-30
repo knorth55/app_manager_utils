@@ -2,6 +2,8 @@ import actionlib
 from app_manager import AppManagerPlugin
 import rospy
 
+from app_notifier.util import get_notification_json_paths
+from app_notifier.util import load_notification_jsons
 from app_notifier.util import tweet
 
 from rostwitter.msg import TweetAction
@@ -64,6 +66,16 @@ class TweetNotifierPlugin(AppManagerPlugin):
                 tweet_text += " I succeeded to upload data."
             else:
                 tweet_text += " I failed to upload data."
+
+        # only tweet about object recognition
+        json_paths = get_notification_json_paths()
+        notification = load_notification_jsons(json_paths)
+        if 'object recognition' in notification:
+            for event in notification['object recognition']:
+                time = event['date'].split('T')[1]
+                tweet_text += "At {}, {} in {}.".format(
+                    time, event['message'], event['location'])
+
         tweet(
             client, tweet_text, image=image,
             image_topic_name=image_topic_name)

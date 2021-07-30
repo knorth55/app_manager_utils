@@ -1,6 +1,8 @@
 import actionlib
 from app_manager import AppManagerPlugin
 
+from app_notifier.util import get_notification_json_paths
+from app_notifier.util import load_notification_jsons
 from app_notifier.util import speak
 
 from sound_play.msg import SoundRequestAction
@@ -44,5 +46,15 @@ class SpeechNotifierPlugin(AppManagerPlugin):
                 speech_text += " I succeeded to upload data."
             else:
                 speech_text += " I failed to upload data."
+
+        # only speak about object recognition
+        json_paths = get_notification_json_paths()
+        notification = load_notification_jsons(json_paths)
+        if 'object recognition' in notification:
+            for event in notification['object recognition']:
+                time = event['date'].split('T')[1]
+                speech_text += "At {}, {} in {}.".format(
+                    time, event['message'], event['location'])
+
         speak(client, speech_text, lang=lang)
         return ctx
