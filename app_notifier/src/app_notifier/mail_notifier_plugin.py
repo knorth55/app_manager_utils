@@ -61,6 +61,7 @@ class MailNotifierPlugin(AppManagerPlugin):
                                 events['location'],
                                 events['date'],
                                 events['message'])
+                    mail_content += "\\n"
 
         cmd = "LC_CTYPE=en_US.UTF-8 /bin/echo -e \"{}\"".format(mail_content)
         cmd += " | /usr/bin/mail -s \"{}\" -r {} {}".format(
