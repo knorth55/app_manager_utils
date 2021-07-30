@@ -12,6 +12,8 @@ class SmachNotificationSaver(AppNotificationSaver):
             "~smach/container_status", SmachContainerStatus, self.smach_cb)
 
     def smach_cb(self, msg):
+        if len(msg.active_states) == 0:
+            return
         states_str = "Active states is "
         states_str += ', '.join(msg.active_states)
         self.save_app_notification(
