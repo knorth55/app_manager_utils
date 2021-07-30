@@ -2,15 +2,17 @@
 
 Recorder plugin for `app_manager`
 
-## `app_recorder/audio_video_recorder_plugin`: Audio-video recorder plugin
+## `app_manager` plugins
+
+### `app_recorder/audio_video_recorder_plugin`: Audio-video recorder plugin
 
 This plugin records video data with audio during when an app is running.
 
-### `plugin_args`: Plugin arguments
+#### `plugin_args`: Plugin arguments
 
 `None`
 
-### `launch_args`: Plugin launch arguments
+#### `launch_args`: Plugin launch arguments
 
 - `video_path`: video file directory path
 - `video_title`: video file name
@@ -25,7 +27,7 @@ This plugin records video data with audio during when an app is running.
 - `video_framerate`: video framerate
 - `video_encoding`: video encoding
 
-### Sample plugin description
+#### Sample plugin description
 
 ```yaml
 plugins:
@@ -46,22 +48,22 @@ plugins:
       video_encoding: RGB
 ```
 
-## `app_recorder/video_recorder_plugin`: Video recorder plugin
+### `app_recorder/video_recorder_plugin`: Video recorder plugin
 
 This plugin records video data during when an app is running.
 
-### `plugin_args`: Plugin arguments
+#### `plugin_args`: Plugin arguments
 
 `None`
 
-### `launch_args`: Plugin launch arguments
+#### `launch_args`: Plugin launch arguments
 
 - `video_path`: video file directory path
 - `video_title`: video file name
 - `video_topic_name`: image topic name for video
 - `video_fps`: video fps
 
-### Sample plugin description
+#### Sample plugin description
 
 ```yaml
 plugins:
@@ -74,22 +76,22 @@ plugins:
       video_fps: 30
 ```
 
-## `app_recorder/audio_recorder_plugin`: Audio recorder plugin
+### `app_recorder/audio_recorder_plugin`: Audio recorder plugin
 
 This plugin records audio data during when an app is running.
 
-### `plugin_args`: Plugin arguments
+#### `plugin_args`: Plugin arguments
 
 `None`
 
-### `launch_args`: Plugin launch arguments
+#### `launch_args`: Plugin launch arguments
 
 - `audio_path`: audio file directory path
 - `audio_title`: audio file name
 - `audio_topic_name`: image topic name for audio
 - `audio_format`: audio format
 
-### Sample plugin description
+#### Sample plugin description
 
 ```yaml
 plugins:
@@ -102,21 +104,21 @@ plugins:
       audio_format: mp3
 ```
 
-## `app_recorder/rosbag_recorder_plugin`: Rosbag recorder plugin
+### `app_recorder/rosbag_recorder_plugin`: Rosbag recorder plugin
 
 This plugin records rosbag data during when an app is running.
 
-### `plugin_args`: Plugin arguments
+#### `plugin_args`: Plugin arguments
 
 `None`
 
-### `launch_args`: Plugin launch arguments
+#### `launch_args`: Plugin launch arguments
 
 - `rosbag_path`: rosbag file directory path
 - `rosbag_title`: rosbag file name
 - `rosbag_topic_names`: topic names for rosbag
 
-### Sample plugin description
+#### Sample plugin description
 
 ```yaml
 plugins:
@@ -128,20 +130,20 @@ plugins:
       rosbag_topic_names: /tf /joint_states
 ```
 
-## `app_recorder/result_recorder_plugin`: Result recorder plugin
+### `app_recorder/result_recorder_plugin`: Result recorder plugin
 
 This plugin records app result in yaml when app finishs.
 
-### `plugin_args`: Plugin arguments
+#### `plugin_args`: Plugin arguments
 
 - `result_path`: result file directory path
 - `result_title`: result file name
 
-### `launch_args`: Plugin launch arguments
+#### `launch_args`: Plugin launch arguments
 
 `None`
 
-### Sample plugin description
+#### Sample plugin description
 
 ```yaml
 plugins:
