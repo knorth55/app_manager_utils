@@ -26,6 +26,27 @@ plugins:
       json_path: /tmp/app_notification.json
 ```
 
+#### Save app notification
+
+You can save app notification with service call.
+
+```bash
+rosservice call /service_notification_saver/save_app_notification "title: 'object recognition'
+stamp:
+  secs: 1627467479
+  nsecs: 13279914
+location: 'kitchen'
+message: 'Dish is found'"
+```
+
+#### Clear app notification
+
+You can also clear app notification.
+
+```bash
+rosservice call /service_notification_saver/clear_app_notification "{}"
+```
+
 ### `app_notification_saver/smach_notification_saver`: SMACH notification saver plugin
 
 This plugin saves notification via service call.
@@ -93,11 +114,15 @@ location: 'kitchen'
 message: 'Dish is found'"
 ```
 
+##### Clear app notification
+
 You can also clear app notification.
 
 ```bash
 rosservice call /service_notification_saver/clear_app_notification "{}"
 ```
+
+##### Check output JSON
 
 The sample output of the json file is like below:
 
