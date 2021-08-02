@@ -4,3 +4,6 @@
 - name: test_app_manager/test_stop_plugin
   launch: null
   module: test_app_manager.test_stop_plugin.TestStopPlugin
+- name: test_app_manager/test_time_plugin
+  launch: null
+  module: test_app_manager.test_time_plugin.TestTimePlugin
