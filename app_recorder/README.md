@@ -62,6 +62,7 @@ This plugin records video data during when an app is running.
 - `video_title`: video file name
 - `video_topic_name`: image topic name for video
 - `video_fps`: video fps
+- `video_codec` (default: `XVID`): video codec
 
 #### Sample plugin description
 
@@ -89,7 +90,7 @@ This plugin records audio data during when an app is running.
 - `audio_path`: audio file directory path
 - `audio_title`: audio file name
 - `audio_topic_name`: image topic name for audio
-- `audio_format`: audio format
+- `audio_format`(default: `wave`): audio format
 
 #### Sample plugin description
 
@@ -117,6 +118,7 @@ This plugin records rosbag data during when an app is running.
 - `rosbag_path`: rosbag file directory path
 - `rosbag_title`: rosbag file name
 - `rosbag_topic_names`: topic names for rosbag
+- `compress` (default: `False`): compress rosbag or not
 
 #### Sample plugin description
 
