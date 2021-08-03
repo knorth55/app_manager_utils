@@ -26,6 +26,7 @@ plugins:
     type: app_notifier/mail_notifier_plugin
     plugin_args:
       mail_title: Test app
+      use_timestamp_title: true
       sender_address: hoge
       receiver_address: hoge
 ```
