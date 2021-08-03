@@ -18,7 +18,10 @@ class MailNotifierPlugin(AppManagerPlugin):
         mail_title = plugin_args['mail_title']
         sender_address = plugin_args['sender_address']
         receiver_address = plugin_args['receiver_address']
-        use_timestamp_title = plugin_args['use_timestamp_title']
+        use_timestamp_title = False
+        if 'use_timestamp_title' in plugin_args:
+            use_timestamp_title = plugin_args['use_timestamp_title']
+
         if use_timestamp_title:
             timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(
                 datetime.datetime.now())
