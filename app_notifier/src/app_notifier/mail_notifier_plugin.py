@@ -13,8 +13,10 @@ class MailNotifierPlugin(AppManagerPlugin):
     def __init__(self):
         super(MailNotifierPlugin, self).__init__()
 
-    @classmethod
-    def app_manager_stop_plugin(cls, app, ctx, plugin_args):
+    def app_manager_start_plugin(self, app, ctx, plugin_args):
+        self.start_time = rospy.Time.now()
+
+    def app_manager_stop_plugin(self, app, ctx, plugin_args):
         mail_title = plugin_args['mail_title']
         sender_address = plugin_args['sender_address']
         receiver_address = plugin_args['receiver_address']
@@ -49,6 +51,10 @@ class MailNotifierPlugin(AppManagerPlugin):
         for n_type in notification.keys():
             mail_content += "Following {} is reported.\\n".format(n_type)
             for event in notification[n_type]:
+                start_date = datetime.datetime.fromtimestamp(
+                    self.start_time.secs).isoformat()
+                if event['date'] < start_date:
+                    continue
                 if event['location'] == "":
                     mail_content += " - At {}, {}.\\n".format(
                         event['date'], event['message'])
