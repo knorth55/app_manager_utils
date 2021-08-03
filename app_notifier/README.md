@@ -68,7 +68,7 @@ This plugin notifies app results by tweeting.
 
 - `client_name`: client name for `sound_play`
 - `image` (default: `False`): whether tweet with image or not.
-- `image_topic_name` default: `None`): tweet image topic. this argument is used only when `image` is `true`.
+- `image_topic_name` (default: `None`): tweet image topic. this argument is used only when `image` is `true`.
 - `warning` (default: `False`): whether warn unknown user or not.
 
 #### `launch_args`: Plugin launch arguments
