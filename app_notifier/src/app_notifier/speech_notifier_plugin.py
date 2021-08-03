@@ -1,5 +1,7 @@
 import actionlib
 from app_manager import AppManagerPlugin
+import datetime
+import rospy
 
 from app_notifier.util import get_notification_json_paths
 from app_notifier.util import load_notification_jsons
@@ -13,8 +15,8 @@ class SpeechNotifierPlugin(AppManagerPlugin):
         super(SpeechNotifierPlugin, self).__init__()
         self.client = None
 
-    @classmethod
-    def app_manager_start_plugin(cls, app, ctx, plugin_args):
+    def app_manager_start_plugin(self, app, ctx, plugin_args):
+        self.start_time = rospy.Time.now()
         client_name = plugin_args['client_name']
         lang = None
         if 'lang' in plugin_args:
@@ -26,8 +28,7 @@ class SpeechNotifierPlugin(AppManagerPlugin):
         speak(client, speech_text, lang=lang)
         return ctx
 
-    @classmethod
-    def app_manager_stop_plugin(cls, app, ctx, plugin_args):
+    def app_manager_stop_plugin(self, app, ctx, plugin_args):
         client_name = plugin_args['client_name']
         lang = None
         if 'lang' in plugin_args:
@@ -52,6 +53,10 @@ class SpeechNotifierPlugin(AppManagerPlugin):
         notification = load_notification_jsons(json_paths)
         if 'object recognition' in notification:
             for event in notification['object recognition']:
+                start_date = datetime.datetime.fromtimestamp(
+                    self.start_time.secs).isoformat()
+                if event['date'] < start_date:
+                    continue
                 time = event['date'].split('T')[1]
                 speech_text += " At {}, {} in {}.".format(
                     time, event['message'], event['location'])
