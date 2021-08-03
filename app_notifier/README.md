@@ -13,6 +13,7 @@ This plugin notifies app results by sending an e-mail.
 - `mail_title`: mail title
 - `sender_address`: mail sender address
 - `receiver_address`: mail receiver address
+- `use_timestamp_title` (default: `False`) : Use timestamp in title or not
 
 #### `launch_args`: Plugin launch arguments
 
@@ -42,7 +43,7 @@ This plugin notifies app results by speaking.
 #### `plugin_args`: Plugin arguments
 
 - `client_name`: client name for `sound_play`
-- `lang` `(default: None)`: language, if `None`, a robot speaks English.
+- `lang` (default: `None`): language, if `None`, a robot speaks English.
 
 #### `launch_args`: Plugin launch arguments
 
@@ -66,9 +67,9 @@ This plugin notifies app results by tweeting.
 #### `plugin_args`: Plugin arguments
 
 - `client_name`: client name for `sound_play`
-- `image` `(default: False)`: whether tweet with image or not.
-- `image_topic_name` `(default: None)`: tweet image topic. this argument is used only when `image` is `true`.
-- `warning` `(default: False)`: whether warn unknown user or not.
+- `image` (default: `False`): whether tweet with image or not.
+- `image_topic_name` default: `None`): tweet image topic. this argument is used only when `image` is `true`.
+- `warning` (default: `False`): whether warn unknown user or not.
 
 #### `launch_args`: Plugin launch arguments
 
@@ -94,8 +95,8 @@ This plugin notifies which user is running the app by speaking.
 #### `plugin_args`: Plugin arguments
 
 - `client_name`: client name for `sound_play`
-- `lang` `(default: None)`: language, if `None`, a robot speaks English.
-- `warning` `(default: False)`: whether warn unknown user or not.
+- `lang` (default: `None`): language, if `None`, a robot speaks English.
+- `warning` (default: `False`): whether warn unknown user or not.
 
 #### `launch_args`: Plugin launch arguments
 
