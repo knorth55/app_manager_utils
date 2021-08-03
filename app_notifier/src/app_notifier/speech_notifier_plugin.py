@@ -1,6 +1,7 @@
 import actionlib
 from app_manager import AppManagerPlugin
 import datetime
+import dateutil.parser
 import rospy
 
 from app_notifier.util import get_notification_json_paths
@@ -54,8 +55,8 @@ class SpeechNotifierPlugin(AppManagerPlugin):
         if 'object recognition' in notification:
             for event in notification['object recognition']:
                 start_date = datetime.datetime.fromtimestamp(
-                    self.start_time.secs).isoformat()
-                if event['date'] < start_date:
+                    self.start_time.to_sec())
+                if dateutil.parser.isoparse(event['date']) < start_date:
                     continue
                 time = event['date'].split('T')[1]
                 speech_text += " At {}, {} in {}.".format(

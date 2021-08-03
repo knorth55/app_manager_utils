@@ -1,4 +1,5 @@
 import datetime
+import dateutil.parser
 import subprocess
 
 import rospy
@@ -52,8 +53,8 @@ class MailNotifierPlugin(AppManagerPlugin):
             mail_content += "Following {} is reported.\\n".format(n_type)
             for event in notification[n_type]:
                 start_date = datetime.datetime.fromtimestamp(
-                    self.start_time.secs).isoformat()
-                if event['date'] < start_date:
+                    self.start_time.to_sec())
+                if dateutil.parser.isoparse(event['date']) < start_date:
                     continue
                 if event['location'] == "":
                     mail_content += " - At {}, {}.\\n".format(
