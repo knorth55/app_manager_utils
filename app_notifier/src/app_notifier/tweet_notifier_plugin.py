@@ -1,5 +1,7 @@
 import actionlib
 from app_manager import AppManagerPlugin
+import datetime
+import dateutil.parser
 import rospy
 
 from app_notifier.util import get_notification_json_paths
@@ -14,8 +16,8 @@ class TweetNotifierPlugin(AppManagerPlugin):
         super(TweetNotifierPlugin, self).__init__()
         self.client = None
 
-    @classmethod
-    def app_manager_start_plugin(cls, app, ctx, plugin_args):
+    def app_manager_start_plugin(self, app, ctx, plugin_args):
+        self.start_time = rospy.Time.now()
         client_name = plugin_args['client_name']
         image = False
         if 'image' in plugin_args:
@@ -44,8 +46,7 @@ class TweetNotifierPlugin(AppManagerPlugin):
                 image_topic_name=image_topic_name)
         return ctx
 
-    @classmethod
-    def app_manager_stop_plugin(cls, app, ctx, plugin_args):
+    def app_manager_stop_plugin(self, app, ctx, plugin_args):
         client_name = plugin_args['client_name']
         image = False
         if 'image' in plugin_args:
@@ -72,6 +73,10 @@ class TweetNotifierPlugin(AppManagerPlugin):
         notification = load_notification_jsons(json_paths)
         if 'object recognition' in notification:
             for event in notification['object recognition']:
+                start_date = datetime.datetime.fromtimestamp(
+                    self.start_time.to_sec())
+                if dateutil.parser.isoparse(event['date']) < start_date:
+                    continue
                 time = event['date'].split('T')[1]
                 tweet_text += " At {}, {} in {}.".format(
                     time, event['message'], event['location'])
