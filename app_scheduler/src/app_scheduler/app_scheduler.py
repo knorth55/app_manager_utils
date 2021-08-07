@@ -63,6 +63,13 @@ class AppScheduler(object):
     def _create_start_job(self, name, app_name):
         def start_job():
             start_res = self.start_app(app_name)
+            if not start_res.started:
+                rospy.logerr('Failed to start app: {}, {}'.format(
+                    name, app_name))
+                rospy.logerr('StartApp error code: {}'.format(
+                    start_res.error_code))
+                rospy.logerr('StartApp error message: {}'.format(
+                    start_res.message))
             self.running_jobs[name] = {
                 'app_name': app_name,
                 'running': start_res.started
@@ -73,6 +80,13 @@ class AppScheduler(object):
         def stop_job():
             if app_name in self.running_app_names:
                 stop_res = self.stop_app(app_name)
+                if not stop_res.stopped:
+                    rospy.logerr('Failed to stop app: {}, {}'.format(
+                        name, app_name))
+                    rospy.logerr('StopApp error code: {}'.format(
+                        stop_res.error_code))
+                    rospy.logerr('StopApp error message: {}'.format(
+                        stop_res.message))
                 self.running_jobs[name] = {
                     'app_name': app_name,
                     'running': not stop_res.stopped
