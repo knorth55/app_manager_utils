@@ -8,6 +8,8 @@ plugins:
     type: test_app_manager/test_start_plugin
   - name: test_stop_plugin
     type: test_app_manager/test_stop_plugin
+  - name: test_time_plugin
+    type: test_app_manager/test_time_plugin
   - name: result_recorder_plugin
     type: app_recorder/result_recorder_plugin
     plugin_args:
@@ -32,12 +34,14 @@ plugin_order:
   start_plugin_order:
     - test_start_plugin
     - test_stop_plugin
+    - test_time_plugin
     - result_recorder_plugin
     - video_recorder_plugin
     - rosbag_recorder_plugin
   stop_plugin_order:
     - test_start_plugin
     - test_stop_plugin
+    - test_time_plugin
     - result_recorder_plugin
     - video_recorder_plugin
     - rosbag_recorder_plugin
