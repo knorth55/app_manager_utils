@@ -2,6 +2,10 @@
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knorth55/app_manager_utils/CI/master)](https://github.com/knorth55/app_manager_utils/actions)
 
+## Dependency
+
+- [app_manager #37](https://github.com/PR2/app_manager/pull/37)
+
 ## Build
 
 ```bash
