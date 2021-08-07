@@ -45,10 +45,20 @@ class AppScheduler(object):
     def _register_app(self, app):
         app_schedule = app['app_schedule']
         start_job = self._create_start_job(app['name'], app['app_name'])  # NOQA
-        eval('schedule.{}.do(start_job)'.format(app_schedule['start']))
+        try:
+            eval('schedule.{}.do(start_job)'.format(app_schedule['start']))
+        except (AssertionError, ValueError) as e:
+            rospy.logerr(e)
+            rospy.logerr('Cannot register start app')
+            rospy.logerr('Please upgrade schedule module. $ pip install schedule==0.6.0 --user')  # NOQA
         if 'stop' in app_schedule:
             stop_job = self._create_stop_job(app['name'], app['app_name'])  # NOQA
-            eval('schedule.{}.do(stop_job)'.format(app_schedule['stop']))
+            try:
+                eval('schedule.{}.do(stop_job)'.format(app_schedule['stop']))
+            except ValueError as e:
+                rospy.logerr(e)
+                rospy.logerr('Cannot register stop app')
+                rospy.logerr('Please upgrade schedule module. $ pip install schedule==0.6.0 --user')  # NOQA
 
     def _create_start_job(self, name, app_name):
         def start_job():
@@ -87,7 +97,12 @@ class AppScheduler(object):
                 self.running_jobs[name]['running'] = False
 
     def _timer_cb(self, event):
-        schedule.run_pending()
+        try:
+            schedule.run_pending()
+        except TypeError as e:
+            rospy.logerr(e)
+            rospy.logerr('Cannot run pending app')
+            rospy.logerr('Please upgrade schedule module. $ pip install schedule==0.6.0 --user')  # NOQA
 
     def _update_timer_cb(self, event):
         self._update_running_app_names()
