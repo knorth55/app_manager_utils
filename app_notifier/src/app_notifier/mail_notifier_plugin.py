@@ -1,6 +1,6 @@
 import datetime
-import dateutil.parser
 import subprocess
+import sys
 
 import rospy
 
@@ -8,6 +8,14 @@ from app_manager import AppManagerPlugin
 
 from app_notifier.util import get_notification_json_paths
 from app_notifier.util import load_notification_jsons
+
+if ((sys.version_info.major == 3 and sys.version_info.minor >= 7)
+        or (sys.version_info.major > 3)):
+    from datetime import date
+    fromisoformat = date.fromisoformat
+else:
+    import dateutil.parser
+    fromisoformat = dateutil.parser.isoparse
 
 
 class MailNotifierPlugin(AppManagerPlugin):
@@ -57,7 +65,7 @@ class MailNotifierPlugin(AppManagerPlugin):
             for event in notification[n_type]:
                 start_date = datetime.datetime.fromtimestamp(
                     self.start_time.to_sec())
-                if dateutil.parser.isoparse(event['date']) < start_date:
+                if fromisoformat(event['date']) < start_date:
                     continue
                 if event['location'] == "":
                     mail_content += " - At {}, {}.\\n".format(
