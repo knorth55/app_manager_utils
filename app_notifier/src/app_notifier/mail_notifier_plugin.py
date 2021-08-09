@@ -2,9 +2,8 @@ import datetime
 import subprocess
 import sys
 
-import rospy
-
 from app_manager import AppManagerPlugin
+import rospy
 
 from app_notifier.util import get_notification_json_paths
 from app_notifier.util import load_notification_jsons
