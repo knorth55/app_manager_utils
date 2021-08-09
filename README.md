@@ -4,7 +4,7 @@
 
 ## Dependency
 
-- [PR2/app_manager #37](https://github.com/PR2/app_manager/pull/37)
+- [PR2/app_manager kinetic-devel branch](https://github.com/PR2/app_manager)
 
 ## Build
 
