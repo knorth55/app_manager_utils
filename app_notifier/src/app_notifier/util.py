@@ -1,9 +1,19 @@
+import datetime
 import json
 import os
 import rospy
+import sys
 
 from rostwitter.msg import TweetGoal
 from sound_play.msg import SoundRequestGoal
+
+if ((sys.version_info.major == 3 and sys.version_info.minor >= 7)
+        or (sys.version_info.major > 3)):
+    from datetime import date
+    fromisoformat = date.fromisoformat
+else:
+    import dateutil.parser
+    fromisoformat = dateutil.parser.isoparse
 
 
 def speak(client, speech_text, lang=None):
@@ -67,3 +77,8 @@ def load_notification_jsons(json_paths):
             else:
                 notification[n_type] = n_data[n_type]
     return notification
+
+
+def check_timestamp_before_start(timestamp, start_time):
+    start_date = datetime.datetime.fromtimestamp(start_time.to_sec())
+    return fromisoformat(timestamp) < start_date

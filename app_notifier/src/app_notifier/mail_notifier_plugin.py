@@ -1,20 +1,12 @@
 import datetime
 import subprocess
-import sys
 
 from app_manager import AppManagerPlugin
 import rospy
 
+from app_notifier.util import check_timestamp_before_start
 from app_notifier.util import get_notification_json_paths
 from app_notifier.util import load_notification_jsons
-
-if ((sys.version_info.major == 3 and sys.version_info.minor >= 7)
-        or (sys.version_info.major > 3)):
-    from datetime import date
-    fromisoformat = date.fromisoformat
-else:
-    import dateutil.parser
-    fromisoformat = dateutil.parser.isoparse
 
 
 class MailNotifierPlugin(AppManagerPlugin):
@@ -62,9 +54,8 @@ class MailNotifierPlugin(AppManagerPlugin):
         for n_type in notification.keys():
             mail_content += "Following {} is reported.\\n".format(n_type)
             for event in notification[n_type]:
-                start_date = datetime.datetime.fromtimestamp(
-                    self.start_time.to_sec())
-                if fromisoformat(event['date']) < start_date:
+                if check_timestamp_before_start(
+                        event['date'], self.start_time):
                     continue
                 if event['location'] == "":
                     mail_content += " - At {}, {}.\\n".format(

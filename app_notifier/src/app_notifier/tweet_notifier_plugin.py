@@ -1,23 +1,13 @@
-import datetime
-import sys
-
 import actionlib
 from app_manager import AppManagerPlugin
 import rospy
 
+from app_notifier.util import check_timestamp_before_start
 from app_notifier.util import get_notification_json_paths
 from app_notifier.util import load_notification_jsons
 from app_notifier.util import tweet
 
 from rostwitter.msg import TweetAction
-
-if ((sys.version_info.major == 3 and sys.version_info.minor >= 7)
-        or (sys.version_info.major > 3)):
-    from datetime import date
-    fromisoformat = date.fromisoformat
-else:
-    import dateutil.parser
-    fromisoformat = dateutil.parser.isoparse
 
 
 class TweetNotifierPlugin(AppManagerPlugin):
@@ -82,9 +72,8 @@ class TweetNotifierPlugin(AppManagerPlugin):
         notification = load_notification_jsons(json_paths)
         if 'object recognition' in notification:
             for event in notification['object recognition']:
-                start_date = datetime.datetime.fromtimestamp(
-                    self.start_time.to_sec())
-                if fromisoformat(event['date']) < start_date:
+                if check_timestamp_before_start(
+                        event['date'], self.start_time):
                     continue
                 time = event['date'].split('T')[1]
                 tweet_text += " At {}, {} in {}.".format(
