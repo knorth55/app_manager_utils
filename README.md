@@ -54,5 +54,3 @@ For detailed information, please read [app_notification_saver](app_notification_
 Simple test package for `app_manager`
 
 For detailed information, please read [test_app_manager](test_app_manager/README.md).
-
-
