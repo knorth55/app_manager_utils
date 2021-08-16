@@ -29,6 +29,7 @@ In the app, the following plugins are executed according to `test_app.app`.
 
 - test\_start\_plugin
 - test\_stop\_plugin
+- test\_time\_plugin
 - result\_recorder\_plugin
 - video\_recorder\_plugin
 - rosbag\_recorder\_plugin
