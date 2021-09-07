@@ -1,6 +1,7 @@
 # app_manager_utils
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knorth55/app_manager_utils/CI/master)](https://github.com/knorth55/app_manager_utils/actions)
+[![main](https://github.com/knorth55/app_manager_utils/actions/workflows/main.yml/badge.svg)](https://github.com/knorth55/app_manager_utils/actions/workflows/main.yml)
+[![linter](https://github.com/knorth55/app_manager_utils/actions/workflows/linter.yaml/badge.svg)](https://github.com/knorth55/app_manager_utils/actions/workflows/linter.yaml)
 
 ## Dependency
 
