@@ -12,12 +12,12 @@ This plugin publishes ROS topic at the beginning or end of the app.
 
 - `start_topics`: topic which is published at the beginning of app
   - `name`: name of the topic
-    `pkg`: package name of the message
-    `type`: type of the message
+  - `pkg`: package name of the message
+  - `type`: type of the message
 - `stop_topics`: topic which is published at the end of app
   - `name`: name of the topic
-    `pkg`: package name of the message
-    `type`: type of the message
+  - `pkg`: package name of the message
+  - `type`: type of the message
 
 #### `launch_args`: Plugin launch arguments
 
