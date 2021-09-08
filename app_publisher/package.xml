@@ -12,6 +12,7 @@
   <buildtool_depend condition="$ROS_PYTHON_VERSION == 3">python3-setuptools</buildtool_depend>
 
   <exec_depend>app_manager</exec_depend>
+  <exec_depend>rospy_message_converter</exec_depend>
 
   <export>
     <app_manager plugin="${prefix}/app_publisher_plugin.yaml" />

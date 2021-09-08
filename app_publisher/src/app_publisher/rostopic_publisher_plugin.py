@@ -2,6 +2,7 @@ import importlib
 
 from app_manager import AppManagerPlugin
 import rospy
+from rospy_message_converter import message_converter
 
 
 class RostopicPublisherPlugin(AppManagerPlugin):
@@ -14,7 +15,13 @@ class RostopicPublisherPlugin(AppManagerPlugin):
                 '{}.msg'.format(topic['pkg'])), topic['type'])
         pub = rospy.Publisher(topic['name'], msg, queue_size=1)
         rospy.sleep(1)
-        pub.publish(msg())
+        if 'field' in topic:
+            pub_msg = message_converter.convert_dictionary_to_ros_message(
+                '{}/{}'.format(topic['pkg'], topic['type']),
+                topic['field'])
+        else:
+            pub_msg = msg()
+        pub.publish(pub_msg)
 
     def app_manager_start_plugin(self, app, ctx, plugin_args):
         if 'start_topics' not in plugin_args:
