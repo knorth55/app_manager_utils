@@ -9,6 +9,7 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <exec_depend>app_notifier</exec_depend>
+  <exec_depend>app_publisher</exec_depend>
   <exec_depend>app_recorder</exec_depend>
   <exec_depend>app_scheduler</exec_depend>
   <exec_depend>app_uploader</exec_depend>
