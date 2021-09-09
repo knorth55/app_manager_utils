@@ -10,6 +10,35 @@ plugins:
     type: test_app_manager/test_stop_plugin
   - name: test_time_plugin
     type: test_app_manager/test_time_plugin
+  - name: test_rostopic_publisher_plugin
+    type: app_publisher/rostopic_publisher_plugin
+    plugin_args:
+      start_topics:
+        - name: /test_bool
+          pkg: std_msgs
+          type: Bool
+          field:
+            data: true
+      stop_topics:
+        - name: /test_polygon_stamped
+          pkg: geometry_msgs
+          type: PolygonStamped
+          field:
+            header:
+              seq: 0
+              stamp: now
+              frame_id: test
+            polygon:
+              points:
+                - x: 1
+                  y: 0
+                  z: 0
+                - x: 0
+                  y: 1
+                  z: 0
+                - x: 0
+                  y: 0
+                  z: 1
   - name: result_recorder_plugin
     type: app_recorder/result_recorder_plugin
     plugin_args:
@@ -35,6 +64,7 @@ plugin_order:
     - test_start_plugin
     - test_stop_plugin
     - test_time_plugin
+    - test_rostopic_publisher_plugin
     - result_recorder_plugin
     - video_recorder_plugin
     - rosbag_recorder_plugin
@@ -42,6 +72,7 @@ plugin_order:
     - test_start_plugin
     - test_stop_plugin
     - test_time_plugin
+    - test_rostopic_publisher_plugin
     - result_recorder_plugin
     - video_recorder_plugin
     - rosbag_recorder_plugin
