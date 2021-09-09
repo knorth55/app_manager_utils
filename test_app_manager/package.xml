@@ -13,6 +13,7 @@
 
   <exec_depend>app_manager</exec_depend>
   <exec_depend>pr2_gazebo</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
 
   <export>
     <!-- <app_manager app_dir="${prefix}/apps"/> -->
