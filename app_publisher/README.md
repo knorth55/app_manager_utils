@@ -27,34 +27,35 @@ This plugin publishes ROS topic at the beginning or end of the app.
 #### Sample plugin description
 
 ```yaml
-plugin_args:
-  start_topics:
-    - name: /test_bool
-      pkg: std_msgs
-      type: Bool
-    - name: /test_polygon_stamped
-      pkg: geometry_msgs
-      type: PolygonStamped
-      field:
-        header:
-          seq: 0
-          stamp:
-            secs: 1631124596
-            nsecs: 589318
-          frame_id: /test
-        polygon:
-          points:
-            - x: 1
-              y: 0
-              z: 0
-            - x: 0
-              y: 1
-              z: 0
-            - x: 0
-              y: 0
-              z: 1
-  stop_topics:
-    - name: /test_cancel
-      pkg: actionlib_msgs
-      type: GoalID
+plugins
+  - name: rostopic_publisher_plugin
+    type: app_publisher/rostopic_publisher_plugin
+    plugin_args:
+      start_topics:
+        - name: /test_bool
+          pkg: std_msgs
+          type: Bool
+        - name: /test_polygon_stamped
+          pkg: geometry_msgs
+          type: PolygonStamped
+          field:
+            header:
+              seq: 0
+              stamp: now
+              frame_id: test
+            polygon:
+              points:
+                - x: 1
+                  y: 0
+                  z: 0
+                - x: 0
+                  y: 1
+                  z: 0
+                - x: 0
+                  y: 0
+                  z: 1
+      stop_topics:
+        - name: /test_cancel
+          pkg: actionlib_msgs
+          type: GoalID
 ```
