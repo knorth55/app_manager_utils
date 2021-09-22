@@ -11,23 +11,26 @@ class UserSpeechNotifierPlugin(AppManagerPlugin):
     def __init__(self):
         super(UserSpeechNotifierPlugin, self).__init__()
         self.client = None
+        self.username = rospy.get_param('/app_manager/running_user_name', None)
+        self.username = self.username.replace('_', ' ')
+        self.username = self.username.replace('-', ' ')
 
-    @classmethod
-    def app_manager_start_plugin(cls, app, ctx, plugin_args):
+    def app_manager_start_plugin(self, app, ctx, plugin_args):
         client_name = plugin_args['client_name']
         if 'warning' in plugin_args:
             warning = plugin_args['warning']
         else:
             warning = False
-        username = rospy.get_param('/app_manager/running_user_name', None)
-
+        display_name = app.display_name
+        display_name = display_name.replace('_', ' ')
+        display_name = display_name.replace('-', ' ')
         speech_text = None
-        if username:
+        if self.username:
             speech_text = "{} is starting {} app".format(
-                username, app.display_name)
+                self.username, display_name)
         elif warning:
             speech_text = "Unknown user is starting {} app".format(
-                app.display_name)
+                display_name)
 
         if speech_text is not None:
             lang = None

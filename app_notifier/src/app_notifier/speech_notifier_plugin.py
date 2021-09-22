@@ -23,6 +23,8 @@ class SpeechNotifierPlugin(AppManagerPlugin):
             lang = plugin_args['lang']
 
         display_name = app.display_name
+        display_name = display_name.replace('_', ' ')
+        display_name = display_name.replace('-', ' ')
         client = actionlib.SimpleActionClient(client_name, SoundRequestAction)
         speech_text = "I'm starting {} app.".format(display_name)
         speak(client, speech_text, lang=lang)
@@ -35,6 +37,8 @@ class SpeechNotifierPlugin(AppManagerPlugin):
             lang = plugin_args['lang']
 
         display_name = app.display_name
+        display_name = display_name.replace('_', ' ')
+        display_name = display_name.replace('-', ' ')
         client = actionlib.SimpleActionClient(client_name, SoundRequestAction)
         if ctx['exit_code'] == 0 and not ctx['stopped']:
             speech_text = "I succeeded in doing {} app.".format(display_name)
