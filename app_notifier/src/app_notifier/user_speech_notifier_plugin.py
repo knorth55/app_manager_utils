@@ -40,3 +40,30 @@ class UserSpeechNotifierPlugin(AppManagerPlugin):
                 client_name, SoundRequestAction)
             speak(client, speech_text, lang=lang)
         return ctx
+
+    def app_manager_stop_plugin(self, app, ctx, plugin_args):
+        client_name = plugin_args['client_name']
+        if 'warning' in plugin_args:
+            warning = plugin_args['warning']
+        else:
+            warning = False
+
+        display_name = app.display_name
+        display_name = display_name.replace('_', ' ')
+        display_name = display_name.replace('-', ' ')
+        speech_text = None
+        if self.username:
+            speech_text = "{} is stopping {} app".format(
+                self.username, display_name)
+        elif warning:
+            speech_text = "Unknown user is stopping {} app".format(
+                display_name)
+
+        if speech_text is not None:
+            lang = None
+            if 'lang' in plugin_args:
+                lang = plugin_args['lang']
+            client = actionlib.SimpleActionClient(
+                client_name, SoundRequestAction)
+            speak(client, speech_text, lang=lang)
+        return ctx
