@@ -12,8 +12,9 @@ class UserSpeechNotifierPlugin(AppManagerPlugin):
         super(UserSpeechNotifierPlugin, self).__init__()
         self.client = None
         self.username = rospy.get_param('/app_manager/running_user_name', None)
-        self.username = self.username.replace('_', ' ')
-        self.username = self.username.replace('-', ' ')
+        if self.username is not None:
+            self.username = self.username.replace('_', ' ')
+            self.username = self.username.replace('-', ' ')
 
     def app_manager_start_plugin(self, app, ctx, plugin_args):
         client_name = plugin_args['client_name']
