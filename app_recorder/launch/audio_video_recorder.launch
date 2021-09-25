@@ -8,11 +8,20 @@
   <arg name="audio_format" />
   <arg name="audio_sample_format" />
   <arg name="video_topic_name" />
+  <arg name="use_compressed" default="false" />
+  <arg name="video_compressed_topic_name" default="" />
   <arg name="video_height" />
   <arg name="video_width" />
   <arg name="video_framerate" />
   <arg name="video_encoding" />
   <!-- end: arguments -->
+
+  <node if="$(arg use_compressed)"
+        name="$(anon audio_video_recorder_rgb_decompress)" pkg="image_transport" type="republish"
+        args="compressed raw">
+    <remap from="in" to="$(arg video_compressed_topic_name)" />
+    <remap from="out" to="$(arg video_topic_name)" />
+  </node>
 
   <node name="$(anon audio_video_recorder)" pkg="audio_video_recorder"
         type="audio_video_recorder" output="screen">

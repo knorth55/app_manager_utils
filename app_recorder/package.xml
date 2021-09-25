@@ -13,6 +13,7 @@
   <exec_depend>app_manager</exec_depend>
   <exec_depend>audio_play</exec_depend>
   <exec_depend>audio_video_recorder</exec_depend>
+  <exec_depend>image_transport</exec_depend>
   <exec_depend>image_view</exec_depend>
 
   <export>
