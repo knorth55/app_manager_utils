@@ -3,9 +3,18 @@
   <arg name="video_path" />
   <arg name="video_title" />
   <arg name="video_topic_name" />
+  <arg name="use_compressed" default="false" />
+  <arg name="video_compressed_topic_name" />
   <arg name="video_fps" />
   <arg name="video_codec" default="XVID" />
   <!-- end: arguments -->
+
+  <node if="$(arg use_compressed)"
+        name="rgb_decompress" pkg="image_transport" type="republish"
+        args="compressed raw">
+    <remap from="in" to="$(arg video_compressed_topic_name)" />
+    <remap from="out" to="$(arg video_topic_name)" />
+  </node>
 
   <node name="$(anon video_recorder)" pkg="image_view" type="video_recorder">
     <remap from="image" to="$(arg video_topic_name)" />
