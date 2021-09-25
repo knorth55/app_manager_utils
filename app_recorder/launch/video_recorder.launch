@@ -13,6 +13,8 @@
   <arg name="machine_name" default="localhost" />
   <!-- end: arguments -->
 
+  <include if="$(arg use_machine)" file="$(arg machine_file)" />
+
   <node if="$(arg use_compressed)"
         name="$(anon video_recorder_rgb_decompress)" pkg="image_transport" type="republish"
         args="compressed raw">
