@@ -14,7 +14,13 @@
   <arg name="video_width" />
   <arg name="video_framerate" />
   <arg name="video_encoding" />
+  <arg name="use_machine" default="false" />
+  <arg name="machine_file" />
+  <machine name="localhost" address="localhost" />
+  <arg name="machine_name" default="localhost" />
   <!-- end: arguments -->
+
+  <include if="$(arg use_machine)" file="$(arg machine_file)" />
 
   <node if="$(arg use_compressed)"
         name="$(anon audio_video_recorder_rgb_decompress)" pkg="image_transport" type="republish"
@@ -24,7 +30,7 @@
   </node>
 
   <node name="$(anon audio_video_recorder)" pkg="audio_video_recorder"
-        type="audio_video_recorder" output="screen">
+        type="audio_video_recorder" output="screen" machine="$(arg machine_name)">
     <remap from="~input/audio" to="$(arg audio_topic_name)" />
     <remap from="~input/image" to="$(arg video_topic_name)" />
     <rosparam subst_value="true">

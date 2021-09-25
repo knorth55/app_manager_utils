@@ -7,7 +7,13 @@
   <arg name="video_compressed_topic_name" default="" />
   <arg name="video_fps" />
   <arg name="video_codec" default="XVID" />
+  <arg name="use_machine" default="false" />
+  <arg name="machine_file" />
+  <machine name="localhost" address="localhost" />
+  <arg name="machine_name" default="localhost" />
   <!-- end: arguments -->
+
+  <include if="$(arg use_machine)" file="$(arg machine_file)" />
 
   <node if="$(arg use_compressed)"
         name="$(anon video_recorder_rgb_decompress)" pkg="image_transport" type="republish"
@@ -16,7 +22,8 @@
     <remap from="out" to="$(arg video_topic_name)" />
   </node>
 
-  <node name="$(anon video_recorder)" pkg="image_view" type="video_recorder">
+  <node name="$(anon video_recorder)" pkg="image_view" type="video_recorder"
+        machine="$(arg machine_name)">
     <remap from="image" to="$(arg video_topic_name)" />
     <rosparam subst_value="true">
       filename: $(arg video_path)/$(arg video_title)
