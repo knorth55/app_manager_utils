@@ -9,7 +9,7 @@
   <arg name="audio_sample_format" />
   <arg name="video_topic_name" />
   <arg name="use_compressed" default="false" />
-  <arg name="video_compressed_topic_name" />
+  <arg name="video_compressed_topic_name" default="" />
   <arg name="video_height" />
   <arg name="video_width" />
   <arg name="video_framerate" />
