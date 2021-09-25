@@ -4,7 +4,7 @@
   <arg name="video_title" />
   <arg name="video_topic_name" />
   <arg name="use_compressed" default="false" />
-  <arg name="video_compressed_topic_name" />
+  <arg name="video_compressed_topic_name" default="" />
   <arg name="video_fps" />
   <arg name="video_codec" default="XVID" />
   <!-- end: arguments -->
