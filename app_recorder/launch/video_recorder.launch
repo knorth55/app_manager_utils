@@ -2,7 +2,7 @@
   <!-- start: arguments -->
   <arg name="video_path" />
   <arg name="video_title" />
-  <arg name="video_topic_name" default="" />
+  <arg name="video_topic_name" />
   <arg name="use_compressed" default="false" />
   <arg name="video_compressed_topic_name" default="" />
   <arg name="video_fps" />
