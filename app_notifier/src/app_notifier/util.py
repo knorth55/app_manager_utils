@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import datetime
 import json
 import os
@@ -12,8 +14,18 @@ if ((sys.version_info.major == 3 and sys.version_info.minor >= 7)
     from datetime import date
     fromisoformat = date.fromisoformat
 else:
-    import dateutil.parser
-    fromisoformat = dateutil.parser.isoparse
+    try:
+        import dateutil.parser
+        fromisoformat = dateutil.parser.isoparse
+    except AttributeError as e:
+        print('''
+    We need python-dateutil>=2.7.0 for timestamp check.
+    Please try the following command.
+        pip install python-dateutil==2.7.0
+
+''', file=sys.stderr)
+        print(e, file=sys.stderr)
+        fromisoformat = None
 
 
 def speak(client, speech_text, lang=None):
@@ -80,5 +92,9 @@ def load_notification_jsons(json_paths):
 
 
 def check_timestamp_before_start(timestamp, start_time):
+    if fromisoformat is None:
+        print('Please install python-dateutil >= 2.7.0', file=sys.stderr)
+        print('Skip timestap checking', file=sys.stderr)
+        return False
     start_date = datetime.datetime.fromtimestamp(start_time.to_sec())
     return fromisoformat(timestamp) < start_date
