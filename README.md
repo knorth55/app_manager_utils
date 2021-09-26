@@ -6,6 +6,7 @@
 ## Dependency
 
 - [PR2/app_manager kinetic-devel branch](https://github.com/PR2/app_manager)
+- [python-dateutil >= 2.7.0](https://github.com/dateutil/dateutil)
 
 ## Build
 
