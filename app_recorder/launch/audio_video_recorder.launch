@@ -16,11 +16,11 @@
   <arg name="video_framerate" />
   <arg name="video_encoding" />
   <arg name="use_machine" default="false" />
-  <arg name="machine_file" />
-  <machine name="localhost" address="localhost" />
   <arg name="machine_name" default="localhost" />
+  <arg name="machine_file" default="" />
   <!-- end: arguments -->
 
+  <machine name="localhost" address="localhost" />
   <include if="$(arg use_machine)" file="$(arg machine_file)" />
 
   <group if="$(arg use_compressed)">
