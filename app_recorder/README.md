@@ -14,18 +14,40 @@ This plugin records video data with audio during when an app is running.
 
 #### `launch_args`: Plugin launch arguments
 
-- `video_path`: video file directory path
-- `video_title`: video file name
-- `audio_topic_name`: image topic name for audio
-- `audio_channels`: audio channels
-- `audio_sample_rate`: audio sample rate
-- `audio_format`: audio format
-- `audio_sample_format`: audio sample format
-- `video_topic_name`: image topic name for video
-- `video_height`: video height
-- `video_width`: video width
-- `video_framerate`: video framerate
-- `video_encoding`: video encoding
+- `video_path`:
+  - video file directory path
+- `video_title`:
+  - video file name
+- `audio_topic_name`:
+  - image topic name for audio
+- `audio_channels`:
+  - audio channels
+- `audio_sample_rate`:
+  - audio sample rate
+- `audio_format`:
+  - audio format
+- `audio_sample_format`:
+  - audio sample format
+- `video_topic_name`:
+  - image topic name for video
+- `video_height`:
+  - video height
+- `video_width`:
+  - video width
+- `video_framerate`:
+  - video framerate
+- `video_encoding`:
+  - video encoding
+- `use_comrpressed`: (default: `False`)
+  - Use compressed image topic or not
+- `video_decompressed_topic_name`:
+  - decompressed image topic name when `use_comrpressed` is `True`
+- `use_machine`: (default: `False`)
+  - Use machine tag or not
+- `machine_name`:
+  - machine name when `use_machine` is `True`
+- `machine_file`:
+  - machine file path when `use_machine` is `True`
 
 #### Sample plugin description
 
@@ -58,11 +80,26 @@ This plugin records video data during when an app is running.
 
 #### `launch_args`: Plugin launch arguments
 
-- `video_path`: video file directory path
-- `video_title`: video file name
-- `video_topic_name`: image topic name for video
-- `video_fps`: video fps
-- `video_codec` (default: `XVID`): video codec
+- `video_path`:
+  - video file directory path
+- `video_title`:
+  - video file name
+- `video_topic_name`:
+  - image topic name for video
+- `video_fps`:
+  - video fps
+- `video_codec`: (default: `XVID`)
+  - video codec
+- `use_comrpressed`: (default: `False`)
+  - Use compressed image topic or not
+- `video_decompressed_topic_name`:
+  - decompressed image topic name when `use_comrpressed` is `True`
+- `use_machine`: (default: `False`)
+  - Use machine tag or not
+- `machine_name`:
+  - machine name when `use_machine` is `True`
+- `machine_file`:
+  - machine file path when `use_machine` is `True`
 
 #### Sample plugin description
 
@@ -87,10 +124,20 @@ This plugin records audio data during when an app is running.
 
 #### `launch_args`: Plugin launch arguments
 
-- `audio_path`: audio file directory path
-- `audio_title`: audio file name
-- `audio_topic_name`: image topic name for audio
-- `audio_format`(default: `wave`): audio format
+- `audio_path`:
+  - audio file directory path
+- `audio_title`:
+  - audio file name
+- `audio_topic_name`:
+  - image topic name for audio
+- `audio_format`: (default: `wave`)
+  - audio format
+- `use_machine`: (default: `False`)
+  - Use machine tag or not
+- `machine_name`:
+  - machine name when `use_machine` is `True`
+- `machine_file`:
+  - machine file path when `use_machine` is `True`
 
 #### Sample plugin description
 
@@ -115,10 +162,20 @@ This plugin records rosbag data during when an app is running.
 
 #### `launch_args`: Plugin launch arguments
 
-- `rosbag_path`: rosbag file directory path
-- `rosbag_title`: rosbag file name
-- `rosbag_topic_names`: topic names for rosbag
-- `compress` (default: `False`): compress rosbag or not
+- `rosbag_path`:
+  - rosbag file directory path
+- `rosbag_title`:
+  - rosbag file name
+- `rosbag_topic_names`:
+  - topic names for rosbag
+- `compress`: (default: `False`)
+  - compress rosbag or not
+- `use_machine`: (default: `False`)
+  - Use machine tag or not
+- `machine_name`:
+  - machine name when `use_machine` is `True`
+- `machine_file`:
+  - machine file path when `use_machine` is `True`
 
 #### Sample plugin description
 
