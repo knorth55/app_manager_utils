@@ -2,8 +2,8 @@
 Changelog for package app_scheduler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2021-10-06)
+------------------
 * Merge pull request `#25 <https://github.com/knorth55/app_manager_utils/issues/25>`_ from knorth55/app-scheduler-logerr
   [app_scheduler] add more logerr in app_scheduler
 * add more logerr in app_scheduler

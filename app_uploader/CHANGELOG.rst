@@ -2,8 +2,8 @@
 Changelog for package app_uploader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2021-10-06)
+------------------
 * update README.md
 * update for noetic
 * Merge pull request `#12 <https://github.com/knorth55/app_manager_utils/issues/12>`_ from knorth55/add-superlinter

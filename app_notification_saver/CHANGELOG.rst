@@ -2,8 +2,8 @@
 Changelog for package app_notification_saver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2021-10-06)
+------------------
 * add python-dateutil in package.xml
 * update app_notification_saver/README.md
 * update app_notification_saver/README.md

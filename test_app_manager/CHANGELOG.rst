@@ -2,8 +2,8 @@
 Changelog for package test_app_manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2021-10-06)
+------------------
 * Merge pull request `#28 <https://github.com/knorth55/app_manager_utils/issues/28>`_ from 708yamaguchi/topic-field
   Use topic field in rostopic_publisher_plugin.py
 * add std_msgs in test_app_manager

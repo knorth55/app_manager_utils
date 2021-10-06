@@ -2,8 +2,8 @@
 Changelog for package app_recorder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.1 (2021-10-06)
+------------------
 * update readme
 * add machine tag in rosbag_recorder
 * add machine tag in audio_recorder.launch
