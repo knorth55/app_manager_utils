@@ -15,6 +15,8 @@ You can set schedule with `schedule` python package syntax.
 ```yaml
 - name: sample0
   app_name: app_scheduler/sample0
+  app_args:
+  - hoge: fuga
   app_schedule:
     start: every(2).minutes.at(":00")
 - name: sample1

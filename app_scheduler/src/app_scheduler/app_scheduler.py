@@ -46,7 +46,14 @@ class AppScheduler(object):
 
     def _register_app(self, app):
         app_schedule = app['app_schedule']
-        start_job = self._create_start_job(app['name'], app['app_name'])  # NOQA
+        name = app['name']
+        app_name = app['app_name']
+        # default app_args is []
+        if 'app_args' in app:
+            app_args = app['app_args']
+        else:
+            app_args = []
+        start_job = self._create_start_job(name, app_name, app_args)  # NOQA
         try:
             eval('schedule.{}.do(start_job)'.format(app_schedule['start']))
         except (AssertionError, ValueError) as e:
@@ -54,7 +61,7 @@ class AppScheduler(object):
             rospy.logerr('Cannot register start app')
             rospy.logerr('Please upgrade schedule module. $ pip install schedule==0.6.0 --user')  # NOQA
         if 'stop' in app_schedule:
-            stop_job = self._create_stop_job(app['name'], app['app_name'])  # NOQA
+            stop_job = self._create_stop_job(name, app_name)  # NOQA
             try:
                 eval('schedule.{}.do(stop_job)'.format(app_schedule['stop']))
             except ValueError as e:
@@ -62,13 +69,14 @@ class AppScheduler(object):
                 rospy.logerr('Cannot register stop app')
                 rospy.logerr('Please upgrade schedule module. $ pip install schedule==0.6.0 --user')  # NOQA
 
-    def _create_start_job(self, name, app_name):
+    def _create_start_job(self, name, app_name, app_args):
         def start_job():
-            start_req = StartAppRequest(name=app_name)
+            start_req = StartAppRequest(
+                name=app_name, args=app_args)
             start_res = self.start_app(start_req)
             if not start_res.started:
-                rospy.logerr('Failed to start app: {}, {}'.format(
-                    name, app_name))
+                rospy.logerr('Failed to start app: {}, {}, {}'.format(
+                    name, app_name, app_args))
                 rospy.logerr('StartApp error code: {}'.format(
                     start_res.error_code))
                 rospy.logerr('StartApp error message: {}'.format(
