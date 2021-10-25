@@ -7,7 +7,9 @@ import schedule
 from app_manager.msg import AppList
 from app_manager.msg import AppStatus
 from app_manager.srv import StartApp
+from app_manager.srv import StartAppRequest
 from app_manager.srv import StopApp
+from app_manager.srv import StopAppRequest
 
 
 class AppScheduler(object):
@@ -62,7 +64,8 @@ class AppScheduler(object):
 
     def _create_start_job(self, name, app_name):
         def start_job():
-            start_res = self.start_app(app_name)
+            start_req = StartAppRequest(name=app_name)
+            start_res = self.start_app(start_req)
             if not start_res.started:
                 rospy.logerr('Failed to start app: {}, {}'.format(
                     name, app_name))
@@ -79,7 +82,8 @@ class AppScheduler(object):
     def _create_stop_job(self, name, app_name):
         def stop_job():
             if app_name in self.running_app_names:
-                stop_res = self.stop_app(app_name)
+                stop_req = StopAppRequest(name=app_name)
+                stop_res = self.stop_app(stop_req)
                 if not stop_res.stopped:
                     rospy.logerr('Failed to stop app: {}, {}'.format(
                         name, app_name))
