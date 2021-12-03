@@ -208,7 +208,7 @@ class AppScheduler(object):
         res = AddEntryResponse()
         return res
 
-    def _handler_remove_entry(self, req):
+    def _srv_remove_entry_cb(self, req):
         self._remove_entry(req.name)
         self._publish_app_schedules()
         res = RemoveEntryResponse()
