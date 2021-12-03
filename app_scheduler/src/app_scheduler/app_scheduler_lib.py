@@ -11,8 +11,8 @@ from app_manager.srv import StartApp
 from app_manager.srv import StartAppRequest
 from app_manager.srv import StopApp
 from app_manager.srv import StopAppRequest
-from app_scheduler.msg import AppScheduleEntry
 from app_scheduler.msg import AppScheduleEntries
+from app_scheduler.msg import AppScheduleEntry
 from app_scheduler.srv import AddEntry
 from app_scheduler.srv import AddEntryResponse
 from app_scheduler.srv import RemoveEntry
@@ -66,7 +66,7 @@ class AppScheduler(object):
 
     def _remove_entry(self, name):
         with self.app_lock:
-            self.apps = [ app for app in self.apps if app['name'] != name ]
+            self.apps = [app for app in self.apps if app['name'] != name]
             self._unregister_app(name)
 
     def _publish_app_schedules(self):
@@ -76,9 +76,9 @@ class AppScheduler(object):
                 entry = AppScheduleEntry()
                 entry.name = app['name']
                 entry.app_name = app['app_name']
-                if app['app_schedule'].has_key('start'):
+                if 'start' in app['app_schedule']:
                     entry.app_schedule.start = app['app_schedule']['start']
-                if app['app_schedule'].has_key('stop'):
+                if 'stop' in app['app_schedule']:
                     entry.app_schedule.start = app['app_schedule']['stop']
                 msg.entries.append(entry)
         self.pub_schedules.publish(msg)
@@ -105,7 +105,8 @@ class AppScheduler(object):
             app_args = []
         start_job = self._create_start_job(name, app_name, app_args)  # NOQA
         try:
-            eval('schedule.{}.do(start_job).tag(\'{}\')'.format(app_schedule['start'], app['name']))
+            eval('schedule.{}.do(start_job).tag(\'{}\')'.format(
+                                        app_schedule['start'], app['name']))
         except (AssertionError, ValueError) as e:
             rospy.logerr(e)
             rospy.logerr('Cannot register start app')
@@ -113,7 +114,8 @@ class AppScheduler(object):
         if 'stop' in app_schedule:
             stop_job = self._create_stop_job(name, app_name)  # NOQA
             try:
-                eval('schedule.{}.do(stop_job).tag(\'{}\')'.format(app_schedule['stop'], app['name']))
+                eval('schedule.{}.do(stop_job).tag(\'{}\')'.format(
+                                        app_schedule['stop'], app['name']))
             except ValueError as e:
                 rospy.logerr(e)
                 rospy.logerr('Cannot register stop app')
@@ -212,4 +214,3 @@ class AppScheduler(object):
         res = RemoveEntryResponse()
         res.success = True
         return res
-
