@@ -202,7 +202,7 @@ class AppScheduler(object):
             # ERROR
             rospy.logerr('app_scheduler: {}'.format(msg.status))
 
-    def _handler_add_entry(self, req):
+    def _srv_add_entry_cb(self, req):
         self._add_entry(req.entry)
         self._publish_app_schedules()
         res = AddEntryResponse()
