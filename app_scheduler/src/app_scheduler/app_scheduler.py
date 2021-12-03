@@ -10,6 +10,7 @@ from app_manager.srv import StartApp
 from app_manager.srv import StartAppRequest
 from app_manager.srv import StopApp
 from app_manager.srv import StopAppRequest
+from app_scheduler.msg import AppScheduleEntry, AppScheduleEntries
 
 
 class AppScheduler(object):
@@ -27,11 +28,26 @@ class AppScheduler(object):
         self.job_timer = rospy.Timer(rospy.Duration(duration), self._timer_cb)
         self.update_timer = rospy.Timer(
             rospy.Duration(update_duration), self._update_timer_cb)
+        self.pub_schedules = rospy.Publisher(
+            '~app_schedules', AppScheduleEntries, queue_size=1)
         self.sub = rospy.Subscriber(
             '/{}/application/app_status'.format(self.robot_name),
             AppStatus, self._sub_cb)
         self._load_yaml()
         self._register_apps()
+
+    def _publish_app_schedules(self):
+        msg = AppScheduleEntries()
+        for app in self.apps:
+            entry = AppScheduleEntry()
+            entry.name = app['name']
+            entry.app_name = app['app_name']
+            if app['app_schedule'].has_key('start'):
+                entry.app_schedule.start = app['app_schedule']['start']
+            if app['app_schedule'].has_key('stop'):
+                entry.app_schedule.start = app['app_schedule']['stop']
+            msg.entries.append(entry)
+        self.pub_schedules.publish(msg)
 
     def _load_yaml(self):
         with open(self.yaml_path, 'r') as yaml_f:
@@ -133,6 +149,7 @@ class AppScheduler(object):
     def _update_timer_cb(self, event):
         self._update_running_app_names()
         self._update_running_jobs()
+        self._publish_app_schedules()
 
     def _sub_cb(self, msg):
         if msg.type == AppStatus.INFO:
