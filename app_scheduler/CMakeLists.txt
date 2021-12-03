@@ -16,6 +16,12 @@ add_message_files(
     AppScheduleEntries.msg
 )
 
+add_service_files(
+    FILES
+    AddEntry.srv
+    RemoveEntry.srv
+)
+
 generate_messages()
 
 catkin_package(
