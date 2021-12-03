@@ -108,7 +108,7 @@ class AppScheduler(object):
             app_args = []
         start_job = self._create_start_job(name, app_name, app_args)  # NOQA
         try:
-            eval('schedule.{}.do(start_job).tag(\'{}\')'.format(app_schedule['start'],app['name']))
+            eval('schedule.{}.do(start_job).tag(\'{}\')'.format(app_schedule['start'], app['name']))
         except (AssertionError, ValueError) as e:
             rospy.logerr(e)
             rospy.logerr('Cannot register start app')
