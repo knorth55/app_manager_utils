@@ -116,7 +116,7 @@ class AppScheduler(object):
         if 'stop' in app_schedule:
             stop_job = self._create_stop_job(name, app_name)  # NOQA
             try:
-                eval('schedule.{}.do(stop_job).tag(\'{}\')'.format(app_schedule['stop'],app['name']))
+                eval('schedule.{}.do(stop_job).tag(\'{}\')'.format(app_schedule['stop'], app['name']))
             except ValueError as e:
                 rospy.logerr(e)
                 rospy.logerr('Cannot register stop app')
