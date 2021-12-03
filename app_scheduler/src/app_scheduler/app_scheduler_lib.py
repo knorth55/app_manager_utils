@@ -60,30 +60,27 @@ class AppScheduler(object):
         rospy.loginfo(
             'register app schedule => name: {0}, app_name: {1}'.format(
                 app['name'], app['app_name']))
-        self.app_lock.acquire()
-        self.apps.append(app)
-        self._register_app(app)
-        self.app_lock.release()
+        with self.app_lock:
+            self.apps.append(app)
+            self._register_app(app)
 
     def _remove_entry(self, name):
-        self.app_lock.acquire()
-        self.apps = [ app for app in self.apps if app['name'] != name ]
-        self._unregister_app(name)
-        self.app_lock.release()
+        with self.app_lock:
+            self.apps = [ app for app in self.apps if app['name'] != name ]
+            self._unregister_app(name)
 
     def _publish_app_schedules(self):
         msg = AppScheduleEntries()
-        self.app_lock.acquire()
-        for app in self.apps:
-            entry = AppScheduleEntry()
-            entry.name = app['name']
-            entry.app_name = app['app_name']
-            if app['app_schedule'].has_key('start'):
-                entry.app_schedule.start = app['app_schedule']['start']
-            if app['app_schedule'].has_key('stop'):
-                entry.app_schedule.start = app['app_schedule']['stop']
-            msg.entries.append(entry)
-        self.app_lock.release()
+        with self.app_lock:
+            for app in self.apps:
+                entry = AppScheduleEntry()
+                entry.name = app['name']
+                entry.app_name = app['app_name']
+                if app['app_schedule'].has_key('start'):
+                    entry.app_schedule.start = app['app_schedule']['start']
+                if app['app_schedule'].has_key('stop'):
+                    entry.app_schedule.start = app['app_schedule']['stop']
+                msg.entries.append(entry)
         self.pub_schedules.publish(msg)
 
     def _load_yaml(self):
@@ -206,11 +203,13 @@ class AppScheduler(object):
         self._add_entry(req.entry)
         self._publish_app_schedules()
         res = AddEntryResponse()
+        res.success = True
         return res
 
     def _srv_remove_entry_cb(self, req):
         self._remove_entry(req.name)
         self._publish_app_schedules()
         res = RemoveEntryResponse()
+        res.success = True
         return res
 
