@@ -43,7 +43,7 @@ class AppScheduler(object):
         self.srv_add_entry = rospy.Service(
             '~add_entry', AddEntry, self._srv_add_entry_cb)
         self.srv_remove_entry = rospy.Service(
-            '~remove_entry', RemoveEntry, self._handler_remove_entry)
+            '~remove_entry', RemoveEntry, self._srv_remove_entry_cb)
         self._load_yaml()
         self._register_apps()
 
