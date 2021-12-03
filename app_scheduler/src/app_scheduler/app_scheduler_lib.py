@@ -41,7 +41,7 @@ class AppScheduler(object):
             '/{}/application/app_status'.format(self.robot_name),
             AppStatus, self._sub_cb)
         self.srv_add_entry = rospy.Service(
-            '~add_entry', AddEntry, self._handler_add_entry)
+            '~add_entry', AddEntry, self._srv_add_entry_cb)
         self.srv_remove_entry = rospy.Service(
             '~remove_entry', RemoveEntry, self._handler_remove_entry)
         self._load_yaml()
