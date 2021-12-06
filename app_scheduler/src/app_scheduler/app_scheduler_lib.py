@@ -49,10 +49,10 @@ class AppScheduler(object):
 
     def _add_entry(self, entry):
         app = {
-                'name': entry.name,
-                'app_name': entry.app_name,
-                'app_schedule': {}
-                }
+            'name': entry.name,
+            'app_name': entry.app_name,
+            'app_schedule': {}
+        }
         if entry.app_schedule.start != '':
             app['app_schedule']['start'] = entry.app_schedule.start
         if entry.app_schedule.stop != '':
@@ -106,7 +106,7 @@ class AppScheduler(object):
         start_job = self._create_start_job(name, app_name, app_args)  # NOQA
         try:
             eval('schedule.{}.do(start_job).tag(\'{}\')'.format(
-                                        app_schedule['start'], app['name']))
+                app_schedule['start'], app['name']))
         except (AssertionError, ValueError) as e:
             rospy.logerr(e)
             rospy.logerr('Cannot register start app')
@@ -115,7 +115,7 @@ class AppScheduler(object):
             stop_job = self._create_stop_job(name, app_name)  # NOQA
             try:
                 eval('schedule.{}.do(stop_job).tag(\'{}\')'.format(
-                                        app_schedule['stop'], app['name']))
+                    app_schedule['stop'], app['name']))
             except ValueError as e:
                 rospy.logerr(e)
                 rospy.logerr('Cannot register stop app')
