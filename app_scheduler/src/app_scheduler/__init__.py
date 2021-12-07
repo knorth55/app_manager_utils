@@ -1,1 +1,1 @@
-from .app_scheduler import AppScheduler  # NOQA
+from .app_scheduler_lib import AppScheduler  # NOQA

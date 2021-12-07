@@ -3,6 +3,7 @@ import yaml
 import rospy
 
 import schedule
+import threading
 
 from app_manager.msg import AppList
 from app_manager.msg import AppStatus
@@ -10,6 +11,12 @@ from app_manager.srv import StartApp
 from app_manager.srv import StartAppRequest
 from app_manager.srv import StopApp
 from app_manager.srv import StopAppRequest
+from app_scheduler.msg import AppScheduleEntries
+from app_scheduler.msg import AppScheduleEntry
+from app_scheduler.srv import AddEntry
+from app_scheduler.srv import AddEntryResponse
+from app_scheduler.srv import RemoveEntry
+from app_scheduler.srv import RemoveEntryResponse
 
 
 class AppScheduler(object):
@@ -24,14 +31,57 @@ class AppScheduler(object):
             '/{}/start_app'.format(self.robot_name), StartApp)
         self.stop_app = rospy.ServiceProxy(
             '/{}/stop_app'.format(self.robot_name), StopApp)
+        self.app_lock = threading.Lock()
         self.job_timer = rospy.Timer(rospy.Duration(duration), self._timer_cb)
         self.update_timer = rospy.Timer(
             rospy.Duration(update_duration), self._update_timer_cb)
+        self.pub_schedules = rospy.Publisher(
+            '~app_schedules', AppScheduleEntries, queue_size=1)
         self.sub = rospy.Subscriber(
             '/{}/application/app_status'.format(self.robot_name),
             AppStatus, self._sub_cb)
+        self.srv_add_entry = rospy.Service(
+            '~add_entry', AddEntry, self._srv_add_entry_cb)
+        self.srv_remove_entry = rospy.Service(
+            '~remove_entry', RemoveEntry, self._srv_remove_entry_cb)
         self._load_yaml()
         self._register_apps()
+
+    def _add_entry(self, entry):
+        app = {
+            'name': entry.name,
+            'app_name': entry.app_name,
+            'app_schedule': {}
+        }
+        if entry.app_schedule.start != '':
+            app['app_schedule']['start'] = entry.app_schedule.start
+        if entry.app_schedule.stop != '':
+            app['app_schedule']['stop'] = entry.app_schedule.stop
+        rospy.loginfo(
+            'register app schedule => name: {0}, app_name: {1}'.format(
+                app['name'], app['app_name']))
+        with self.app_lock:
+            self.apps.append(app)
+            self._register_app(app)
+
+    def _remove_entry(self, name):
+        with self.app_lock:
+            self.apps = [app for app in self.apps if app['name'] != name]
+            self._unregister_app(name)
+
+    def _publish_app_schedules(self):
+        msg = AppScheduleEntries()
+        with self.app_lock:
+            for app in self.apps:
+                entry = AppScheduleEntry()
+                entry.name = app['name']
+                entry.app_name = app['app_name']
+                if 'start' in app['app_schedule']:
+                    entry.app_schedule.start = app['app_schedule']['start']
+                if 'stop' in app['app_schedule']:
+                    entry.app_schedule.start = app['app_schedule']['stop']
+                msg.entries.append(entry)
+        self.pub_schedules.publish(msg)
 
     def _load_yaml(self):
         with open(self.yaml_path, 'r') as yaml_f:
@@ -55,7 +105,8 @@ class AppScheduler(object):
             app_args = []
         start_job = self._create_start_job(name, app_name, app_args)  # NOQA
         try:
-            eval('schedule.{}.do(start_job)'.format(app_schedule['start']))
+            eval('schedule.{}.do(start_job).tag(\'{}\')'.format(
+                app_schedule['start'], app['name']))
         except (AssertionError, ValueError) as e:
             rospy.logerr(e)
             rospy.logerr('Cannot register start app')
@@ -63,11 +114,15 @@ class AppScheduler(object):
         if 'stop' in app_schedule:
             stop_job = self._create_stop_job(name, app_name)  # NOQA
             try:
-                eval('schedule.{}.do(stop_job)'.format(app_schedule['stop']))
+                eval('schedule.{}.do(stop_job).tag(\'{}\')'.format(
+                    app_schedule['stop'], app['name']))
             except ValueError as e:
                 rospy.logerr(e)
                 rospy.logerr('Cannot register stop app')
                 rospy.logerr('Please upgrade schedule module. $ pip install schedule==0.6.0 --user')  # NOQA
+
+    def _unregister_app(self, name):
+        schedule.clear(name)
 
     def _create_start_job(self, name, app_name, app_args):
         def start_job():
@@ -133,6 +188,7 @@ class AppScheduler(object):
     def _update_timer_cb(self, event):
         self._update_running_app_names()
         self._update_running_jobs()
+        self._publish_app_schedules()
 
     def _sub_cb(self, msg):
         if msg.type == AppStatus.INFO:
@@ -144,3 +200,17 @@ class AppScheduler(object):
         else:
             # ERROR
             rospy.logerr('app_scheduler: {}'.format(msg.status))
+
+    def _srv_add_entry_cb(self, req):
+        self._add_entry(req.entry)
+        self._publish_app_schedules()
+        res = AddEntryResponse()
+        res.success = True
+        return res
+
+    def _srv_remove_entry_cb(self, req):
+        self._remove_entry(req.name)
+        self._publish_app_schedules()
+        res = RemoveEntryResponse()
+        res.success = True
+        return res
