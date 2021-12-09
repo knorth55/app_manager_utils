@@ -107,7 +107,7 @@ class AppScheduler(object):
         try:
             eval('schedule.{}.do(start_job).tag(\'{}\')'.format(
                 app_schedule['start'], app['name']))
-        except (AssertionError, ValueError) as e:
+        except (AssertionError, ValueError, AttributeError) as e:
             rospy.logerr(e)
             rospy.logerr('Cannot register start app')
             rospy.logerr('Please upgrade schedule module. $ pip install schedule==0.6.0 --user')  # NOQA
