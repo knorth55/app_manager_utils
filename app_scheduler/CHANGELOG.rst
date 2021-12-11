@@ -2,6 +2,34 @@
 Changelog for package app_scheduler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#37 <https://github.com/knorth55/app_manager_utils/issues/37>`_ from sktometometo/PR/update-app-scheduler-error-handling
+* [app_scheduler] add AttributeError handling
+* use absolute import in app_scheduler
+* Merge pull request `#36 <https://github.com/knorth55/app_manager_utils/issues/36>`_ from sktometometo/PR/add-ros-interface
+* [app_scheduler] fix format
+* [app_scheduler] fix format
+* [app_scheduler] make service return to True
+* [app_scheduler] Update app_scheduler/src/app_scheduler/app_scheduler_lib.py
+  Co-authored-by: Shingo Kitagawa <knorth55@users.noreply.github.com>
+* [app_scheduler] Update app_scheduler/src/app_scheduler/app_scheduler_lib.py
+  Co-authored-by: Shingo Kitagawa <knorth55@users.noreply.github.com>
+* [app_scheduler] Update app_scheduler/src/app_scheduler/app_scheduler_lib.py
+  Co-authored-by: Shingo Kitagawa <knorth55@users.noreply.github.com>
+* [app_scheduler] Update app_scheduler/src/app_scheduler/app_scheduler_lib.py
+  Co-authored-by: Shingo Kitagawa <knorth55@users.noreply.github.com>
+* [app_scheduler] Update app_scheduler/src/app_scheduler/app_scheduler_lib.py
+  Co-authored-by: Shingo Kitagawa <knorth55@users.noreply.github.com>
+* [app_scheduler] Update app_scheduler/src/app_scheduler/app_scheduler_lib.py
+  Co-authored-by: Shingo Kitagawa <knorth55@users.noreply.github.com>
+* [app_scheduler] add Service Interface
+* [app_scheduler] rename library script
+* [app_scheduler] add ROS message
+* support startapp args in app_scheduler
+* use request msg in app_scheduler
+* Contributors: Koki Shinjo, Shingo Kitagawa
+
 0.0.1 (2021-10-06)
 ------------------
 * Merge pull request `#25 <https://github.com/knorth55/app_manager_utils/issues/25>`_ from knorth55/app-scheduler-logerr

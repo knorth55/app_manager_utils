@@ -2,6 +2,9 @@
 Changelog for package test_app_manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.1 (2021-10-06)
 ------------------
 * Merge pull request `#28 <https://github.com/knorth55/app_manager_utils/issues/28>`_ from 708yamaguchi/topic-field

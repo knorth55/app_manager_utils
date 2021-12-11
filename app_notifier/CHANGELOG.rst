@@ -2,6 +2,9 @@
 Changelog for package app_notifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.1 (2021-10-06)
 ------------------
 * do not check if python-dateutil version is low
