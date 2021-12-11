@@ -2,8 +2,8 @@
 Changelog for package app_scheduler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2021-12-11)
+------------------
 * Merge pull request `#37 <https://github.com/knorth55/app_manager_utils/issues/37>`_ from sktometometo/PR/update-app-scheduler-error-handling
 * [app_scheduler] add AttributeError handling
 * use absolute import in app_scheduler
