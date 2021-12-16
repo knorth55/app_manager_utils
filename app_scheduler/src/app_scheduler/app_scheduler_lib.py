@@ -79,7 +79,10 @@ class AppScheduler(object):
                 if 'start' in app['app_schedule']:
                     entry.app_schedule.start = app['app_schedule']['start']
                 if 'stop' in app['app_schedule']:
-                    entry.app_schedule.start = app['app_schedule']['stop']
+                    entry.app_schedule.stop = app['app_schedule']['stop']
+                if 'app_args' in app:
+                    for key, value in app['app_args'].items():
+                        entry.app_args.append('{}: {}'.format(key, value))
                 msg.entries.append(entry)
         self.pub_schedules.publish(msg)
 
