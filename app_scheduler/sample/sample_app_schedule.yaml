@@ -15,3 +15,9 @@
   app_schedule:
     start: every().day.at("10:00:00")
     stop: every().day.at("10:00:03")
+- name: sample3_with_args
+  app_name: app_scheduler/sample3
+  app_schedule:
+    start: every(60).seconds
+  app_args:
+    input: sample3_with_args
