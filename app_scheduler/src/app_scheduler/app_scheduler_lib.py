@@ -7,6 +7,7 @@ import threading
 
 from app_manager.msg import AppList
 from app_manager.msg import AppStatus
+from app_manager.msg import KeyValue
 from app_manager.srv import StartApp
 from app_manager.srv import StartAppRequest
 from app_manager.srv import StopApp
@@ -102,10 +103,10 @@ class AppScheduler(object):
         name = app['name']
         app_name = app['app_name']
         # default app_args is []
-        if 'app_args' in app:
+        if 'app_args' in app and isinstance(app['app_args'], dict):
             app_args = app['app_args']
         else:
-            app_args = []
+            app_args = {}
         start_job = self._create_start_job(name, app_name, app_args)  # NOQA
         try:
             eval('schedule.{}.do(start_job).tag(\'{}\')'.format(
@@ -129,8 +130,9 @@ class AppScheduler(object):
 
     def _create_start_job(self, name, app_name, app_args):
         def start_job():
-            start_req = StartAppRequest(
-                name=app_name, args=app_args)
+            start_req = StartAppRequest(name=app_name)
+            for key, value in app_args.items():
+                start_req.args.append(KeyValue(key=key, value=value))
             start_res = self.start_app(start_req)
             if not start_res.started:
                 rospy.logerr('Failed to start app: {}, {}, {}'.format(
