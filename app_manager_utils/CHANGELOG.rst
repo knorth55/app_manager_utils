@@ -2,6 +2,9 @@
 Changelog for package app_manager_utils
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.2 (2021-12-11)
 ------------------
 
