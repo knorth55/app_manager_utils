@@ -2,8 +2,8 @@
 Changelog for package app_scheduler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.3 (2021-12-17)
+------------------
 * [app_scheduler] fix bugs for app_args
 * [app_scheduler] add a sample app with app_args
 * Merge pull request `#38 <https://github.com/knorth55/app_manager_utils/issues/38>`_ from sktometometo/PR/bugfix
