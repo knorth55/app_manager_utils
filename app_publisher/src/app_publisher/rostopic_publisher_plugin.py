@@ -9,7 +9,14 @@ class RostopicPublisherPlugin(AppManagerPlugin):
     def __init__(self):
         super(RostopicPublisherPlugin, self).__init__()
 
-    def publish_topic(self, topic):
+    def publish_topic(self, topic, ctx):
+        if 'cond' in topic:
+            if ((topic['cond'] == 'succeed' and ctx['exit_code'] == 0) or
+                (topic['cond'] == 'fail' and ctx['exit_code'] == 1) or
+                (topic['cond'] == 'stop' and ctx['stopped'] is True)):
+                pass
+            else:
+                return
         msg = getattr(
             importlib.import_module(
                 '{}.msg'.format(topic['pkg'])), topic['type'])
@@ -28,11 +35,11 @@ class RostopicPublisherPlugin(AppManagerPlugin):
             return
         topics = plugin_args['start_topics']
         for topic in topics:
-            self.publish_topic(topic)
+            self.publish_topic(topic, ctx)
 
     def app_manager_stop_plugin(self, app, ctx, plugin_args):
         if 'stop_topics' not in plugin_args:
             return
         topics = plugin_args['stop_topics']
         for topic in topics:
-            self.publish_topic(topic)
+            self.publish_topic(topic, ctx)
