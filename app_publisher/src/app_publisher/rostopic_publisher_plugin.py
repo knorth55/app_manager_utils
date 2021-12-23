@@ -12,8 +12,9 @@ class RostopicPublisherPlugin(AppManagerPlugin):
     def publish_topic(self, topic, ctx):
         if 'cond' in topic:
             if ((topic['cond'] == 'succeed' and ctx['exit_code'] == 0) or
-                (topic['cond'] == 'fail' and ctx['exit_code'] == 1) or
-                (topic['cond'] == 'stop' and ctx['stopped'] is True)):
+                (topic['cond'] == 'fail' and ctx['exit_code'] != 0) or
+                (topic['cond'] == 'stop' and ctx['stopped'] is True) or
+                (topic['cond'] == 'timeout' and ctx['stopped'] is True and ctx['timeout'] is True)):
                 pass
             else:
                 return
