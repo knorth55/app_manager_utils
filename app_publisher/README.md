@@ -14,11 +14,13 @@ This plugin publishes ROS topic at the beginning or end of the app.
   - `name`: name of the topic
   - `pkg`: package name of the message
   - `type`: type of the message
+  - `field`: content of the message field
 - `stop_topics`: topic which is published at the end of app
   - `name`: name of the topic
   - `pkg`: package name of the message
   - `type`: type of the message
   - `field`: content of the message field
+  - `cond`: Decide to publish a topic depending on the app exit condition. `success`, `failure`, `stop` and `timeout` can be set.
 
 #### `launch_args`: Plugin launch arguments
 
@@ -58,4 +60,5 @@ plugins
         - name: /test_cancel
           pkg: actionlib_msgs
           type: GoalID
+          cond: success
 ```
