@@ -9,15 +9,46 @@ class RostopicPublisherPlugin(AppManagerPlugin):
     def __init__(self):
         super(RostopicPublisherPlugin, self).__init__()
 
-    def publish_topic(self, topic, ctx):
-        if 'cond' in topic:
-            if ((topic['cond'] == 'success' and ctx['exit_code'] == 0)
-                    or (topic['cond'] == 'failure' and ctx['exit_code'] != 0)
-                    or (topic['cond'] == 'stop' and ctx['stopped'] is True)
-                    or (topic['cond'] == 'timeout' and ctx['stopped'] is True
-                        and ctx['timeout'] is True)):
-                pass
+    def _check_condition(self, topic_cond, ctx):
+        exit_code = ctx['exit_code'] if 'exit_code' in ctx else None
+        stopped = ctx['stopped'] if 'stopped' in ctx else None
+        timeout = ctx['timeout'] if 'timeout' in ctx else None
+        if topic_cond == 'success':
+            return exit_code == 0
+        elif topic_cond == 'failure':
+            return exit_code != 0
+        elif topic_cond == 'stop':
+            if stopped is None:
+                rospy.logerr(
+                    'stopped is not set in app_manager plugin ctx.'
+                    'Please check app_manager version.')
+                rospy.logerr('Skipping RostopicPublisherPlugin')
+                return False
             else:
+                return stopped
+        elif topic_cond == 'timeout':
+            if stopped is None:
+                rospy.logerr(
+                    'stopped is not set in app_manager plugin ctx.'
+                    'Please check app_manager version.')
+                rospy.logerr('Skipping RostopicPublisherPlugin')
+                return False
+            elif timeout is None:
+                rospy.logerr(
+                    'timeout is not set in app_manager plugin ctx.'
+                    'Please check app_manager version.')
+                rospy.logerr('Skipping RostopicPublisherPlugin')
+                return False
+            else:
+                return stopped and timeout
+        else:
+            rospy.logerr('Invalid topic cond: {}'.format(topic_cond))
+            return False
+
+    def _publish_topic(self, topic, ctx, check_cond=False):
+        if 'cond' in topic:
+            topic_cond = topic['cond']
+            if check_cond and not self._check_condition(topic_cond, ctx):
                 return
         msg = getattr(
             importlib.import_module(
@@ -37,11 +68,11 @@ class RostopicPublisherPlugin(AppManagerPlugin):
             return
         topics = plugin_args['start_topics']
         for topic in topics:
-            self.publish_topic(topic, ctx)
+            self._publish_topic(topic, ctx, check_cond=False)
 
     def app_manager_stop_plugin(self, app, ctx, plugin_args):
         if 'stop_topics' not in plugin_args:
             return
         topics = plugin_args['stop_topics']
         for topic in topics:
-            self.publish_topic(topic, ctx)
+            self._publish_topic(topic, ctx, check_cond=True)
