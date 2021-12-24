@@ -1,4 +1,3 @@
 <launch>
-  <node name="sample2" pkg="roseus" type="roseus" output="screen"
-        args="$(find app_scheduler)/apps/sample2/sample2.l" />
+  <node name="sample2" pkg="app_scheduler" type="sample2.py" output="screen" required="true"/>
 </launch>

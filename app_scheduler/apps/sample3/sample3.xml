@@ -1,7 +1,6 @@
 <launch>
   <arg name="input" default="sample3" />
-  <node name="sample3" pkg="roseus" type="roseus" output="screen"
-        args="$(find app_scheduler)/apps/sample3/sample3.l">
+  <node name="sample3" pkg="app_scheduler" type="sample3.py" output="screen" required="true">
     <param name="~input" value="$(arg input)" />
   </node>
 </launch>
