@@ -18,6 +18,6 @@
   <exec_depend>std_msgs</exec_depend>
 
   <export>
-    <app_manager app_dir="${prefix}/apps"/>
+    <!-- <app_manager app_dir="${prefix}/apps"/> -->
   </export>
 </package>
