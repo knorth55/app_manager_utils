@@ -39,7 +39,9 @@ plugins:
                 - x: 0
                   y: 0
                   z: 1
-          cond: success
+          cond:
+            - success
+            - stopped
   - name: result_recorder_plugin
     type: app_recorder/result_recorder_plugin
     plugin_args:
