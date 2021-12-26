@@ -11,10 +11,6 @@ class ResultRecorderPlugin(AppManagerPlugin):
 
     @classmethod
     def app_manager_stop_plugin(cls, app, ctx, plugin_args):
-        result = {
-            'exit_code': ctx['exit_code'],
-            'stopped': ctx['stopped'],
-        }
         result_path = '/tmp'
         if 'result_path' in plugin_args:
             result_path = plugin_args['result_path']
@@ -23,7 +19,7 @@ class ResultRecorderPlugin(AppManagerPlugin):
             result_title = plugin_args['result_title']
         try:
             with open(os.path.join(result_path, result_title), 'w') as f:
-                yaml.safe_dump(result, f)
+                yaml.safe_dump(ctx, f)
         except Exception as e:
             rospy.logerr(
                 'failed to write result in {}: {}'.format(
