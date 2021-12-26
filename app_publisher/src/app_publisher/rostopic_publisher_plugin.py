@@ -20,9 +20,10 @@ class RostopicPublisherPlugin(AppManagerPlugin):
         elif topic_cond == 'stop':
             if stopped is None:
                 rospy.logerr(
-                    'stopped is not set in app_manager plugin ctx.'
+                    'stopped is not set in app_manager plugin ctx.')
+                rospy.logerr(
                     'Please check app_manager version.')
-                rospy.logerr('Skipping RostopicPublisherPlugin')
+                rospy.logerr('Skipping rostopic_publisher_plugin')
                 return False
             else:
                 return stopped
@@ -31,13 +32,13 @@ class RostopicPublisherPlugin(AppManagerPlugin):
                 rospy.logerr(
                     'stopped is not set in app_manager plugin ctx.'
                     'Please check app_manager version.')
-                rospy.logerr('Skipping RostopicPublisherPlugin')
+                rospy.logerr('Skipping rostopic_publisher_plugin')
                 return False
             elif timeout is None:
                 rospy.logerr(
                     'timeout is not set in app_manager plugin ctx.'
                     'Please check app_manager version.')
-                rospy.logerr('Skipping RostopicPublisherPlugin')
+                rospy.logerr('Skipping rostopic_publisher_plugin')
                 return False
             else:
                 return stopped and timeout
@@ -46,10 +47,9 @@ class RostopicPublisherPlugin(AppManagerPlugin):
             return False
 
     def _publish_topic(self, topic, ctx, check_cond=False):
-        if 'cond' in topic:
-            topic_cond = topic['cond']
-            if check_cond and not self._check_condition(topic_cond, ctx):
-                return
+        if (check_cond and 'cond' in topic
+                and self._check_condition(topic['cond'], ctx)):
+            return
         msg = getattr(
             importlib.import_module(
                 '{}.msg'.format(topic['pkg'])), topic['type'])
