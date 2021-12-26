@@ -51,7 +51,7 @@ class RostopicPublisherPlugin(AppManagerPlugin):
             conditions = topic['cond']
             if not isinstance(conditions, list):
                 conditions = [conditions]
-            can_publish = False
+            do_publish = False
             for cond in conditions:
                 can_publish = can_publish or self._check_condition(cond, ctx)
             if can_publish is False:
