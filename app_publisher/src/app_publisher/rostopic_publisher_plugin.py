@@ -47,9 +47,15 @@ class RostopicPublisherPlugin(AppManagerPlugin):
             return False
 
     def _publish_topic(self, topic, ctx, check_cond=False):
-        if (check_cond and 'cond' in topic
-                and not self._check_condition(topic['cond'], ctx)):
-            return
+        if check_cond and 'cond' in topic:
+            conditions = topic['cond']
+            if isinstance(conditions, list) is False:
+                conditions = list(conditions)
+            can_publish = False
+            for cond in conditions:
+                can_publish = can_publish or self._check_condition(cond, ctx)
+            if can_publish is False:
+                return
         msg = getattr(
             importlib.import_module(
                 '{}.msg'.format(topic['pkg'])), topic['type'])
