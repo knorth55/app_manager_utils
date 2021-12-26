@@ -53,8 +53,8 @@ class RostopicPublisherPlugin(AppManagerPlugin):
                 conditions = [conditions]
             do_publish = False
             for cond in conditions:
-                can_publish = can_publish or self._check_condition(cond, ctx)
-            if can_publish is False:
+                do_publish = do_publish or self._check_condition(cond, ctx)
+            if do_publish is False:
                 return
         msg = getattr(
             importlib.import_module(
