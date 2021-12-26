@@ -60,5 +60,7 @@ plugins
         - name: /test_cancel
           pkg: actionlib_msgs
           type: GoalID
-          cond: success
+          cond:
+            - success
+            - stopped
 ```
