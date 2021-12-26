@@ -48,7 +48,7 @@ class RostopicPublisherPlugin(AppManagerPlugin):
 
     def _publish_topic(self, topic, ctx, check_cond=False):
         if (check_cond and 'cond' in topic
-                and self._check_condition(topic['cond'], ctx)):
+                and not self._check_condition(topic['cond'], ctx)):
             return
         msg = getattr(
             importlib.import_module(
