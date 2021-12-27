@@ -2,6 +2,12 @@
 Changelog for package app_recorder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#46 <https://github.com/knorth55/app_manager_utils/issues/46>`_ from 708yamaguchi/save-ctx-as-result
+* [app_recorder] Save ctx directly as app result
+* Contributors: Naoya Yamaguchi, Shingo Kitagawa
+
 0.0.3 (2021-12-17)
 ------------------
 

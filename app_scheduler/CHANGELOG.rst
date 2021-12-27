@@ -2,6 +2,14 @@
 Changelog for package app_scheduler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#43 <https://github.com/knorth55/app_manager_utils/issues/43>`_ from knorth55/commentout-app-dir
+* comment out app_dir in app_scheduler
+* Merge pull request `#42 <https://github.com/knorth55/app_manager_utils/issues/42>`_ from knorth55/use-rospy
+* remove roseus dependencies
+* Contributors: Shingo Kitagawa
+
 0.0.3 (2021-12-17)
 ------------------
 * [app_scheduler] fix bugs for app_args
