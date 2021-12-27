@@ -2,8 +2,8 @@
 Changelog for package app_scheduler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2021-12-27)
+------------------
 * Merge pull request `#43 <https://github.com/knorth55/app_manager_utils/issues/43>`_ from knorth55/commentout-app-dir
 * comment out app_dir in app_scheduler
 * Merge pull request `#42 <https://github.com/knorth55/app_manager_utils/issues/42>`_ from knorth55/use-rospy

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>app_manager_utils</name>
-  <version>0.0.3</version>
+  <version>0.0.4</version>
   <description>The app_manager_utils meta package</description>
   <maintainer email="shingogo.5511@gmail.com">Shingo Kitagawa</maintainer>
   <author email="shingogo.5511@gmail.com">Shingo Kitagawa</author>

@@ -2,8 +2,8 @@
 Changelog for package test_app_manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.4 (2021-12-27)
+------------------
 * Merge pull request `#48 <https://github.com/knorth55/app_manager_utils/issues/48>`_ from 708yamaguchi/multiple-cond
 * [test_app_manager] Use multiple condition for app_publisher
 * Merge pull request `#44 <https://github.com/knorth55/app_manager_utils/issues/44>`_ from knorth55/check-cond
