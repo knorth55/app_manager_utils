@@ -98,3 +98,16 @@ def check_timestamp_before_start(timestamp, start_time):
         return False
     start_date = datetime.datetime.fromtimestamp(start_time.to_sec())
     return fromisoformat(timestamp) < start_date
+
+
+def parse_context(ctx):
+    exit_code = ctx['exit_code'] if 'exit_code' in ctx else None
+    stopped = ctx['stopped'] if 'stopped' in ctx else None
+    timeout = ctx['timeout'] if 'timeout' in ctx else None
+    upload_successes = None
+    if 'upload_successes' in ctx:
+        upload_successes = ctx['upload_successes']
+    upload_file_urls = None
+    if 'upload_file_urls' in ctx:
+        upload_file_urls = ctx['upload_file_urls']
+    return exit_code, stopped, timeout, upload_successes, upload_file_urls

@@ -5,6 +5,7 @@ import rospy
 from app_notifier.util import check_timestamp_before_start
 from app_notifier.util import get_notification_json_paths
 from app_notifier.util import load_notification_jsons
+from app_notifier.util import parse_context
 from app_notifier.util import tweet
 
 from rostwitter.msg import TweetAction
@@ -53,16 +54,21 @@ class TweetNotifierPlugin(AppManagerPlugin):
         if image and 'image_topic_name':
             image_topic_name = plugin_args['image_topic_name']
 
+        exit_code, stopped, timeout, upload_successes, _ = parse_context(ctx)
+
         display_name = app.display_name
         client = actionlib.SimpleActionClient(client_name, TweetAction)
-        if ctx['exit_code'] == 0 and not ctx['stopped']:
+        if exit_code == 0 and not stopped:
             tweet_text = "I succeeded in doing {} app.".format(display_name)
-        elif ctx['stopped']:
-            tweet_text = "I stopped doing {} app.".format(display_name)
+        elif stopped:
+            tweet_text = "I stopped doing {} app".format(display_name)
+            if timeout:
+                tweet_text += " because of timeout."
+            tweet_text += "."
         else:
             tweet_text = "I failed to do {} app.".format(display_name)
-        if 'upload_successes' in ctx:
-            if all(ctx['upload_successes']):
+        if upload_successes:
+            if all(upload_successes):
                 tweet_text += " I succeeded to upload data."
             else:
                 tweet_text += " I failed to upload data."

@@ -7,6 +7,7 @@ import rospy
 from app_notifier.util import check_timestamp_before_start
 from app_notifier.util import get_notification_json_paths
 from app_notifier.util import load_notification_jsons
+from app_notifier.util import parse_context
 
 
 class MailNotifierPlugin(AppManagerPlugin):
@@ -29,22 +30,27 @@ class MailNotifierPlugin(AppManagerPlugin):
                 datetime.datetime.now())
             mail_title += ': {}'.format(timestamp)
 
+        exit_code, stopped, timeout, upload_successes, upload_file_urls = \
+            parse_context(ctx)
+
         display_name = app.display_name
         mail_content = "Hi, \\n"
-        if ctx['exit_code'] == 0 and not ctx['stopped']:
+        if exit_code == 0 and not stopped:
             mail_content += "I succeeded in doing {}.\\n".format(display_name)
-        elif ctx['stopped']:
-            mail_content += "I stopped doing {}.\\n".format(display_name)
+        elif stopped:
+            mail_content += "I stopped doing {}".format(display_name)
+            if timeout:
+                mail_content += " because of timeout"
+            mail_content += ".\\n"
         else:
             mail_content += "I failed to do {}.\\n".format(display_name)
-        if 'upload_successes' in ctx:
-            if all(ctx['upload_successes']):
+        if upload_successes:
+            if all(upload_successes):
                 mail_content += "I succeeded to upload data.\\n"
             else:
                 mail_content += "I failed to upload data.\\n"
             mail_content += "\\n"
-            for success, file_url in zip(
-                    ctx['upload_successes'], ctx['upload_file_urls']):
+            for success, file_url in zip(upload_successes, upload_file_urls):
                 if success:
                     mail_content += "URL: {}\\n".format(file_url)
         mail_content += "\\n"
