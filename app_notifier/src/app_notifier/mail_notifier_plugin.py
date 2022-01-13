@@ -79,10 +79,15 @@ class MailNotifierPlugin(AppManagerPlugin):
         exit_code = subprocess.call(cmd, shell=True)
 
         # Wait for mail to be added in postfix queue
-        while queued_mail_num == count_postfix_queued_mail():
+        timeout = 10
+        start_time = rospy.Time.now()
+        while (queued_mail_num == count_postfix_queued_mail()
+               or (rospy.Time.now() - start_time).to_sec() > timeout):
             rospy.sleep(0.1)
         # Wait for mail to be send from queue
-        while queued_mail_num < count_postfix_queued_mail():
+        start_time = rospy.Time.now()
+        while (queued_mail_num < count_postfix_queued_mail()
+               or (rospy.Time.now() - start_time).to_sec() > timeout):
             rospy.sleep(0.1)
 
         rospy.loginfo('Title: {}'.format(mail_title))
