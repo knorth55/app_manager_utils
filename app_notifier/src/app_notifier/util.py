@@ -4,6 +4,7 @@ import datetime
 import json
 import os
 import rospy
+import subprocess
 import sys
 
 from rostwitter.msg import TweetGoal
@@ -111,3 +112,9 @@ def parse_context(ctx):
     if 'upload_file_urls' in ctx:
         upload_file_urls = ctx['upload_file_urls']
     return exit_code, stopped, timeout, upload_successes, upload_file_urls
+
+
+def count_postfix_queued_mail():
+    postqueue = subprocess.check_output(['postqueue', '-j'])
+    queued_mail_num = postqueue.count('queue_name')
+    return queued_mail_num

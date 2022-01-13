@@ -5,6 +5,7 @@ from app_manager import AppManagerPlugin
 import rospy
 
 from app_notifier.util import check_timestamp_before_start
+from app_notifier.util import count_postfix_queued_mail
 from app_notifier.util import get_notification_json_paths
 from app_notifier.util import load_notification_jsons
 from app_notifier.util import parse_context
@@ -71,10 +72,24 @@ class MailNotifierPlugin(AppManagerPlugin):
                         event['date'], event['message'], event['location'])
             mail_content += "\\n"
 
+        queued_mail_num = count_postfix_queued_mail()
         cmd = "LC_CTYPE=en_US.UTF-8 /bin/echo -e \"{}\"".format(mail_content)
         cmd += " | /usr/bin/mail -s \"{}\" -r {} {}".format(
             mail_title, sender_address, receiver_address)
         exit_code = subprocess.call(cmd, shell=True)
+
+        # Wait for mail to be added in postfix queue
+        timeout = 10
+        start_time = rospy.Time.now()
+        while (queued_mail_num == count_postfix_queued_mail()
+               or (rospy.Time.now() - start_time).to_sec() > timeout):
+            rospy.sleep(0.1)
+        # Wait for mail to be send from queue
+        start_time = rospy.Time.now()
+        while (queued_mail_num < count_postfix_queued_mail()
+               or (rospy.Time.now() - start_time).to_sec() > timeout):
+            rospy.sleep(0.1)
+
         rospy.loginfo('Title: {}'.format(mail_title))
         if exit_code > 0:
             rospy.logerr(
