@@ -82,12 +82,12 @@ class MailNotifierPlugin(AppManagerPlugin):
         timeout = 10
         start_time = rospy.Time.now()
         while (queued_mail_num == count_postfix_queued_mail()
-               or (rospy.Time.now() - start_time).to_sec() > timeout):
+                or (rospy.Time.now() - start_time).to_sec() > timeout):
             rospy.sleep(0.1)
         # Wait for mail to be send from queue
         start_time = rospy.Time.now()
         while (queued_mail_num < count_postfix_queued_mail()
-               or (rospy.Time.now() - start_time).to_sec() > timeout):
+                or (rospy.Time.now() - start_time).to_sec() > timeout):
             rospy.sleep(0.1)
 
         rospy.loginfo('Title: {}'.format(mail_title))
