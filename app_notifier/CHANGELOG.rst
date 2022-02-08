@@ -2,6 +2,16 @@
 Changelog for package app_notifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix indent
+* Merge pull request `#50 <https://github.com/knorth55/app_manager_utils/issues/50>`_ from 708yamaguchi/wait-queue-clear
+* Add timeout to postfix queue operations
+* [app_notifier] Wait until the postfix queue is empty
+* Merge pull request `#49 <https://github.com/knorth55/app_manager_utils/issues/49>`_ from knorth55/notify-timeout
+* notify whether timeout or not
+* Contributors: Naoya Yamaguchi, Shingo Kitagawa
+
 0.0.4 (2021-12-27)
 ------------------
 

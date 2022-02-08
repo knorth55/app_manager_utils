@@ -2,6 +2,9 @@
 Changelog for package app_notification_saver
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+
 0.0.4 (2021-12-27)
 ------------------
 
