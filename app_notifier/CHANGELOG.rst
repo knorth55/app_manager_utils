@@ -2,8 +2,8 @@
 Changelog for package app_notifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.5 (2022-02-08)
+------------------
 * fix indent
 * Merge pull request `#50 <https://github.com/knorth55/app_manager_utils/issues/50>`_ from 708yamaguchi/wait-queue-clear
 * Add timeout to postfix queue operations
