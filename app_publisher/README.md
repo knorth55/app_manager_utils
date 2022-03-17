@@ -4,7 +4,7 @@ ROS topic publisher plugin for `app_manager`
 
 ## `app_manager` plugins
 
-### `app_notifier/rostopic_publisher_plugin`: ROS topic publisher plugin
+### `app_publisher/rostopic_publisher_plugin`: ROS topic publisher plugin
 
 This plugin publishes ROS topic at the beginning or end of the app.
 
