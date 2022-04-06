@@ -54,9 +54,9 @@ class MailNotifierPlugin(AppManagerPlugin):
                     if not success:
                         mail_content += "    {}\\n".format(file_title)
             mail_content += "\\n"
-            for success, file_url in zip(upload_successes, upload_file_urls):
+            for success, file_url, file_title in zip(upload_successes, upload_file_urls, request_file_titles):
                 if success:
-                    mail_content += "URL: {}\\n".format(file_url)
+                    mail_content += "{}: {} \\n".format(file_title, file_url)
         mail_content += "\\n"
 
         json_paths = get_notification_json_paths()
