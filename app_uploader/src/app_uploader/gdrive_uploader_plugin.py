@@ -35,4 +35,8 @@ class GdriveUploaderPlugin(AppManagerPlugin):
             ctx['upload_file_urls'] += res.file_urls
         else:
             ctx['upload_file_urls'] = res.file_urls
+        if 'request_file_titles' in ctx:
+            ctx['request_file_titles'] += req.file_titles
+        else:
+            ctx['request_file_titles'] = req.file_titles
         return ctx

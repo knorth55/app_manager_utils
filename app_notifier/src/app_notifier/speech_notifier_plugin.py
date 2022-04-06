@@ -37,7 +37,8 @@ class SpeechNotifierPlugin(AppManagerPlugin):
         if 'lang' in plugin_args:
             lang = plugin_args['lang']
 
-        exit_code, stopped, timeout, upload_successes, _ = parse_context(ctx)
+        exit_code, stopped, timeout, upload_successes, _, _ = \
+            parse_context(ctx)
 
         display_name = app.display_name
         display_name = display_name.replace('_', ' ')
