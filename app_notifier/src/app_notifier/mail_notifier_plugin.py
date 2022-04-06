@@ -31,7 +31,7 @@ class MailNotifierPlugin(AppManagerPlugin):
                 datetime.datetime.now())
             mail_title += ': {}'.format(timestamp)
 
-        exit_code, stopped, timeout, upload_successes, upload_file_urls = \
+        exit_code, stopped, timeout, upload_successes, upload_file_urls, request_file_titles = \
             parse_context(ctx)
 
         display_name = app.display_name
@@ -49,7 +49,10 @@ class MailNotifierPlugin(AppManagerPlugin):
             if all(upload_successes):
                 mail_content += "I succeeded to upload data.\\n"
             else:
-                mail_content += "I failed to upload data.\\n"
+                mail_content += "I failed to upload the following data:\\n"
+                for success, file_title in zip(upload_successes, request_file_titles):
+                    if not success:
+                        mail_content += "    {}\\n".format(file_title)
             mail_content += "\\n"
             for success, file_url in zip(upload_successes, upload_file_urls):
                 if success:

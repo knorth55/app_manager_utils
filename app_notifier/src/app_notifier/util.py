@@ -111,7 +111,9 @@ def parse_context(ctx):
     upload_file_urls = None
     if 'upload_file_urls' in ctx:
         upload_file_urls = ctx['upload_file_urls']
-    return exit_code, stopped, timeout, upload_successes, upload_file_urls
+    if 'request_file_titles' in ctx:
+        request_file_titles = ctx['request_file_titles']
+    return exit_code, stopped, timeout, upload_successes, upload_file_urls, request_file_titles
 
 
 def count_postfix_queued_mail():
