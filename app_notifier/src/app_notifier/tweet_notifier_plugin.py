@@ -54,7 +54,8 @@ class TweetNotifierPlugin(AppManagerPlugin):
         if image and 'image_topic_name':
             image_topic_name = plugin_args['image_topic_name']
 
-        exit_code, stopped, timeout, upload_successes, _, _ = parse_context(ctx)
+        exit_code, stopped, timeout, upload_successes, _, _ = \
+            parse_context(ctx)
 
         display_name = app.display_name
         client = actionlib.SimpleActionClient(client_name, TweetAction)
