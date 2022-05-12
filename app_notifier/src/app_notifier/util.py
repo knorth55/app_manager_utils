@@ -118,6 +118,9 @@ def parse_context(ctx):
 
 
 def count_postfix_queued_mail():
-    postqueue = subprocess.check_output(['postqueue', '-j'])
-    queued_mail_num = postqueue.count('queue_name')
+    try:
+        postqueue = subprocess.check_output(['postqueue', '-j'])
+        queued_mail_num = postqueue.count('queue_name')
+    except Exception:
+        return None
     return queued_mail_num
