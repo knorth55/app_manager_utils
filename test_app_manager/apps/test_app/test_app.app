@@ -62,6 +62,15 @@ plugins:
       rosbag_topic_names:
         - /tf
         - /joint_states
+        - /wide_stereo/right/image_rect_color
+  - name: rosbag_video_converter_plugin
+    type: app_recorder/rosbag_video_converter_plugin
+    plugin_args:
+      rosbag_path: /tmp
+      rosbag_title: test.bag
+      image_topic_name: /wide_stereo/right/image_rect_color
+      image_fps: 20
+      video_path: /tmp/test_converted.mp4
 plugin_order:
   start_plugin_order:
     - test_start_plugin
@@ -71,6 +80,7 @@ plugin_order:
     - result_recorder_plugin
     - video_recorder_plugin
     - rosbag_recorder_plugin
+    - rosbag_video_converter_plugin
   stop_plugin_order:
     - test_start_plugin
     - test_stop_plugin
@@ -79,3 +89,4 @@ plugin_order:
     - result_recorder_plugin
     - video_recorder_plugin
     - rosbag_recorder_plugin
+    - rosbag_video_converter_plugin
