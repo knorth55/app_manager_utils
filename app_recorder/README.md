@@ -212,3 +212,85 @@ plugins:
       result_path: /tmp
       result_title: test.yaml
 ```
+
+### `app_recorder/rosbag_audio_converter_plugin`: Rosbag audio converter plugin
+
+This plugin converts rosbag to audio file when app finishs.
+
+#### `plugin_args`: Plugin arguments
+
+- `rosbag_path`:
+  - rosbag file directory path
+- `rosbag_title`:
+  - rosbag file name
+- `audio_path`:
+  - Output audio file (.wav)
+- `audio_topic_name`:
+  - Input audio topic name
+- `audio_sample_rate`:
+  - Input audio sample rate
+- `audio_channels`:
+  - Input audio the number of channels
+
+#### `launch_args`: Plugin launch arguments
+
+`None`
+
+#### Sample plugin description
+
+```yaml
+plugins:
+  - name: respeaker_audio_converter_plugin
+    type: app_recorder/rosbag_audio_converter_plugin
+    plugin_args:
+      rosbag_path: /tmp
+      rosbag_title: go_to_kitchen_rosbag.bag
+      audio_path: /tmp/go_to_kitchen_audio.wav
+      audio_topic_name: /audio
+      audio_sample_rate: 16000
+      audio_channels: 1
+```
+
+### `app_recorder/rosbag_video_converter_plugin`: Rosbag video converter plugin
+
+This plugin converts rosbag to video file when app finishs. If `audio_topic_name` is given, video with audio is generated.
+
+#### `plugin_args`: Plugin arguments
+
+- `rosbag_path`:
+  - rosbag file directory path
+- `rosbag_title`:
+  - rosbag file name
+- `video_path`:
+  - Output video file (.mp4)
+- `image_topic_name`:
+  - Input image topic name
+- `image_fps`:
+  - Input image frame rate
+- `audio_topic_name`:
+  - Input audio topic name
+- `audio_sample_rate`:
+  - Input audio sample rate
+- `audio_channels`:
+  - Input audio the number of channels
+
+#### `launch_args`: Plugin launch arguments
+
+`None`
+
+#### Sample plugin description
+
+```yaml
+plugins:
+  - name: head_camera_converter_plugin
+    type: app_recorder/rosbag_video_converter_plugin
+    plugin_args:
+      rosbag_path: /tmp
+      rosbag_title: go_to_kitchen_rosbag.bag
+      video_path: /tmp/go_to_kitchen_head_camera.mp4
+      image_topic_name: /head_camera/rgb/throttled/image_rect_color/compressed
+      image_fps: 5
+      audio_topic_name: /audio
+      audio_sample_rate: 16000
+      audio_channels: 1
+```
