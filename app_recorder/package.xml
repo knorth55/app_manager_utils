@@ -15,6 +15,7 @@
   <exec_depend>audio_video_recorder</exec_depend>
   <exec_depend>image_transport</exec_depend>
   <exec_depend>image_view</exec_depend>
+  <exec_depend>jsk_rosbag_tools</exec_depend>
 
   <export>
     <app_manager plugin="${prefix}/app_recorder_plugin.yaml" />

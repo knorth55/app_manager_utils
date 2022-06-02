@@ -13,3 +13,9 @@
 - name: app_recorder/result_recorder_plugin
   launch: null
   module: app_recorder.result_recorder_plugin.ResultRecorderPlugin
+- name: app_recorder/rosbag_audio_converter_plugin
+  launch: null
+  module: app_recorder.rosbag_audio_converter_plugin.RosbagAudioConverterPlugin
+- name: app_recorder/rosbag_video_converter_plugin
+  launch: null
+  module: app_recorder.rosbag_video_converter_plugin.RosbagVideoConverterPlugin
