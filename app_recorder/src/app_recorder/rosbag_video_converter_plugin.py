@@ -19,9 +19,10 @@ class RosbagVideoConverterPlugin(AppManagerPlugin):
                   'fps': int(plugin_args['image_fps'])}
         # If audio_topic_name is given, video with audio is converted
         if 'audio_topic_name' in plugin_args:
-            audio_kwargs = {'audio_topic': str(plugin_args['audio_topic_name']),
-                            'samplerate': int(plugin_args['audio_sample_rate']),
-                            'channels': int(plugin_args['audio_channels'])}
+            audio_kwargs = {
+                'audio_topic': str(plugin_args['audio_topic_name']),
+                'samplerate': int(plugin_args['audio_sample_rate']),
+                'channels': int(plugin_args['audio_channels'])}
             kwargs.update(audio_kwargs)
         try:
             bag_to_video(rosbag_file_path, **kwargs)
