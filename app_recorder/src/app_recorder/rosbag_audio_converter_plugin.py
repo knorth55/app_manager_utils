@@ -1,5 +1,6 @@
 from jsk_rosbag_tools.bag_to_audio import bag_to_audio
 import os
+import rospy
 
 from app_manager import AppManagerPlugin
 
@@ -21,5 +22,5 @@ class RosbagAudioConverterPlugin(AppManagerPlugin):
             bag_to_audio(rosbag_file_path, **kwargs)
         except ValueError as e:
             # topic is not included in bagfile
-            print('{}'.format(e))
+            rospy.logerr('{}'.format(e))
         return ctx

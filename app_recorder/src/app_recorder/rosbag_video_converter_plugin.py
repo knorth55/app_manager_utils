@@ -1,5 +1,6 @@
 from jsk_rosbag_tools.bag_to_video import bag_to_video
 import os
+import rospy
 
 from app_manager import AppManagerPlugin
 
@@ -26,5 +27,5 @@ class RosbagVideoConverterPlugin(AppManagerPlugin):
             bag_to_video(rosbag_file_path, **kwargs)
         except ValueError as e:
             # topic is not included in bagfile
-            print(e)
+            rospy.logerr('{}'.format(e))
         return ctx
