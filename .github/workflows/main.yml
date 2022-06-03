@@ -14,15 +14,23 @@ jobs:
           - ROS_DISTRO: kinetic
             ROS_REPO: testing
             UPSTREAM_WORKSPACE: '.ci.rosinstall'
+            # Remove jsk_rosbag_tools after it is registered as rosdep key
+            ROSDEP_SKIP_KEYS: 'jsk_rosbag_tools'
           - ROS_DISTRO: kinetic
             ROS_REPO: main
             UPSTREAM_WORKSPACE: '.ci.rosinstall'
+            # Remove jsk_rosbag_tools after it is registered as rosdep key
+            ROSDEP_SKIP_KEYS: 'jsk_rosbag_tools'
           - ROS_DISTRO: melodic
             ROS_REPO: testing
             UPSTREAM_WORKSPACE: '.ci.rosinstall'
+            # Remove jsk_rosbag_tools after it is registered as rosdep key
+            ROSDEP_SKIP_KEYS: 'jsk_rosbag_tools'
           - ROS_DISTRO: melodic
             ROS_REPO: main
             UPSTREAM_WORKSPACE: '.ci.rosinstall'
+            # Remove jsk_rosbag_tools after it is registered as rosdep key
+            ROSDEP_SKIP_KEYS: 'jsk_rosbag_tools'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
