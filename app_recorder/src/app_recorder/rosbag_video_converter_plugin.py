@@ -1,6 +1,12 @@
-from jsk_rosbag_tools.bag_to_video import bag_to_video
-import os
 import rospy
+try:
+    from jsk_rosbag_tools.bag_to_video import bag_to_video
+except ImportError as e:
+    rospy.logerr('{}'.format(e))
+    rospy.logerr('Skip using rosbag_video_converter_plugin')
+    import sys
+    sys.exit(0)
+import os
 
 from app_manager import AppManagerPlugin
 

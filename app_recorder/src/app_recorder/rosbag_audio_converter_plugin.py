@@ -1,6 +1,12 @@
-from jsk_rosbag_tools.bag_to_audio import bag_to_audio
-import os
 import rospy
+try:
+    from jsk_rosbag_tools.bag_to_audio import bag_to_audio
+except ImportError as e:
+    rospy.logerr('{}'.format(e))
+    rospy.logerr('Skip using rosbag_audio_converter_plugin')
+    import sys
+    sys.exit(0)
+import os
 
 from app_manager import AppManagerPlugin
 
