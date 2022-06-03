@@ -2,10 +2,3 @@
     local-name: audio_video_recorder
     uri: https://github.com/knorth55/audio_video_recorder.git
     version: main
-# Use jsk-ros-pkg/jsk_common master branch after the following PR is merged.
-# Remove jsk_common after the following PR is released.
-# https://github.com/jsk-ros-pkg/jsk_common/pull/1738
-- git:
-    local-name: jsk_common
-    uri: https://github.com/iory/jsk_common.git
-    version: rosbag-tools
