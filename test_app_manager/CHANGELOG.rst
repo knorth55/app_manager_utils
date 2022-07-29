@@ -2,8 +2,8 @@
 Changelog for package test_app_manager
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2022-07-29)
+------------------
 * Merge pull request `#54 <https://github.com/knorth55/app_manager_utils/issues/54>`_ from 708yamaguchi/rosbag-converter
 * [test_app_manager] Add test for rosbag_video_converter_plugin
 * Contributors: Naoya Yamaguchi, Shingo Kitagawa

@@ -2,8 +2,8 @@
 Changelog for package app_publisher
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2022-07-29)
+------------------
 * Merge pull request `#51 <https://github.com/knorth55/app_manager_utils/issues/51>`_ from Affonso-Gui/fix_publisher_readme
   Fix plugin name in app_publisher/README.md
 * Fix plugin name in app_publisher/README.md

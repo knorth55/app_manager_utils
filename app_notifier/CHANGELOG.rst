@@ -2,8 +2,8 @@
 Changelog for package app_notifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.6 (2022-07-29)
+------------------
 * Merge pull request `#53 <https://github.com/knorth55/app_manager_utils/issues/53>`_ from knorth55/app-notifier-fix-typo
 * fix init
 * return None when postfix version is low

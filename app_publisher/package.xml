@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="3">
   <name>app_publisher</name>
-  <version>0.0.5</version>
+  <version>0.0.6</version>
   <description>The app_publisher package</description>
   <maintainer email="shingogo.5511@gmail.com">Shingo Kitagawa</maintainer>
   <author email="708yamaguchi@gmail.com">Naoya Yamaguchi</author>
