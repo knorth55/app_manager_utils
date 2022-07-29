@@ -2,6 +2,16 @@
 Changelog for package app_recorder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#54 <https://github.com/knorth55/app_manager_utils/issues/54>`_ from 708yamaguchi/rosbag-converter
+* [app_recorder] Exit if jsk_rosbag_tools is not found
+* Avoid linter error: E501 line too long (80 > 79 characters)
+* [app_recorder] Use rospy.logerr() instead of print()
+* Add README.md
+* [app_recorder] Add rosbag converter plugins
+* Contributors: Naoya Yamaguchi, Shingo Kitagawa
+
 0.0.5 (2022-02-08)
 ------------------
 

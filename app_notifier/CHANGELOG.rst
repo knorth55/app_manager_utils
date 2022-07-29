@@ -2,6 +2,17 @@
 Changelog for package app_notifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#53 <https://github.com/knorth55/app_manager_utils/issues/53>`_ from knorth55/app-notifier-fix-typo
+* fix init
+* return None when postfix version is low
+* Merge pull request `#52 <https://github.com/knorth55/app_manager_utils/issues/52>`_ from tkmtnt7000/display-file-name
+* Fix dependent on flake8
+* Display upload succeeded files in email
+* Display failing upload data in email
+* Contributors: JSK fetch user, Naoto Tsukamoto, Shingo Kitagawa
+
 0.0.5 (2022-02-08)
 ------------------
 * fix indent

@@ -2,6 +2,12 @@
 Changelog for package app_uploader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#52 <https://github.com/knorth55/app_manager_utils/issues/52>`_ from tkmtnt7000/display-file-name
+* Display failing upload data in email
+* Contributors: Naoto Tsukamoto, Shingo Kitagawa
+
 0.0.5 (2022-02-08)
 ------------------
 
