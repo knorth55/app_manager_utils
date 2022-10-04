@@ -17,8 +17,8 @@ class MailNotifierPlugin(AppManagerPlugin):
 
     def app_manager_start_plugin(self, app, ctx, plugin_args):
         self.start_time = rospy.Time.now()
-        # Set mail title first for extensibility
-        self.use_app_start_time = False
+        # Set mail title first if use_app_start_time is true.
+        # This can combine many emails into a single email thread.
         if 'use_app_start_time' in plugin_args:
             self.use_app_start_time = plugin_args['use_app_start_time']
         if self.use_app_start_time:
