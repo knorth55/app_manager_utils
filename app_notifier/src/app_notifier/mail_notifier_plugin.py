@@ -14,6 +14,7 @@ from app_notifier.util import parse_context
 class MailNotifierPlugin(AppManagerPlugin):
     def __init__(self):
         super(MailNotifierPlugin, self).__init__()
+        self.use_app_start_time = False
 
     def app_manager_start_plugin(self, app, ctx, plugin_args):
         self.start_time = rospy.Time.now()
