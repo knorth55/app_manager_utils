@@ -27,7 +27,7 @@ class MailNotifierPlugin(AppManagerPlugin):
             timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(
                 datetime.datetime.fromtimestamp(self.start_time.to_sec()))
             mail_title += ': {}'.format(timestamp)
-            rospy.set_param('~mail_title', mail_title)
+            rospy.set_param('/email_topic/mail_title', mail_title)
 
     def app_manager_stop_plugin(self, app, ctx, plugin_args):
         mail_title = plugin_args['mail_title']
