@@ -39,11 +39,11 @@ class MailNotifierPlugin(AppManagerPlugin):
 
         if use_timestamp_title:
             if self.use_app_start_time:
-                timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(
-                    datetime.datetime.fromtimestamp(self.start_time.to_sec()))
+                unix_time = self.start_time.to_sec()
             else:
-                timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(
-                    datetime.datetime.now())
+                unix_time = datetime.datetime.now()
+            timestamp = '{0:%Y/%m/%d (%H:%M:%S)}'.format(
+                datetime.datetime.fromtimestamp(unix_time))
             mail_title += ': {}'.format(timestamp)
 
         exit_code, stopped, timeout,\
