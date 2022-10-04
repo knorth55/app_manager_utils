@@ -1,12 +1,17 @@
-import rospy
-try:
-    from jsk_rosbag_tools.bag_to_audio import bag_to_audio
-except ImportError as e:
-    rospy.logerr('{}'.format(e))
-    rospy.logerr('Skip using rosbag_audio_converter_plugin')
-    import sys
-    sys.exit(0)
+import distutils.spawn
 import os
+import rospy
+
+# check if ffmpeg is found
+if distutils.spawn.find_executable('ffmpeg'):
+    try:
+        from jsk_rosbag_tools.bag_to_video import bag_to_video
+    except ImportError as e:
+        rospy.logerr('{}'.format(e))
+        rospy.logerr('Skip using rosbag_audio_converter_plugin')
+else:
+    rospy.logerr('ffpmeg is not found.')
+    rospy.logerr('Skip using rosbag_audio_converter_plugin')
 
 from app_manager import AppManagerPlugin
 
