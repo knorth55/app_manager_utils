@@ -8,6 +8,7 @@
   <license>BSD</license>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>app_notification_server</exec_depend>
   <exec_depend>app_notifier</exec_depend>
   <exec_depend>app_publisher</exec_depend>
   <exec_depend>app_recorder</exec_depend>
