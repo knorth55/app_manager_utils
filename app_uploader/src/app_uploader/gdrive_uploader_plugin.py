@@ -18,11 +18,28 @@ class GdriveUploaderPlugin(AppManagerPlugin):
         req.parents_path = plugin_args['upload_parents_path']
         req.use_timestamp_folder = True
         req.use_timestamp_file_title = True
-        gdrive_upload = rospy.ServiceProxy(
-            plugin_args['upload_server_name'] + '/upload_multi',
-            MultipleUpload
-        )
-        res = gdrive_upload(req)
+        try:
+            gdrive_upload = rospy.ServiceProxy(
+                plugin_args['upload_server_name'] + '/upload_multi',
+                MultipleUpload
+            )
+            res = gdrive_upload(req)
+        except Exception as e:
+            rospy.logerr(e)
+            if 'upload_successes' in ctx:
+                ctx['upload_successes'] += [False] * len(req.file_titles)
+            else:
+                ctx['upload_successes'] = [False] * len(req.file_titles)
+            if 'upload_file_urls' in ctx:
+                ctx['upload_file_urls'] += [''] * len(req.file_titles)
+            else:
+                ctx['upload_file_urls'] = [''] * len(req.file_titles)
+            if 'upload_file_titles' in ctx:
+                ctx['upload_file_titles'] += req.file_titles
+            else:
+                ctx['upload_file_titles'] = req.file_titles
+            return ctx
+
         if all(res.successes):
             rospy.loginfo('Upload succeeded.')
         else:
