@@ -2,8 +2,8 @@
 Changelog for package app_recorder
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.7 (2023-04-02)
+------------------
 * Merge pull request `#56 <https://github.com/knorth55/app_manager_utils/issues/56>`_ from knorth55/jsk-rosbag-tools-fix-import
   fix import of jsk_rosbag_tools
 * skip using bag_to_audio/video in plugin

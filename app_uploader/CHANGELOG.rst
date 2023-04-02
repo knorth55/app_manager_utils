@@ -2,8 +2,8 @@
 Changelog for package app_uploader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.7 (2023-04-02)
+------------------
 * catch gdrive service error
 * Contributors: Shingo Kitagawa
 

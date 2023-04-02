@@ -2,8 +2,8 @@
 Changelog for package app_notifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.7 (2023-04-02)
+------------------
 * Merge pull request `#57 <https://github.com/knorth55/app_manager_utils/issues/57>`_ from tkmtnt7000/PR-fix-datetime-timestamp
 * [app_notifier] Fix timestamp title
 * Merge pull request `#55 <https://github.com/knorth55/app_manager_utils/issues/55>`_ from tkmtnt7000/PR-mail-title-start-time
