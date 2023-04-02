@@ -2,6 +2,18 @@
 Changelog for package app_notifier
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Merge pull request `#57 <https://github.com/knorth55/app_manager_utils/issues/57>`_ from tkmtnt7000/PR-fix-datetime-timestamp
+* [app_notifier] Fix timestamp title
+* Merge pull request `#55 <https://github.com/knorth55/app_manager_utils/issues/55>`_ from tkmtnt7000/PR-mail-title-start-time
+* [app_notifier] Refactor setting timestamp for title
+* [app_notifier] Update param name to /email_topic/mail_title
+* [app_notifier] Declare use_app_start_time in __init\_\_
+* [app_notifier] Update comment of use_app_start_time
+* [app_notifier] Add option to display start time in mail title
+* Contributors: Naoto Tsukamoto, Shingo Kitagawa
+
 0.0.6 (2022-07-29)
 ------------------
 * Merge pull request `#53 <https://github.com/knorth55/app_manager_utils/issues/53>`_ from knorth55/app-notifier-fix-typo

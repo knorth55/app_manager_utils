@@ -2,6 +2,11 @@
 Changelog for package app_manager_utils
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix package.xml
+* Contributors: Shingo Kitagawa
+
 0.0.6 (2022-07-29)
 ------------------
 

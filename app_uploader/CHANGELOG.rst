@@ -2,6 +2,11 @@
 Changelog for package app_uploader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* catch gdrive service error
+* Contributors: Shingo Kitagawa
+
 0.0.6 (2022-07-29)
 ------------------
 * Merge pull request `#52 <https://github.com/knorth55/app_manager_utils/issues/52>`_ from tkmtnt7000/display-file-name
